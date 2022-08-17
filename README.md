@@ -1,4 +1,4 @@
-## Install
+## Setup Neovim Configuration
 
 Install Neovim, curl, Plug, and onehalf
 ```
