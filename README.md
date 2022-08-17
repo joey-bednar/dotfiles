@@ -12,4 +12,4 @@ git clone https://github.com/sonph/onehalf
 source ./onehalf/gnome-terminal/onehalfdark.sh
 ```
 
-Type `:PlugInstall` in Neovim to install plugins
+Type `:PlugInstall` in Neovim to install plugins from init.vim
