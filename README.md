@@ -1,5 +1,7 @@
 ## Installation Instructions
 
+Install Neovim and curl: `sudo apt install neovim curl -y`
+
 Download and move init.vim to config file:
 ```
 git clone https://github.com/joey-bednar/neovim-config
@@ -10,8 +12,6 @@ mv ~/neovim-config/init.vim ~/.config/nvim/
 
 rm -rf ~/neovim-config/
 ```
-
-Install Neovim and curl: `sudo apt install neovim curl -y`
 
 Install Vim Plug:
 ```
