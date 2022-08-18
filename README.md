@@ -1,6 +1,6 @@
 ## Installation Instructions
 
-Install Neovim, nodejs, npm, pip3, git, and curl: `sudo apt install neovim nodejs npm python3-pip git curl -y`
+Install Neovim, nodejs, npm, pip3, git, exuberant-ctags, and curl: `sudo apt install neovim nodejs npm python3-pip git exuberant-ctags curl -y`
 
 Install yarn: `sudo npm install -g yarn`
 
