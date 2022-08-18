@@ -45,5 +45,8 @@ yarn install
 yarn build
 ```
 Open Neovim `nvim` and type `:CocInstall coc-pyright` to install Python3 autocompletion.
+
 Type `:CocInstall coc-clangd` to install C autocompletion.
+
+
 If clangd is not in your $PATH, type `:CocCommand clangd.install` to finish the C autocompletion install.
