@@ -23,7 +23,7 @@ call plug#end()
 set completeopt=noinsert,menuone,noselect
 set wildmode=longest,list,full "suggest files to open
 set wildmenu
-
+set smartindent
 filetype plugin indent on " automatic syntax support for open files
 
 " Visual
@@ -55,8 +55,8 @@ autocmd TermOpen * setlocal nonumber norelativenumber "remove line numbers in te
 " Tabs
 set autoindent " turn on autoindentation
 set expandtab "transform tabs to spaces
-set shiftwidth=2 "number of spaces for indentation
-set tabstop=2 "number of spaces for tabs
+set shiftwidth=4 "number of spaces for indentation
+set tabstop=4 "number of spaces for tabs
 
 " Windowing
 set splitbelow splitright "screens split below and to right of current
