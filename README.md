@@ -22,7 +22,7 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```   
 
-Install onehalf theme
+Install onehalf theme:
 ```
 git clone https://github.com/sonph/onehalf \
 source ./onehalf/gnome-terminal/onehalfdark.sh
@@ -39,7 +39,7 @@ yarn build
 
 Open Neovim `nvim` and type `:CocInstall coc-pyright` to install Python3 autocompletion. Type `q` to close the install window and `:q!` to exit to the terminal.
 
-Move the Coc config into the correct folder
+Move the Coc config into the correct folder:
 ```
 mv ~/neovim-config/coc-settings.json ~/.config/nvim/
 ```
