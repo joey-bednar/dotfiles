@@ -28,7 +28,7 @@ git clone https://github.com/sonph/onehalf \
 source ./onehalf/gnome-terminal/onehalfdark.sh
 ```
 
-Open Neovim `nvim` and type `:PlugInstall` to install plugins from init.vim.
+Open Neovim `nvim` and type `:PlugInstall` to install plugins from init.vim. Type `q` to close the install window and `:q!` to exit to the terminal.
 
 Install and build Coc:
 ```
@@ -37,14 +37,14 @@ yarn install \
 yarn build
 ```
 
-Open Neovim `nvim` and type `:CocInstall coc-pyright` to install Python3 autocompletion. Type `:q!` to exit to the terminal.
+Open Neovim `nvim` and type `:CocInstall coc-pyright` to install Python3 autocompletion. Type `q` to close the install window and `:q!` to exit to the terminal.
 
 Move the Coc config into the correct folder
 ```
 mv ~/neovim-config/coc-settings.json ~/.config/nvim/
 ```
 
-Open Neovim `nvim` and type `:CocInstall coc-clangd` to install C autocompletion. Type `:CocCommand clangd.install` to move clangd to your path. Type `:q!` to exit to the terminal.
+Open Neovim `nvim` and type `:CocInstall coc-clangd` to install C autocompletion. Type `:CocCommand clangd.install` to move clangd to your path. Type `q` to close the install window and `:q!` to exit to the terminal.
 
 Delete the cloned folder
 ```
