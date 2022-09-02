@@ -52,7 +52,7 @@ Move the Coc config into the correct folder
 mv ~/neovim-config/coc-settings.json ~/.config/nvim/
 ```
 
-Type `:CocInstall coc-clangd` to install C autocompletion. Type `:CocCommand clangd.install` to move clangd to your path.
+Open Neovim `nvim` and type `:CocInstall coc-clangd` to install C autocompletion. Type `:CocCommand clangd.install` to move clangd to your path. Type `:q!` to exit to the terminal.
 
 Delete the cloned folder
 ```
