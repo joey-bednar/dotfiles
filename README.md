@@ -2,16 +2,8 @@
 
 Install Neovim and dependencies: 
 ```
-sudo apt install neovim nodejs npm python3-pip git exuberant-ctags curl -y
-```
-
-Install yarn: 
-```
-sudo npm install -g yarn
-```
-
-Update Nodejs to stable release: 
-```
+sudo apt install neovim nodejs npm python3-pip git exuberant-ctags curl -y \
+sudo npm install -g yarn \
 sudo npm cache clean -f \
 sudo npm install -g n \
 sudo n stable
