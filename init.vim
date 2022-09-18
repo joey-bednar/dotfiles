@@ -50,6 +50,7 @@ endif
 set mouse=a "allow mouse in nvim
 set clipboard=unnamedplus "enable clipboard between other applications
 set number "show line numbers
+set relativenumber
 autocmd TermOpen * setlocal nonumber norelativenumber "remove line numbers in terminal
 
 " Tabs
