@@ -18,7 +18,7 @@ sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
 
 Install language servers:
 ```
-npm i -g pyright
+npm install pyright
 ```
 
 Download and move init.vim to config file:
