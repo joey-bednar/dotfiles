@@ -96,6 +96,15 @@ lua <<EOF
           vim.keymap.set("n","[d", vim.diagnostic.goto_next, {buffer=0}) -- jump to forward error
           vim.keymap.set("n","]d", vim.diagnostic.goto_prev, {buffer=0}) -- jump to back error
      end,
+     --turn off type checking in python
+     settings = {
+      python = {
+        analysis = {
+          typeCheckingMode = "off"
+        }
+      }
+    }
+
   }
 
   -- Set up nvim-cmp.
