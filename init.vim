@@ -59,14 +59,16 @@ set t_Co=256 " use full color range
 syntax on " syntax highlighting on
 
 colorscheme onehalfdark "set color theme
+hi Normal ctermbg=16 guibg=#000000
+hi LineNr ctermbg=16 guibg=#000000
 let g:airline_theme='onehalfdark'
 
 " match neovim theme to terminal theme
-if exists('+termguicolors')
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
-endif
+" if exists('+termguicolors')
+  " let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  " let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  " set termguicolors
+" endif
 
 " Shortcuts  
 " Fix ctrl-c linting issue
