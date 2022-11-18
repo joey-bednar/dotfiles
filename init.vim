@@ -59,11 +59,11 @@ set t_Co=256 " use full color range
 syntax on " syntax highlighting on
 
 colorscheme onehalfdark "set color theme
-hi Normal ctermbg=16 guibg=#000000
+hi Normal ctermbg=16 guibg=#000000 "allow transparent background in kitty
 hi LineNr ctermbg=16 guibg=#000000
 let g:airline_theme='onehalfdark'
 
-" match neovim theme to terminal theme
+" match neovim theme to Gnome Terminal theme 
 " if exists('+termguicolors')
   " let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   " let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
@@ -86,18 +86,24 @@ set completeopt=menu,menuone,noselect
 
 lua <<EOF
 
--- Set up lspconfig.
+  -- Set up lspconfig.
   local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-  require'lspconfig'.pyright.setup{
-      capabilities = capabilities,
-      on_attach = function()
+  -- LSP keymaps
+  local on_attach = function()
           vim.keymap.set("n","K", vim.lsp.buf.hover, {buffer=0}) -- manual entry
           vim.keymap.set("n","gd", vim.lsp.buf.definition, {buffer=0}) -- jump to definition, ctrl-t to jump back 
           vim.keymap.set("n","gt", vim.lsp.buf.type_definition, {buffer=0}) -- jump to type definition, ctrl-t to jump back 
           vim.keymap.set("n","[d", vim.diagnostic.goto_next, {buffer=0}) -- jump to forward error
           vim.keymap.set("n","]d", vim.diagnostic.goto_prev, {buffer=0}) -- jump to back error
-     end,
+  end
+
+  -- Python3
+  -- sudo npm install -g pyright
+  require'lspconfig'.pyright.setup{
+      capabilities = capabilities,
+      on_attach = on_attach,
+
      --turn off type checking in python
      settings = {
       python = {
@@ -108,6 +114,36 @@ lua <<EOF
     }
 
   }
+
+  -- C/C++
+  -- apt install clangd
+  require'lspconfig'.clangd.setup{
+      capabilities = capabilities,
+      on_attach = on_attach,
+  }
+
+
+  -- Docker
+  -- sudo npm install -g dockerfile-language-server-nodejs
+  require'lspconfig'.dockerls.setup{
+      capabilities = capabilities,
+      on_attach = on_attach,
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   -- Set up nvim-cmp.
   local cmp = require'cmp'
@@ -164,7 +200,7 @@ end
 -- TreeSitter Highlighting
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
-  ensure_installed = { "python", "lua" },
+  ensure_installed = { "python", "c", "lua", "dockerfile"},
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
