@@ -18,7 +18,9 @@ sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
 
 Install language servers:
 ```
-npm install pyright
+sudo npm install -g pyright \
+&& sudo apt install clangd \
+&& sudo npm install -g dockerfile-language-server-nodejs
 ```
 
 Download and move init.vim to config file:
