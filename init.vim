@@ -7,15 +7,19 @@ filetype plugin on "used for commenting plugin
 let mapleader = " "
 set encoding=UTF-8
 
-
 " Plugins
 call plug#begin()
-    Plug 'vim-airline/vim-airline' "Title bar
-    Plug 'sonph/onehalf', { 'rtp': 'vim' } "Theme
-    Plug 'neovim/nvim-lspconfig' "LSP
-    Plug 'preservim/nerdcommenter' "Commenting
+
+    Plug 'vim-airline/vim-airline'
+
+    " Theme
+    Plug 'sonph/onehalf', { 'rtp': 'vim' }
+
+    " Commenting Shortcut
+    Plug 'preservim/nerdcommenter'
 
     " Autocompletion
+    Plug 'neovim/nvim-lspconfig'
     Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'hrsh7th/cmp-buffer'
     Plug 'hrsh7th/cmp-path'
@@ -29,7 +33,7 @@ call plug#begin()
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 
-    " TreeSitter highlighting
+    " Highlighting
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
@@ -78,6 +82,9 @@ inoremap <C-c> <Esc>
 autocmd Filetype python inoremap <buffer> <F5> <C-o>:update<Bar>execute '!python3 '.shellescape(@%, 1)<CR>
 autocmd Filetype python nnoremap <buffer> <F5> :update<Bar>execute '!python3 '.shellescape(@%, 1)<CR>
 
+autocmd FileType c inoremap <buffer> <F5> <Esc>:w<CR>:!gcc -o %< % && ./%< <CR>
+autocmd FileType c nnoremap <buffer> <F5> :w<CR>:!gcc -o %< % && ./%< <CR>
+
 
 " Autocompletion
 "lua require('init')
@@ -98,6 +105,9 @@ lua <<EOF
           vim.keymap.set("n","]d", vim.diagnostic.goto_prev, {buffer=0}) -- jump to back error
   end
 
+
+  -- Run sudo npm install -g tree-sitter-cli
+  
   -- Python3
   -- sudo npm install -g pyright
   require'lspconfig'.pyright.setup{
@@ -115,7 +125,7 @@ lua <<EOF
 
   }
 
-  -- C/C++
+-- C/C++
   -- apt install clangd
   require'lspconfig'.clangd.setup{
       capabilities = capabilities,
@@ -129,20 +139,6 @@ lua <<EOF
       capabilities = capabilities,
       on_attach = on_attach,
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   -- Set up nvim-cmp.
@@ -200,7 +196,7 @@ end
 -- TreeSitter Highlighting
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
-  ensure_installed = { "python", "c", "lua", "dockerfile"},
+  ensure_installed = { "python", "c", "lua", "gitignore" },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
