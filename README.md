@@ -18,7 +18,8 @@ sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
 
 Install language servers:
 ```
-sudo npm install -g pyright \
+sudo npm install -g tree-sitter-cli
+&& sudo npm install -g pyright \
 && sudo apt install clangd \
 && sudo npm install -g dockerfile-language-server-nodejs
 ```
