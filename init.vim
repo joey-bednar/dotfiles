@@ -1,11 +1,11 @@
-" General
-set nobackup "no file backups
-set nowritebackup
+"" General
+"set nobackup "no file backups
+"set nowritebackup
 "set ttimeoutlen=0 "time to run commands
-set hidden "hide unused buffers
+"set hidden "hide unused buffers
 filetype plugin on "used for commenting plugin
-let mapleader = " "
-set encoding=UTF-8
+"let mapleader = " "
+"set encoding=UTF-8
 
 " Plugins
 call plug#begin()
@@ -37,18 +37,8 @@ call plug#begin()
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
-" Navigation
-set mouse=a "use mouse
-set clipboard=unnamedplus "use system clipboard
-set number "show line numbers
-set relativenumber "relative line numbers
+"" Navigation
 autocmd TermOpen * setlocal nonumber norelativenumber "remove line numbers in terminal
-
-" Tabs
-set autoindent " turn on autoindentation
-set expandtab "transform tabs to spaces
-set shiftwidth=4 "number of spaces for indentation
-set tabstop=4 "number of spaces for tabs
 
 " Windowing
 set splitbelow splitright "screens split below and to right of current
@@ -59,8 +49,7 @@ set background=dark "apply color set for dark screens
 set cursorline " highlight cursor line
 
 " Theme
-set t_Co=256 " use full color range
-syntax on " syntax highlighting on
+set t_Co=256
 
 colorscheme onehalfdark "set color theme
 hi Normal ctermbg=16 guibg=#000000 "allow transparent background in kitty
@@ -85,13 +74,30 @@ autocmd Filetype python nnoremap <buffer> <F5> :update<Bar>execute '!python3 '.s
 autocmd FileType c inoremap <buffer> <F5> <Esc>:w<CR>:!gcc -o %< % && ./%< <CR>
 autocmd FileType c nnoremap <buffer> <F5> :w<CR>:!gcc -o %< % && ./%< <CR>
 
-
-" Autocompletion
-"lua require('init')
-set completeopt=menu,menuone,noselect
-
-
 lua <<EOF
+
+-- General
+-- vim.opt.nobackup = true
+vim.opt.writebackup = false
+vim.opt.ttimeoutlen = 0
+vim.opt.hidden = true
+vim.g.mapleader = " "
+vim.opt.encoding = "utf-8"
+
+
+vim.opt.mouse = "a"
+vim.opt.clipboard=unnamedplus
+vim.opt.number = true
+vim.opt.relativenumber = true
+
+-- Tabs
+vim.opt.autoindent = true -- turn on autoindentation
+vim.opt.expandtab = true -- transform tabs to spaces
+vim.opt.shiftwidth = 4 -- number of spaces for indentation
+vim.opt.tabstop = 4 -- number of spaces for tabs
+
+-- Autocompletion
+vim.opt.completeopt = menu,menuone,noselect
 
   -- Set up lspconfig.
   local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
