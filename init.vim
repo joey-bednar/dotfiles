@@ -1,11 +1,4 @@
 "" General
-"set nobackup "no file backups
-"set nowritebackup
-"set ttimeoutlen=0 "time to run commands
-"set hidden "hide unused buffers
-filetype plugin on "used for commenting plugin
-"let mapleader = " "
-"set encoding=UTF-8
 
 " Plugins
 call plug#begin()
@@ -38,23 +31,6 @@ call plug#begin()
 call plug#end()
 
 "" Navigation
-autocmd TermOpen * setlocal nonumber norelativenumber "remove line numbers in terminal
-
-" Windowing
-set splitbelow splitright "screens split below and to right of current
-
-" Visual
-set nowrap "text does not wrap
-set background=dark "apply color set for dark screens
-set cursorline " highlight cursor line
-
-" Theme
-set t_Co=256
-
-colorscheme onehalfdark "set color theme
-hi Normal ctermbg=16 guibg=#000000 "allow transparent background in kitty
-hi LineNr ctermbg=16 guibg=#000000
-let g:airline_theme='onehalfdark'
 
 " match neovim theme to Gnome Terminal theme 
 " if exists('+termguicolors')
@@ -63,32 +39,48 @@ let g:airline_theme='onehalfdark'
   " set termguicolors
 " endif
 
-" Shortcuts  
-" Fix ctrl-c linting issue
-inoremap <C-c> <Esc>
 
-" Run python3 with F5
+
+lua <<EOF
+
+-- Keybinds
+
+-- fix Ctrl-c linting issue
+vim.keymap.set('i', '<C-c>', '<Esc>')
+
+-- Run python3 and c files with F5
+vim.cmd [[
 autocmd Filetype python inoremap <buffer> <F5> <C-o>:update<Bar>execute '!python3 '.shellescape(@%, 1)<CR>
 autocmd Filetype python nnoremap <buffer> <F5> :update<Bar>execute '!python3 '.shellescape(@%, 1)<CR>
 
 autocmd FileType c inoremap <buffer> <F5> <Esc>:w<CR>:!gcc -o %< % && ./%< <CR>
 autocmd FileType c nnoremap <buffer> <F5> :w<CR>:!gcc -o %< % && ./%< <CR>
-
-lua <<EOF
+]]
 
 -- General
 -- vim.opt.nobackup = true
+vim.cmd 'filetype plugin on' -- used for commenting plugin
 vim.opt.writebackup = false
 vim.opt.ttimeoutlen = 0
 vim.opt.hidden = true
 vim.g.mapleader = " "
 vim.opt.encoding = "utf-8"
 
-
+-- Navigation
 vim.opt.mouse = "a"
-vim.opt.clipboard=unnamedplus
+vim.opt.clipboard= "unnamedplus"
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.cmd 'autocmd TermOpen * setlocal nonumber norelativenumber' --remove line numbers in terminal
+
+-- Visual
+vim.opt.wrap = false
+vim.opt.cursorline = true
+vim.opt.background = "dark"
+
+-- Windowing
+vim.opt.splitbelow = true -- split screen below or to right of current
+vim.opt.splitright = true
 
 -- Tabs
 vim.opt.autoindent = true -- turn on autoindentation
@@ -97,7 +89,7 @@ vim.opt.shiftwidth = 4 -- number of spaces for indentation
 vim.opt.tabstop = 4 -- number of spaces for tabs
 
 -- Autocompletion
-vim.opt.completeopt = menu,menuone,noselect
+vim.opt.completeopt = "menu,menuone,noselect"
 
   -- Set up lspconfig.
   local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -246,4 +238,8 @@ require'nvim-treesitter.configs'.setup {
 EOF
 
 
+colorscheme onehalfdark "set color theme
+hi Normal ctermbg=16 guibg=#000000 "allow transparent background in kitty
+hi LineNr ctermbg=16 guibg=#000000
+let g:airline_theme='onehalfdark'
 
