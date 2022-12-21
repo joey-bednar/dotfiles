@@ -24,11 +24,11 @@ sudo npm install -g tree-sitter-cli \
 && sudo npm install -g dockerfile-language-server-nodejs
 ```
 
-Download and move init.vim to config file:
+Download and move init.lua to config file:
 ```
 git clone https://github.com/joey-bednar/neovim-config \
 mkdir ~/.config/nvim/ \
-mv ~/neovim-config/init.vim ~/.config/nvim/
+mv ~/neovim-config/init.lua ~/.config/nvim/
 ```
 
 Install Vim Plug:
@@ -43,7 +43,7 @@ git clone https://github.com/sonph/onehalf \
 source ./onehalf/gnome-terminal/onehalfdark.sh
 ```
 
-Open Neovim `nvim` and type `:PlugInstall` to install plugins from init.vim. Type `q` to close the install window and `:q!` to exit to the terminal.
+Open Neovim `nvim` and type `:PlugInstall` to install plugins from init.lua. Type `q` to close the install window and `:q!` to exit to the terminal.
 
 Delete the cloned folder:
 ```
