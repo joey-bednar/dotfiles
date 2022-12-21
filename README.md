@@ -26,9 +26,7 @@ sudo npm install -g tree-sitter-cli \
 
 Download and move init.lua to config file:
 ```
-git clone https://github.com/joey-bednar/neovim-config \
-mkdir ~/.config/nvim/ \
-mv ~/neovim-config/init.lua ~/.config/nvim/
+git clone https://github.com/joey-bednar/neovim-config ~/.config/nvim
 ```
 
 Install Vim Plug:
