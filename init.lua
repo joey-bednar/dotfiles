@@ -9,7 +9,9 @@
 vim.cmd[[
 call plug#begin()
 
-    Plug 'vim-airline/vim-airline'
+    Plug 'nvim-lualine/lualine.nvim'
+    " If you want to have icons in your statusline choose one of these
+    Plug 'kyazdani42/nvim-web-devicons'
 
     " Theme
     Plug 'sonph/onehalf', { 'rtp': 'vim' }
@@ -76,8 +78,49 @@ vim.cmd [[
 colorscheme onehalfdark "set color theme
 hi Normal ctermbg=16 guibg=#000000 "allow transparent background in kitty
 hi LineNr ctermbg=16 guibg=#000000
-let g:airline_theme='onehalfdark'
 ]]
+
+-- Lualine
+require('lualine').setup {
+  options = {
+    icons_enabled = true,
+    theme = 'onedark',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    disabled_filetypes = {
+      statusline = {},
+      winbar = {},
+    },
+    ignore_focus = {},
+    always_divide_middle = true,
+    globalstatus = false,
+    refresh = {
+      statusline = 1000,
+      tabline = 1000,
+      winbar = 1000,
+    }
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {'filename'},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  winbar = {},
+  inactive_winbar = {},
+  extensions = {}
+}
 
 -- Windowing
 vim.opt.splitbelow = true -- split screen below or to right of current
