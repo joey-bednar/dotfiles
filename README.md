@@ -35,15 +35,4 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```   
 
-Install onehalf theme:
-```
-git clone https://github.com/sonph/onehalf \
-source ./onehalf/gnome-terminal/onehalfdark.sh
-```
-
 Open Neovim `nvim` and type `:PlugInstall` to install plugins from init.lua. Type `q` to close the install window and `:q!` to exit to the terminal.
-
-Delete the cloned folder:
-```
-rm -rf ~/neovim-config/
-```
