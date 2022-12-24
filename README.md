@@ -21,6 +21,14 @@ Install Tree Sitter
 sudo npm install -g tree-sitter-cli
 ```
 
+Install DejuVuSansMono Nerd Font
+```
+mkdir ~/.fonts \
+cd ~/.fonts \
+curl -LO https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/DejaVuSansMono.zip \
+unzip DejaVuSansMono.zip
+```
+
 Download and move init.lua to config file:
 ```
 git clone https://github.com/joey-bednar/neovim-config ~/.config/nvim
