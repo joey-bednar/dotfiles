@@ -16,12 +16,9 @@ sudo mv squashfs-root / \
 sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
 ```
 
-Install language servers:
+Install Tree Sitter
 ```
-sudo npm install -g tree-sitter-cli \
-&& sudo npm install -g pyright \
-&& sudo apt install clangd \
-&& sudo npm install -g dockerfile-language-server-nodejs
+sudo npm install -g tree-sitter-cli
 ```
 
 Download and move init.lua to config file:

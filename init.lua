@@ -1,4 +1,5 @@
----- match neovim theme to Gnome Terminal theme 
+-- match neovim theme to Gnome Terminal theme 
+
 --if exists('+termguicolors')
   --let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   --let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
@@ -9,9 +10,15 @@
 vim.cmd[[
 call plug#begin()
 
+    " Status Line
     Plug 'nvim-lualine/lualine.nvim'
     " If you want to have icons in your statusline choose one of these
     Plug 'kyazdani42/nvim-web-devicons'
+
+    " LSP
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'williamboman/mason.nvim'
+    Plug 'williamboman/mason-lspconfig.nvim'
 
     " Theme
     Plug 'navarasu/onedark.nvim'
@@ -20,7 +27,6 @@ call plug#begin()
     Plug 'preservim/nerdcommenter'
 
     " Autocompletion
-    Plug 'neovim/nvim-lspconfig'
     Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'hrsh7th/cmp-buffer'
     Plug 'hrsh7th/cmp-path'
@@ -50,8 +56,10 @@ vim.cmd [[
 autocmd Filetype python inoremap <buffer> <F5> <C-o>:update<Bar>execute '!python3 '.shellescape(@%, 1)<CR>
 autocmd Filetype python nnoremap <buffer> <F5> :update<Bar>execute '!python3 '.shellescape(@%, 1)<CR>
 
-autocmd FileType c inoremap <buffer> <F5> <Esc>:w<CR>:!gcc -o %< % && ./%< <CR>
-autocmd FileType c nnoremap <buffer> <F5> :w<CR>:!gcc -o %< % && ./%< <CR>
+"autocmd FileType c inoremap <buffer> <F5> <Esc>:w<CR>:!gcc -o %< % && ./%< <CR>
+"autocmd FileType c nnoremap <buffer> <F5> :w<CR>:!gcc -o %< % && ./%< <CR>
+autocmd FileType c inoremap <buffer> <F5> <Esc>:w<CR>:!gcc -o %< % && %< <CR>
+autocmd FileType c nnoremap <buffer> <F5> :w<CR>:!gcc -o %< % && %< <CR>
 ]]
 
 -- General
@@ -74,11 +82,8 @@ vim.cmd 'autocmd TermOpen * setlocal nonumber norelativenumber' --remove line nu
 vim.opt.wrap = false
 vim.opt.cursorline = true
 vim.opt.background = "dark"
---vim.cmd [[
---hi Normal ctermbg=16 guibg=#000000 "allow transparent background in kitty
---hi LineNr ctermbg=16 guibg=#000000
---]]
--- Lua
+
+-- Theme
 require('onedark').setup  {
     -- Main options --
     style = 'darker', -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
@@ -118,9 +123,24 @@ require('onedark').setup  {
         background = true,    -- use background color for virtual text
     },
 }
-
 require('onedark').load()
 
+-- Mason
+require("mason").setup({
+    ui = {
+        icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗"
+        }
+    }
+})
+
+-- Mason LSP Config
+require("mason-lspconfig").setup({
+    ensure_installed = {"pyright","clangd","dockerls","sumneko_lua"},
+    automatic_installation = false,
+})
 
 -- Lualine
 require('lualine').setup {
@@ -280,7 +300,7 @@ end
 -- TreeSitter Highlighting
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
-  ensure_installed = { "python", "c", "lua", "gitignore" },
+  ensure_installed = { "python", "c", "lua", "gitignore", "markdown" },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
