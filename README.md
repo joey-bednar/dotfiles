@@ -16,9 +16,10 @@ sudo mv squashfs-root / \
 sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
 ```
 
-Install Tree Sitter
+Install Tree Sitter and ripgrep
 ```
-sudo npm install -g tree-sitter-cli
+sudo npm install -g tree-sitter-cli \
+sudo apt install ripgrep -y
 ```
 
 Install DejuVuSansMono Nerd Font

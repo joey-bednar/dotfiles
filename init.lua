@@ -55,24 +55,29 @@ autocmd FileType c nnoremap <buffer> <F5> :w<CR>:!gcc -o %< % && %< <CR>
 
 -- General
 vim.cmd 'filetype plugin on' -- used for commenting plugin
+
 vim.opt.backup = false
 vim.opt.swapfile = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
-vim.g.mapleader = " "
 
--- Navigation
+-- Interaction
 vim.opt.mouse = "a"
 vim.opt.clipboard= "unnamedplus"
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.cmd 'autocmd TermOpen * setlocal nonumber norelativenumber' --remove line numbers in terminal
+vim.g.mapleader = " "
 
 -- Visual
 vim.opt.wrap = false
 vim.opt.cursorline = true
 vim.opt.termguicolors = true
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.cmd 'autocmd TermOpen * setlocal nonumber norelativenumber' --remove line numbers in terminal
+
+-- Search
+vim.opt.hlsearch = true
+vim.opt.incsearch = true
 
 -- Windowing
 vim.opt.splitbelow = true -- split screen below or to right of current
@@ -89,7 +94,13 @@ vim.opt.softtabstop = 4
 -- Autocompletion
 vim.opt.completeopt = "menu,menuone,noselect"
 
--- Theme
+-- Telescope
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.git_files, {})
+vim.keymap.set('n', '<leader>fs', builtin.live_grep, {})
+
+-- Theme & Lualine
 require('onedark').setup  {
     -- Main options --
     style = 'darker', -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
