@@ -1,11 +1,3 @@
--- match neovim theme to Gnome Terminal theme 
-
---if exists('+termguicolors')
-  --let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  --let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  --set termguicolors
---endif
-
 -- Plugins
 vim.cmd[[
 call plug#begin()
@@ -62,13 +54,13 @@ autocmd FileType c nnoremap <buffer> <F5> :w<CR>:!gcc -o %< % && %< <CR>
 ]]
 
 -- General
--- vim.opt.nobackup = true
 vim.cmd 'filetype plugin on' -- used for commenting plugin
-vim.opt.writebackup = false
-vim.opt.ttimeoutlen = 0
-vim.opt.hidden = true
+vim.opt.backup = false
+vim.opt.swapfile = false
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undofile = true
+
 vim.g.mapleader = " "
-vim.opt.encoding = "utf-8"
 
 -- Navigation
 vim.opt.mouse = "a"
@@ -80,7 +72,22 @@ vim.cmd 'autocmd TermOpen * setlocal nonumber norelativenumber' --remove line nu
 -- Visual
 vim.opt.wrap = false
 vim.opt.cursorline = true
-vim.opt.background = "dark"
+vim.opt.termguicolors = true
+
+-- Windowing
+vim.opt.splitbelow = true -- split screen below or to right of current
+vim.opt.splitright = true
+
+-- Tabs
+vim.opt.smartindent = true
+vim.opt.autoindent = true -- turn on autoindentation
+vim.opt.expandtab = true -- transform tabs to spaces
+vim.opt.shiftwidth = 4 -- number of spaces for indentation
+vim.opt.tabstop = 4 -- number of spaces for tabs
+vim.opt.softtabstop = 4
+
+-- Autocompletion
+vim.opt.completeopt = "menu,menuone,noselect"
 
 -- Theme
 require('onedark').setup  {
@@ -182,19 +189,6 @@ require('lualine').setup {
     inactive_winbar = {},
     extensions = {}
 }
-
--- Windowing
-vim.opt.splitbelow = true -- split screen below or to right of current
-vim.opt.splitright = true
-
--- Tabs
-vim.opt.autoindent = true -- turn on autoindentation
-vim.opt.expandtab = true -- transform tabs to spaces
-vim.opt.shiftwidth = 4 -- number of spaces for indentation
-vim.opt.tabstop = 4 -- number of spaces for tabs
-
--- Autocompletion
-vim.opt.completeopt = "menu,menuone,noselect"
 
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -333,7 +327,7 @@ require'nvim-treesitter.configs'.setup {
         -- list of language that will be disabled
         --disable = { "c", "rust" },
         -- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
-        disable = function(lang, buf)
+        disable = function(_, buf)
             local max_filesize = 100 * 1024 -- 100 KB
             local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
             if ok and stats and stats.size > max_filesize then
