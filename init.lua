@@ -12,7 +12,6 @@ call plug#begin()
 
     " Status Line
     Plug 'nvim-lualine/lualine.nvim'
-    " If you want to have icons in your statusline choose one of these
     Plug 'kyazdani42/nvim-web-devicons'
 
     " LSP
@@ -255,7 +254,7 @@ vim.opt.completeopt = "menu,menuone,noselect"
       end,
     },
     window = {
-      --completion = cmp.config.window.bordered(),
+      completion = cmp.config.window.bordered(),
       --documentation = cmp.config.window.bordered(),
     },
     mapping = cmp.mapping.preset.insert({
