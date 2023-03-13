@@ -47,10 +47,8 @@ vim.cmd [[
 autocmd Filetype python inoremap <buffer> <F5> <C-o>:update<Bar>execute '!python3 '.shellescape(@%, 1)<CR>
 autocmd Filetype python nnoremap <buffer> <F5> :update<Bar>execute '!python3 '.shellescape(@%, 1)<CR>
 
-"autocmd FileType c inoremap <buffer> <F5> <Esc>:w<CR>:!gcc -o %< % && ./%< <CR>
-"autocmd FileType c nnoremap <buffer> <F5> :w<CR>:!gcc -o %< % && ./%< <CR>
-autocmd FileType c inoremap <buffer> <F5> <Esc>:w<CR>:!gcc -o %< % && %< <CR>
-autocmd FileType c nnoremap <buffer> <F5> :w<CR>:!gcc -o %< % && %< <CR>
+autocmd FileType c inoremap <buffer> <F5> <Esc>:w<CR>:!gcc -o %< % && ./%< <CR>
+autocmd FileType c nnoremap <buffer> <F5> :w<CR>:!gcc -o %< % && ./%< <CR>
 ]]
 
 -- General
@@ -213,8 +211,6 @@ local on_attach = function()
     vim.keymap.set("n","]d", vim.diagnostic.goto_prev, {buffer=0}) -- jump to back error
 end
 
-
--- Run sudo npm install -g tree-sitter-cli
 
 -- Python3
 require'lspconfig'.pyright.setup{
