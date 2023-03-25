@@ -91,7 +91,7 @@ vim.opt.splitbelow = true -- split screen below or to right of current
 vim.opt.splitright = true
 
 -- Tabs
-vim.opt.smartindent = true
+vim.opt.smartindent = false -- fixes commenting indentation errors
 vim.opt.autoindent = true -- turn on autoindentation
 vim.opt.expandtab = true -- transform tabs to spaces
 vim.opt.shiftwidth = 4 -- number of spaces for indentation
