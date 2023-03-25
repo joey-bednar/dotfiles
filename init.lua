@@ -42,18 +42,27 @@ call plug#end()
 -- fix Ctrl-c linting issue
 vim.keymap.set('i', '<C-c>', '<Esc>')
 
--- Run python3 and c files with F5
-vim.cmd [[
-autocmd Filetype python inoremap <buffer> <F5> <C-o>:update<Bar>execute '!python3 '.shellescape(@%, 1)<CR>
-autocmd Filetype python nnoremap <buffer> <F5> :update<Bar>execute '!python3 '.shellescape(@%, 1)<CR>
+-- Run python files with F5
+vim.api.nvim_create_autocmd("FileType", { pattern = "python", callback = function()
+    vim.api.nvim_buf_set_keymap(0,"n","<F5>",":update<Bar>execute '!python3 '.shellescape(@%, 1)<CR>",vim.opt)
+    vim.api.nvim_buf_set_keymap(0,"i","<F5>","<C-o>:update<Bar>execute '!python3 '.shellescape(@%, 1)<CR>",vim.opt)
+end})
 
-autocmd FileType c inoremap <buffer> <F5> <Esc>:w<CR>:!gcc -o %< % && ./%< <CR>
-autocmd FileType c nnoremap <buffer> <F5> :w<CR>:!gcc -o %< % && ./%< <CR>
-]]
+-- Compile and run C files with F5
+-- Make with F6
+vim.api.nvim_create_autocmd("FileType", { pattern = "c", callback = function()
+    vim.api.nvim_buf_set_keymap(0,"n","<F5>",":w<CR>:!gcc -o %< % && ./%< <CR>",vim.opt)
+    vim.api.nvim_buf_set_keymap(0,"i","<F5>","<Esc>:w<CR>:!gcc -o %< % && ./%< <CR>",vim.opt)
+
+    local c_project_dir = os.getenv("HOME") .. "/Documents/Code/chess"
+    vim.api.nvim_buf_set_keymap(0,"n","<F6>","<Esc>:w<CR>:!(cd " .. c_project_dir .. " && make)<CR>",vim.opt)
+    vim.api.nvim_buf_set_keymap(0,"i","<F6>",":w<CR>:!(cd " .. c_project_dir .. " && make)<CR>",vim.opt)
+end})
 
 -- General
 vim.cmd 'filetype plugin on' -- used for commenting plugin
 
+-- Persistent Undo
 vim.opt.backup = false
 vim.opt.swapfile = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
