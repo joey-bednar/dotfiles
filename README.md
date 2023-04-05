@@ -30,7 +30,7 @@ curl -LO https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/DejaVu
 unzip DejaVuSansMono.zip
 ```
 
-Download and move init.lua to config file:
+Download and move repo to nvim folder:
 ```
 git clone https://github.com/joey-bednar/neovim-config ~/.config/nvim
 ```
