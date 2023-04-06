@@ -7,15 +7,17 @@ vim.opt.swapfile = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
-
 -- Interaction
+vim.g.mapleader = " "
 vim.opt.mouse = "a"
 vim.opt.clipboard= "unnamedplus"
-vim.g.mapleader = " "
 
--- Visual
+-- Line Behavior
 vim.opt.wrap = false
 vim.opt.cursorline = true
+vim.opt.scrolloff = 8
+
+-- Display
 vim.opt.termguicolors = true
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -29,9 +31,11 @@ vim.opt.incsearch = true
 vim.opt.splitbelow = true -- split screen below or to right of current
 vim.opt.splitright = true
 
--- Tabs
+-- Indents
 vim.opt.smartindent = false -- fixes commenting indentation errors
 vim.opt.autoindent = true -- turn on autoindentation
+
+-- Tabs
 vim.opt.expandtab = true -- transform tabs to spaces
 vim.opt.shiftwidth = 4 -- number of spaces for indentation
 vim.opt.tabstop = 4 -- number of spaces for tabs
