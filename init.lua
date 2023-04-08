@@ -5,4 +5,5 @@ require('nvim.theme')
 require('nvim.lualine')
 require('nvim.treesitter')
 require('nvim.lsp')
+require('nvim.harpoon')
 

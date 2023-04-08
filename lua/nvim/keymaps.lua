@@ -1,6 +1,9 @@
 -- Keybinds
 vim.keymap.set('i', '<C-c>', '<Esc>')
 
+-- Netrw
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+
 -- Move selection in visual mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -14,11 +17,6 @@ vim.keymap.set("n", "N", "Nzzzv")
 -- Delete/Paste without copying
 vim.keymap.set("x", "<leader>p", [["_dP]])
 vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
-
--- Source File
-vim.keymap.set("n", "<leader><leader>", function()
-    vim.cmd("so")
-end)
 
 -- Run python files with F5
 vim.api.nvim_create_autocmd("FileType", { pattern = "python", callback = function()

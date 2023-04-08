@@ -43,3 +43,5 @@ vim.opt.softtabstop = 4
 
 -- Autocompletion
 vim.opt.completeopt = "menu,menuone,noselect"
+
+

@@ -48,7 +48,6 @@ lsp.setup_nvim_cmp({
   mapping = cmp_mappings
 })
 
-
 -- LSP Keybinds
 lsp.on_attach(function(_, bufnr)
   local opts = {buffer = bufnr, remap = false}
