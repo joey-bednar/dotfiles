@@ -1,44 +1,48 @@
--- Plugins
-vim.cmd[[
-call plug#begin()
+-- Only required if you have packer configured as `opt`
+--vim.cmd.packadd('packer.nvim')
 
-    " Status Line
-    Plug 'nvim-lualine/lualine.nvim'
-    Plug 'kyazdani42/nvim-web-devicons'
+return require('packer').startup(function(use)
+  -- Packer can manage itself
+  use 'wbthomason/packer.nvim'
 
-    " LSP
-    Plug 'neovim/nvim-lspconfig'
-    Plug 'williamboman/mason.nvim'
-    Plug 'williamboman/mason-lspconfig.nvim'
+  use {
+      'nvim-lualine/lualine.nvim',
+      requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+  }
 
-    " Theme
-    Plug 'navarasu/onedark.nvim'
+  use {
+      'nvim-telescope/telescope.nvim', tag = '0.1.0',
+      -- or                            , branch = '0.1.x',
+      requires = { {'nvim-lua/plenary.nvim'} }
+  }
 
-    " Commenting Shortcut
-    Plug 'preservim/nerdcommenter'
+  use({"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"})
+  use("theprimeagen/harpoon")
 
-    " Autocompletion
-    Plug 'hrsh7th/cmp-nvim-lsp'
-    Plug 'hrsh7th/cmp-buffer'
-    Plug 'hrsh7th/cmp-path'
-    Plug 'hrsh7th/nvim-cmp'
-    
-    " Autocomplete Menu
-    Plug 'L3MON4D3/LuaSnip'
-    Plug 'saadparwaiz1/cmp_luasnip'
+  use {
+      'VonHeikemen/lsp-zero.nvim',
+      branch = 'v1.x',
+      requires = {
+          -- LSP Support
+          {'neovim/nvim-lspconfig'},
+          {'williamboman/mason.nvim'},
+          {'williamboman/mason-lspconfig.nvim'},
 
-    " LSP Zero
-    Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v2.x'}
+          -- Autocompletion
+          {'hrsh7th/nvim-cmp'},
+          {'hrsh7th/cmp-buffer'},
+          {'hrsh7th/cmp-path'},
+          {'saadparwaiz1/cmp_luasnip'},
+          {'hrsh7th/cmp-nvim-lsp'},
+          --{'hrsh7th/cmp-nvim-lua'},
 
-    " Telescope
-    Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+          -- Snippets
+          {'L3MON4D3/LuaSnip'},
+      }
+  }
 
-    " Harpoon
-    Plug 'ThePrimeagen/harpoon' 
 
-    " Highlighting
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-call plug#end()
-]]
+  use("preservim/nerdcommenter")
+  use("navarasu/onedark.nvim")
 
+end)
