@@ -1,7 +1,7 @@
 -- TreeSitter Highlighting
 require'nvim-treesitter.configs'.setup {
     -- A list of parser names, or "all"
-    ensure_installed = { "help", "python", "c", "lua", "gitignore", "markdown" },
+    ensure_installed = { "vimdoc", "python", "c", "lua", "gitignore", "markdown" },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
