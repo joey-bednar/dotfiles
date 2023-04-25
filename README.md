@@ -2,12 +2,12 @@
 
 Install dependencies:
 ```
-sudo apt install curl git nodejs npm -y \
+sudo apt install curl git nodejs npm stow -y \
 sudo npm cache clean -f \
 sudo npm install -g n \
 sudo n stable
 ```
-Install Neovim
+Install Neovim:
 ```
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage \
 chmod u+x nvim.appimage \
@@ -16,13 +16,13 @@ sudo mv squashfs-root / \
 sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
 ```
 
-Install Tree Sitter and ripgrep
+Install Tree Sitter and ripgrep:
 ```
 sudo npm install -g tree-sitter-cli \
 sudo apt install ripgrep -y
 ```
 
-Install DejuVuSansMono Nerd Font
+Install DejuVuSansMono Nerd Font:
 ```
 mkdir ~/.fonts \
 cd ~/.fonts \
@@ -30,15 +30,22 @@ curl -LO https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/DejaVu
 unzip DejaVuSansMono.zip
 ```
 
-Download and move repo to nvim folder:
+Download repo:
 ```
-git clone https://github.com/joey-bednar/neovim-config ~/.config/nvim
+cd ~ \
+git clone https://github.com/joey-bednar/dotfiles
 ```
 
-Install Vim Plug:
+Create symlinks:
 ```
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+cd ~/dotfiles \
+stow .
+```
+
+Install Packer:
+```
+git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 ```   
 
-Open Neovim `nvim` and type `:PlugInstall` to install plugins from init.lua. Type `q` to close the install window and `:q!` to exit to the terminal.
+Open Neovim `nvim` and type `:PackerSync` to install plugins. Type `q` to close the install window and `:q!` to exit to the terminal.
