@@ -33,6 +33,15 @@ lsp.configure('pyright', {
     }
 })
 
+-- Fix keyordering error in YAML
+lsp.configure('yamlls', {
+    settings = {
+        yaml = {
+            keyOrdering = false
+        }
+    }
+})
+
 -- Autocompletion Keybinds
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
