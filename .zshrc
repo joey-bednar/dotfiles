@@ -85,6 +85,8 @@ source $ZSH/oh-my-zsh.sh
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
 
+export PATH="$HOME/.local/bin:$PATH"
+bindkey -s ^f "tmux-fzf\n"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
