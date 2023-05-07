@@ -82,11 +82,8 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
 
-export PATH="$HOME/.local/bin:$PATH"
-bindkey -s ^f "tmux-fzf\n"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -108,6 +105,7 @@ bindkey -s ^f "tmux-fzf\n"
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
+source ~/.zsh_profile
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 

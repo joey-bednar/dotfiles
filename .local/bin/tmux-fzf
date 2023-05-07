@@ -15,9 +15,6 @@ tmux_running=$(pgrep tmux)
 
 if [[ -z $TMUX ]]; then
     tmux new-session -c $selected
-    tmux switch-client -t $selected_name
-    exit 0
 else
     tmux new-window -n $selected_name -c $selected
-    exit 0
 fi
