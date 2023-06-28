@@ -5,30 +5,40 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
+    -- status line
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
 
+    -- telescope
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.0',
         -- or                            , branch = '0.1.x',
         requires = { {'nvim-lua/plenary.nvim'} }
     }
 
+    -- treesitter
     use({"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"})
-    use("theprimeagen/harpoon")
 
+    -- LSP
     use("neovim/nvim-lspconfig")
     use("williamboman/mason.nvim")
     use("williamboman/mason-lspconfig.nvim")
+
+    -- CMP
     use("hrsh7th/nvim-cmp")
     use("hrsh7th/cmp-buffer")
     use("hrsh7th/cmp-path")
-    use("saadparwaiz1/cmp_luasnip")
     use("hrsh7th/cmp-nvim-lsp")
+
+    -- Snippets
+    use("saadparwaiz1/cmp_luasnip")
     use("L3MON4D3/LuaSnip")
-    use("preservim/nerdcommenter")
-    use("navarasu/onedark.nvim")
+
+    use("preservim/nerdcommenter") -- commenter
+    use("navarasu/onedark.nvim") -- theme
+    use("theprimeagen/harpoon") -- harpoon
+    use("jose-elias-alvarez/null-ls.nvim")
 
 end)
