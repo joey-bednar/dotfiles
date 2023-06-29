@@ -7,4 +7,5 @@ require('nvim.treesitter')
 require('nvim.lsp')
 require('nvim.null-ls')
 require('nvim.harpoon')
+require('nvim.telescope')
 
