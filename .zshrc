@@ -105,7 +105,6 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-source ~/.zsh_profile
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
@@ -124,3 +123,4 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+source ~/.zsh_profile
