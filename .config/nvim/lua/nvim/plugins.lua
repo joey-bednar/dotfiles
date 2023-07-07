@@ -26,6 +26,10 @@ return require('packer').startup(function(use)
     use("williamboman/mason.nvim")
     use("williamboman/mason-lspconfig.nvim")
 
+    -- Linting/Formatting
+    use("jose-elias-alvarez/null-ls.nvim")
+    use("jay-babu/mason-null-ls.nvim")
+
     -- CMP
     use("hrsh7th/nvim-cmp")
     use("hrsh7th/cmp-buffer")
@@ -39,6 +43,5 @@ return require('packer').startup(function(use)
     use("preservim/nerdcommenter") -- commenter
     use("navarasu/onedark.nvim") -- theme
     use("theprimeagen/harpoon") -- harpoon
-    use("jose-elias-alvarez/null-ls.nvim")
 
 end)
