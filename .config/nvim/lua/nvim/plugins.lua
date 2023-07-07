@@ -1,5 +1,5 @@
 -- Only required if you have packer configured as `opt`
---vim.cmd.packadd('packer.nvim')
+vim.cmd.packadd('packer.nvim')
 
 return require('packer').startup(function(use)
     -- Packer can manage itself
@@ -35,13 +35,14 @@ return require('packer').startup(function(use)
     use("hrsh7th/cmp-buffer")
     use("hrsh7th/cmp-path")
     use("hrsh7th/cmp-nvim-lsp")
+    use("ray-x/cmp-treesitter")
 
     -- Snippets
-    use("saadparwaiz1/cmp_luasnip")
-    use("L3MON4D3/LuaSnip")
+    use("hrsh7th/cmp-vsnip")
+    use("hrsh7th/vim-vsnip")
 
     use("preservim/nerdcommenter") -- commenter
     use("navarasu/onedark.nvim") -- theme
     use("theprimeagen/harpoon") -- harpoon
-
+    --use("onsails/lspkind.nvim") -- LSP pictograms
 end)
