@@ -48,7 +48,7 @@ return require('packer').startup(function(use)
     use("theprimeagen/harpoon") -- harpoon
 
     -- Themes
-    use("navarasu/onedark.nvim") -- theme
+    use("navarasu/onedark.nvim")
     use("sainnhe/gruvbox-material")
     use("projekt0n/github-nvim-theme")
 end)
