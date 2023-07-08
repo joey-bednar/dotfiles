@@ -45,6 +45,10 @@ return require('packer').startup(function(use)
     use("hrsh7th/vim-vsnip")
 
     use("preservim/nerdcommenter") -- commenter
-    use("navarasu/onedark.nvim") -- theme
     use("theprimeagen/harpoon") -- harpoon
+
+    -- Themes
+    use("navarasu/onedark.nvim") -- theme
+    use("sainnhe/gruvbox-material")
+    use("projekt0n/github-nvim-theme")
 end)
