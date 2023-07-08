@@ -9,4 +9,3 @@ require('nvim.completion')
 require('nvim.null-ls')
 require('nvim.harpoon')
 require('nvim.telescope')
-

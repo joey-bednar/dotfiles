@@ -5,6 +5,9 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
+
+    use("nvim-tree/nvim-web-devicons")
+
     -- status line
     use {
         'nvim-lualine/lualine.nvim',
@@ -44,5 +47,4 @@ return require('packer').startup(function(use)
     use("preservim/nerdcommenter") -- commenter
     use("navarasu/onedark.nvim") -- theme
     use("theprimeagen/harpoon") -- harpoon
-    --use("onsails/lspkind.nvim") -- LSP pictograms
 end)
