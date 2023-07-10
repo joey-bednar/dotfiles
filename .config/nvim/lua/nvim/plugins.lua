@@ -48,6 +48,7 @@ return require('packer').startup(function(use)
     use("preservim/nerdcommenter") -- commenter
     use("theprimeagen/harpoon") -- harpoon
     use {"windwp/nvim-autopairs"} -- pair quotes/brackets
+    use {"windwp/nvim-ts-autotag"} -- pair html tags
 
     -- Themes
     use("navarasu/onedark.nvim")
