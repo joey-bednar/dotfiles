@@ -48,6 +48,9 @@ require('mason-lspconfig').setup_handlers({
 lspconfig.lua_ls.setup {
     settings = {
         Lua = {
+            runtime = {
+                version = 'LuaJIT',
+            },
             workspace = { checkThirdParty = false },
             telemetry = { enable = false },
             diagnostics = {
