@@ -1,3 +1,4 @@
 export PATH="$HOME/.local/bin:$PATH"
+export PYTHONPATH="$HOME/personal/dsa"
 bindkey -s ^f ". tmux-fzf\n"
 alias todo="nvim ~/work/todo.txt"
