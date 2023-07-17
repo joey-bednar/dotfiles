@@ -1,8 +1,8 @@
 -- Keybinds
 vim.keymap.set('i', '<C-c>', '<Esc>')
 
--- Netrw
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+-- File explorer
+vim.keymap.set("n", "<leader>pv", ":NvimTreeToggle<CR>")
 
 -- Move selection in visual mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")

@@ -33,6 +33,12 @@ return require('packer').startup(function(use)
                         },
                     },
                     footer = {"What can I do?"},
+                    disable_move = true,
+                },
+                shortcut_type = 'number',
+                hide = {
+                    statusline = 'true',
+                    tabline = 'true',
                 },
             }
         end,
@@ -57,6 +63,9 @@ return require('packer').startup(function(use)
 
     -- treesitter
     use({"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"})
+
+    -- file explorer
+    use("nvim-tree/nvim-tree.lua")
 
     -- LSP
     use("neovim/nvim-lspconfig")
