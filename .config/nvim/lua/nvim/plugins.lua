@@ -5,6 +5,7 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
+    -- Dashboard
     use {
         'glepnir/dashboard-nvim',
         event = 'VimEnter',
@@ -45,6 +46,7 @@ return require('packer').startup(function(use)
         requires = {'nvim-tree/nvim-web-devicons'}
     }
 
+    -- dev icons
     use("nvim-tree/nvim-web-devicons")
 
     -- status line
@@ -93,6 +95,13 @@ return require('packer').startup(function(use)
     use("theprimeagen/harpoon") -- harpoon
     use {"windwp/nvim-autopairs"} -- pair quotes/brackets
     use {"windwp/nvim-ts-autotag"} -- pair html tags
+
+    -- markdown preview
+    use({
+        "iamcco/markdown-preview.nvim",
+        run = function() vim.fn["mkdp#util#install"]() end,
+    })
+    use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
     -- Themes
     use("navarasu/onedark.nvim")
