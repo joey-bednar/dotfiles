@@ -13,6 +13,12 @@ sudo mv squashfs-root / \
 sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
 ```
 
+Install Kitty and set as default terminal:
+```
+sudo apt install kitty -y \
+sudo update-alternatives --config x-terminal-emulator
+```
+
 Install DejuVuSansMono Nerd Font:
 ```
 mkdir ~/.fonts \
@@ -31,6 +37,11 @@ Create symlinks:
 ```
 cd ~/dotfiles \
 stow .
+```
+
+Install tmux:
+```
+sudo apt install tmux -y
 ```
 
 Install Packer:
