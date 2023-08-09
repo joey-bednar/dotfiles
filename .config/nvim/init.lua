@@ -11,3 +11,5 @@ require('nvim.harpoon')
 require('nvim.telescope')
 require('nvim.autopairs')
 require('nvim.filetree')
+require('nvim.context')
+

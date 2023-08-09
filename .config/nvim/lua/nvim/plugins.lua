@@ -91,6 +91,7 @@ return require('packer').startup(function(use)
     use("hrsh7th/cmp-vsnip")
     use("hrsh7th/vim-vsnip")
 
+    use("nvim-treesitter/nvim-treesitter-context") -- function context
     use("preservim/nerdcommenter") -- commenter
     use("theprimeagen/harpoon") -- harpoon
     use {"windwp/nvim-autopairs"} -- pair quotes/brackets
