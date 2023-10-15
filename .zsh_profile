@@ -1,4 +1,14 @@
 export PATH="$HOME/.local/bin:$PATH"
-export PYTHONPATH="$HOME/personal/dsa"
 bindkey -s ^f ". tmux-fzf\n"
-alias todo="nvim ~/work/todo.txt"
+
+os=$(uname)
+
+# Linux only
+if [[ $os == "Linux" ]]; then
+    export PYTHONPATH="$HOME/personal/dsa"
+    alias todo="nvim $HOME/work/todo.txt"
+
+# Mac only
+elif [[ $os == "Darwin" ]]; then
+    alias todo="nvim $HOME/Documents/todo.txt"
+fi

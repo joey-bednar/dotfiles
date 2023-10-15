@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+os=$(uname)
+KITTYPATH="$HOME"/dotfiles/.config/kitty
+
+# Linux
+if [[ $os == "Linux" ]]; then
+    echo "Loading Linux kitty config"
+    cp "$KITTYPATH"/ubuntu.conf "$KITTYPATH"/kitty.conf
+    conda init zsh
+
+# Mac
+elif [[ $os == "Darwin" ]]; then
+    echo "Loading macOS kitty config"
+    cp "$KITTYPATH"/macos.conf "$KITTYPATH"/kitty.conf
+    /opt/anaconda3/bin/conda init zsh
+
+else
+    echo "Unsupported OS: ${os}"
+fi
