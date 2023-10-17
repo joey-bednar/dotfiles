@@ -3,7 +3,14 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~ ~/personal ~/work -mindepth 1 -maxdepth 1 -type d | fzf)
+
+    # Linux only
+    if [[ $os == "Linux" ]]; then
+        selected=$(find ~ ~/personal ~/work -mindepth 1 -maxdepth 1 -type d | fzf)
+    # Mac only
+    elif [[ $os == "Darwin" ]]; then
+        selected=$(find ~ ~/Code -mindepth 1 -maxdepth 1 -type d | fzf)
+    fi
 fi
 
 if [[ -z $selected ]]; then

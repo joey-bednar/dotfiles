@@ -11,4 +11,10 @@ if [[ $os == "Linux" ]]; then
 # Mac only
 elif [[ $os == "Darwin" ]]; then
     alias todo="nvim $HOME/Documents/todo.txt"
+
+    tmux
+    cd $HOME/Code/digital-assistant
+    conda activate digital-assistant
+    export PYTHONPATH="$HOME/Code/gesture-recognition/src"
+    clear
 fi

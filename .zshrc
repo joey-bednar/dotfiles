@@ -95,6 +95,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
 # else
 #   export EDITOR='mvim'
 # fi
+export EDITOR='nvim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
