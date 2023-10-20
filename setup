@@ -7,13 +7,19 @@ KITTYPATH="$HOME"/dotfiles/.config/kitty
 if [[ $os == "Linux" ]]; then
     echo "Loading Linux kitty config"
     cp "$KITTYPATH"/ubuntu.conf "$KITTYPATH"/kitty.conf
-    conda init zsh
+
+    if [[ -n $(command -v conda) ]]; then
+        conda init zsh
+    fi
 
 # Mac
 elif [[ $os == "Darwin" ]]; then
     echo "Loading macOS kitty config"
     cp "$KITTYPATH"/macos.conf "$KITTYPATH"/kitty.conf
-    /opt/anaconda3/bin/conda init zsh
+
+    if [[ -n $(command -v /opt/anaconda3/bin/conda) ]]; then
+        /opt/anaconda3/bin/conda init zsh
+    fi
 
 else
     echo "Unsupported OS: ${os}"
