@@ -1,6 +1,9 @@
 export PATH="$HOME/.local/bin:$PATH"
 bindkey -s ^f ". tmux-fzf\n"
 
+# disable <C-;> behavior
+gsettings set org.freedesktop.ibus.panel.emoji hotkey "[]"
+
 os=$(uname)
 
 # Linux only

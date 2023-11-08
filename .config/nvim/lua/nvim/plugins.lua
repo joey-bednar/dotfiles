@@ -75,7 +75,7 @@ return require('packer').startup(function(use)
     use("williamboman/mason-lspconfig.nvim")
 
     -- Linting/Formatting
-    use("jose-elias-alvarez/null-ls.nvim")
+    use("nvimtools/none-ls.nvim")
     use("jay-babu/mason-null-ls.nvim")
 
     -- CMP
