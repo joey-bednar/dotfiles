@@ -13,7 +13,20 @@
 exec xset r rate 450 40
 
 # Monitor layout
-exec xrandr --output DP-1 --auto --right-of DP-2
+# Get monitors: xrandr | grep -e DP -e HDMI
+set $m1 DP-5
+set $m2 DP-3
+exec_always xrandr --output $m1 --auto --right-of $m2
+
+# Fix screen tearing
+# Install picom: sudo apt install picom -y
+# sudo ubuntu-drivers install
+# sudo nvidia-settings
+# Display Configuration > both Force (Full) Composition Pipeline on
+# apply
+exec_always --no-startup-id picom --backend glx --vsync -b
+exec_always xrandr --output $m1 --set TearFree on
+exec_always xrandr --output $m2 --set TearFree on
 
 set $mod Mod1
 
