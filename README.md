@@ -5,6 +5,7 @@ These are the configs I use to setup my development environment. Some of the too
 - [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh/)
 - [Tmux](https://github.com/tmux/tmux)
 - [Kitty](https://github.com/kovidgoyal/kitty)
+- [i3](https://github.com/i3/i3)
 - [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts)
 - Custom bash scripts
 
@@ -98,5 +99,17 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
 ```   
 
 Open Neovim `nvim` and type `:PackerSync` to install plugins. Type `q` to close the install window and `:q!` to exit to the terminal.
+
+##### Install i3:
+```
+sudo apt install i3 picom -y
+```
+
+Logout and press settings symbol in bottom left. Select i3 and login again. Install nvidia drivers:
+```
+sudo ubuntu-drivers install
+sudo nvidia-settings
+```
+Go to "Display Configuration", check "Force Full Composition Pipeline". Click "Apply".
 </details>
 
