@@ -8,7 +8,19 @@
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
+
+# Mod key
 set $mod Mod1
+
+# Monitor Layout
+# Get monitors cmd: xrandr | grep -e DP -e HDMI
+set $m_left DP-5
+set $m_right DP-3
+
+# Desktop Background Image
+set $desktop_background ~/Pictures/Wallpapers/ubuntu-background.jpg
+
+#################################################################################################
 
 # Typing rate
 exec xset r rate 450 40
@@ -18,29 +30,31 @@ exec_always xset s off
 exec_always xset -dpms
 exec_always xset s noblank
 
-# Suspend keybind
-bindsym $mod+Control+l exec --no-startup-id systemctl suspend
-
 # Monitor layout
-# Get monitors: xrandr | grep -e DP -e HDMI
-set $m1 DP-5
-set $m2 DP-3
-exec_always xrandr --output $m1 --auto --right-of $m2
+exec_always xrandr --output $m_left --auto --right-of $m_right
 
 # Fix screen tearing
 # Install picom: sudo apt install picom -y
 # sudo ubuntu-drivers install
 # sudo nvidia-settings
-# Display Configuration > both Force (Full) Composition Pipeline on
-# apply
+# Display Configuration > both Force (Full) Composition Pipeline on > apply
 exec_always --no-startup-id picom --backend glx --vsync -b
-exec_always xrandr --output $m1 --set TearFree on
-exec_always xrandr --output $m2 --set TearFree on
+exec_always xrandr --output $m_left --set TearFree on
+exec_always xrandr --output $m_right --set TearFree on
+
+# Set desktop background
+exec_always --no-startup-id feh --bg-scale $desktop_background
 
 # remove borders
 for_window [class="^.*"] border pixel 0
+
 #                          class                   border  backgr. text    indicator child_border
-# for_window [class="^.*"] client.focused          #77dd77 #285577 #ffffff #2e9ef4   #285577
+#for_window [class="^.*"] client.focused          #77dd77 #285577 #ffffff #2e9ef4   #285577
+
+# Suspend keybind
+bindsym $mod+Control+l exec --no-startup-id i3-suspend
+
+#################################################################################################
 
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -74,7 +88,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
+#floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
@@ -115,27 +129,27 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+Shift+v split h
+#bindsym $mod+Shift+v split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+#bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+#bindsym $mod+w layout tabbed
+#bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+#bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+#bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+#bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child

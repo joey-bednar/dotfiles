@@ -16,9 +16,9 @@ set incsearch
 
 "theme
 syntax on
-colorscheme desert
-hi Normal ctermbg=black
-hi NonText ctermbg=NONE
+colorscheme default
+"hi Normal ctermbg=black
+"hi NonText ctermbg=NONE
 
 "remaps
 let mapleader = " "
