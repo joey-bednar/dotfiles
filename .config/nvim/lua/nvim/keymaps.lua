@@ -18,6 +18,12 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("x", "<leader>p", [["_dP]])
 vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 
+-- Sum all rows in file with :Sum
+vim.api.nvim_create_user_command("Sum",":%!awk '{print; total+=$1}END{print total}'",{})
+
+-- Execute file with F5
+vim.api.nvim_buf_set_keymap(0,"n","<F5>",":!chmod +x % && ./%<CR>",vim.opt)
+
 -- Run python files with F5
 vim.api.nvim_create_autocmd("FileType", { pattern = "python", callback = function()
     vim.api.nvim_buf_set_keymap(0,"n","<F5>",":update<Bar>execute '!python3 '.shellescape(@%, 1)<CR>",vim.opt)
@@ -39,5 +45,3 @@ vim.api.nvim_create_autocmd("FileType", { pattern = {"c","make","cpp"}, callback
     vim.api.nvim_buf_set_keymap(0,"n","<F7>",":w<CR>:!(cd " .. c_project_dir .. " && ./" .. c_project_main .. ")<CR>",vim.opt)
     vim.api.nvim_buf_set_keymap(0,"i","<F7>","<Esc>:w<CR>:!(cd " .. c_project_dir .. " && ./" .. c_project_main .. ")<CR>",vim.opt)
 end})
-
-
