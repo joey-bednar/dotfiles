@@ -57,4 +57,3 @@ else
     vim.g.python_host_prog = "python"
     vim.g.python3_host_prog = "python3"
 end
-

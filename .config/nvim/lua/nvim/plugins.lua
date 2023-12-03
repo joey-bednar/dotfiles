@@ -96,6 +96,7 @@ return require('packer').startup(function(use)
     use("theprimeagen/harpoon") -- harpoon
     use {"windwp/nvim-autopairs"} -- pair quotes/brackets
     use {"windwp/nvim-ts-autotag"} -- pair html tags
+    use { "folke/neodev.nvim", opts = {} }
 
     -- markdown preview
     use({

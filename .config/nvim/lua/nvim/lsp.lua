@@ -43,7 +43,6 @@ require('mason-lspconfig').setup_handlers({
     end,
 })
 
-
 -- Fix Undefined global 'vim'
 lspconfig.lua_ls.setup {
     settings = {
