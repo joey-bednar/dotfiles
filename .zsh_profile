@@ -2,13 +2,15 @@ export PATH="$HOME/.local/bin:$PATH" # add custom binaries
 export PATH="$HOME/.local/share/nvim/mason/bin:$PATH" # add mason binaries
 bindkey -s ^f ". tmux-fzf\n"
 
-# disable <C-;> behavior
-gsettings set org.freedesktop.ibus.panel.emoji hotkey "[]"
 
 os=$(uname)
 
 # Linux only
 if [[ $os == "Linux" ]]; then
+
+    # disable <C-;> behavior
+    gsettings set org.freedesktop.ibus.panel.emoji hotkey "[]"
+
     export PYTHONPATH="$HOME/personal/dsa"
     alias todo="nvim -c \"e $HOME/work/todo.txt\" $HOME/work/todo/2024.txt"
 
@@ -18,9 +20,7 @@ if [[ $os == "Linux" ]]; then
 elif [[ $os == "Darwin" ]]; then
     alias todo="nvim $HOME/Documents/todo.txt"
 
-    tmux
     cd $HOME/Code/digital-assistant
-    conda activate digital-assistant
     export PYTHONPATH="$HOME/Code/gesture-recognition/src"
     clear
 fi
