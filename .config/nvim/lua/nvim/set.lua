@@ -1,5 +1,5 @@
 -- General
-vim.cmd 'filetype plugin on' -- used for commenting plugin
+vim.cmd("filetype plugin on") -- used for commenting plugin
 
 -- Persistent Undo
 vim.opt.backup = false
@@ -10,7 +10,7 @@ vim.opt.undofile = true
 -- Interaction
 vim.g.mapleader = " "
 vim.opt.mouse = "a"
-vim.opt.clipboard= "unnamedplus"
+vim.opt.clipboard = "unnamedplus"
 
 -- Line Behavior
 vim.opt.wrap = false
@@ -21,7 +21,7 @@ vim.opt.scrolloff = 8
 vim.opt.termguicolors = true
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.cmd 'autocmd TermOpen * setlocal nonumber norelativenumber' --remove line numbers in terminal
+vim.cmd("autocmd TermOpen * setlocal nonumber norelativenumber") --remove line numbers in terminal
 
 -- Search
 vim.opt.hlsearch = true
@@ -45,15 +45,15 @@ vim.opt.softtabstop = 4
 vim.opt.completeopt = "menu,menuone,noselect"
 
 local function isempty(s)
-    return s == nil or s == ""
+	return s == nil or s == ""
 end
 
 -- custom python provider
 local conda_prefix = os.getenv("CONDA_PREFIX")
 if not isempty(conda_prefix) then
-    vim.g.python_host_prog = conda_prefix .. "/bin/python"
-    vim.g.python3_host_prog = conda_prefix .. "/bin/python3"
+	vim.g.python_host_prog = conda_prefix .. "/bin/python"
+	vim.g.python3_host_prog = conda_prefix .. "/bin/python3"
 else
-    vim.g.python_host_prog = "python"
-    vim.g.python3_host_prog = "python3"
+	vim.g.python_host_prog = "python"
+	vim.g.python3_host_prog = "python3"
 end
