@@ -22,7 +22,7 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 vim.api.nvim_create_user_command("Sum", ":%!awk '{print; total+=$1}END{print total}'", {})
 
 -- Format file with :Format
-vim.api.nvim_create_user_command("Format", ":lua vim.lsp.buf.format()", {})
+vim.api.nvim_create_user_command("Format", ":lua vim.lsp.buf.format({ timeout_ms = 2000 })", {})
 
 -- Execute file with F5
 vim.api.nvim_buf_set_keymap(0, "n", "<F5>", ":!chmod +x % && ./%<CR>", vim.opt)
