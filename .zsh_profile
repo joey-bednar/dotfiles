@@ -11,6 +11,9 @@ if [[ $os == "Linux" ]]; then
     # disable <C-;> behavior
     gsettings set org.freedesktop.ibus.panel.emoji hotkey "[]"
 
+    # terminal colors
+    export TERM="screen-256color"
+
     export PYTHONPATH="$HOME/personal/dsa"
     alias todo="nvim -c \"e $HOME/work/todo.txt\" $HOME/work/todo/2024.txt"
 
