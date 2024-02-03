@@ -1,7 +1,6 @@
 require("nvim.set")
 require("nvim.plugins")
 require("nvim.keymaps")
-require("nvim.theme")
 require("nvim.lualine")
 require("nvim.neodev")
 require("nvim.treesitter")
