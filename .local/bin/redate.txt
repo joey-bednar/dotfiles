@@ -1,0 +1,4 @@
+TODO: create aliases for these
+GIT_SEQUENCE_EDITOR="sed -i -re 's/^pick /e /'" git rebase -i
+GIT_COMMITTER_DATE="$(date)" git commit --amend --no-edit --date "$(date)"
+git rebase --continue

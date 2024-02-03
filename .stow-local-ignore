@@ -18,5 +18,6 @@ _darcs
 ^/README.*
 ^/LICENSE.*
 ^/COPYING
+\.github
 
 setup       # ignore setup script
