@@ -1,5 +1,5 @@
 -- General
---vim.cmd("filetype plugin on") -- used for commenting plugin
+vim.cmd("filetype plugin on") -- used for commenting plugin
 
 -- Persistent Undo
 vim.opt.backup = false

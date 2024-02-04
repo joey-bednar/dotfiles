@@ -1,3 +1,35 @@
+return {
+		-- Autocompletion
+		"hrsh7th/nvim-cmp",
+		event = "InsertEnter",
+		dependencies = {
+			-- Snippet Engine & its associated nvim-cmp source
+			--"L3MON4D3/LuaSnip",
+			--"saadparwaiz1/cmp_luasnip",
+			"hrsh7th/cmp-vsnip",
+			"hrsh7th/vim-vsnip",
+
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-calc",
+			"hrsh7th/cmp-cmdline",
+
+			-- Adds LSP completion capabilities
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-path",
+
+			-- Adds a number of user-friendly snippets
+			-- 'rafamadriz/friendly-snippets',
+		},
+
+
+
+
+
+
+
+
+    config = function()
+
 local cmp = require("cmp")
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
@@ -120,3 +152,5 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end, opts)
 	end,
 })
+    end
+}

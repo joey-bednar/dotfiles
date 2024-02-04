@@ -1,3 +1,19 @@
+return {
+		"ThePrimeagen/harpoon",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+
+
+
+
+
+
+
+
+
+    config = function()
+
 local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
 local term = require("harpoon.term")
@@ -22,3 +38,5 @@ vim.keymap.set("n", "<leader>t", function()
 end)
 
 vim.api.nvim_set_keymap("t", "<C-d>", [[<C-\><C-n>]], { noremap = true })
+    end
+}

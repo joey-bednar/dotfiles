@@ -1,3 +1,22 @@
+return {
+		-- Highlight, edit, and navigate code
+		"nvim-treesitter/nvim-treesitter",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter-textobjects",
+			"nvim-treesitter/nvim-treesitter-context",
+		},
+		build = ":TSUpdate",
+
+
+
+
+
+
+
+
+
+    config = function()
+
 -- TreeSitter Highlighting
 require("nvim-treesitter.configs").setup({
 	-- A list of parser names, or "all"
@@ -41,3 +60,5 @@ require("nvim-treesitter.configs").setup({
 		additional_vim_regex_highlighting = false,
 	},
 })
+    end
+}
