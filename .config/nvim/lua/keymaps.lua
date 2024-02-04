@@ -72,3 +72,12 @@ vim.api.nvim_create_autocmd("FileType", {
 		)
 	end,
 })
+
+-- Open preview of markdown file with F5
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "markdown",
+	callback = function()
+		vim.api.nvim_buf_set_keymap(0, "n", "<F5>", ":MarkdownPreview<CR>", vim.opt)
+		vim.api.nvim_buf_set_keymap(0, "i", "<F5>", "<Esc>:MarkdownPreview<CR>", vim.opt)
+	end,
+})
