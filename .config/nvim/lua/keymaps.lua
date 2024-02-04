@@ -27,57 +27,17 @@ vim.api.nvim_create_user_command("Format", ":lua vim.lsp.buf.format({ timeout_ms
 -- Execute file with F5
 vim.api.nvim_buf_set_keymap(0, "n", "<F5>", ":!chmod +x % && ./%<CR>", vim.opt)
 
--- Run python files with F5
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "python",
-	callback = function()
-		vim.api.nvim_buf_set_keymap(0, "n", "<F5>", ":update<Bar>execute '!python3 '.shellescape(@%, 1)<CR>", vim.opt)
-		vim.api.nvim_buf_set_keymap(
-			0,
-			"i",
-			"<F5>",
-			"<C-o>:update<Bar>execute '!python3 '.shellescape(@%, 1)<CR>",
-			vim.opt
-		)
-	end,
-})
-
--- Compile and run C files with F5
--- Make with F6
--- Run project with F7
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "c", "make", "cpp" },
-	callback = function()
-		vim.api.nvim_buf_set_keymap(0, "n", "<F5>", ":w<CR>:!gcc -o %< % && ./%< <CR>", vim.opt)
-		vim.api.nvim_buf_set_keymap(0, "i", "<F5>", "<Esc>:w<CR>:!gcc -o %< % && ./%< <CR>", vim.opt)
-
-		local c_project_dir = os.getenv("HOME") .. "/Documents/Code/chess"
-		local c_project_main = "main"
-		vim.api.nvim_buf_set_keymap(0, "n", "<F6>", ":w<CR>:!(cd " .. c_project_dir .. " && make)<CR>", vim.opt)
-		vim.api.nvim_buf_set_keymap(0, "i", "<F6>", "<Esc>:w<CR>:!(cd " .. c_project_dir .. " && make)<CR>", vim.opt)
-
-		vim.api.nvim_buf_set_keymap(
-			0,
-			"n",
-			"<F7>",
-			":w<CR>:!(cd " .. c_project_dir .. " && ./" .. c_project_main .. ")<CR>",
-			vim.opt
-		)
-		vim.api.nvim_buf_set_keymap(
-			0,
-			"i",
-			"<F7>",
-			"<Esc>:w<CR>:!(cd " .. c_project_dir .. " && ./" .. c_project_main .. ")<CR>",
-			vim.opt
-		)
-	end,
-})
-
--- Open preview of markdown file with F5
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "markdown",
-	callback = function()
-		vim.api.nvim_buf_set_keymap(0, "n", "<F5>", ":MarkdownPreview<CR>", vim.opt)
-		vim.api.nvim_buf_set_keymap(0, "i", "<F5>", "<Esc>:MarkdownPreview<CR>", vim.opt)
-	end,
-})
+---- Run python files with F5
+--vim.api.nvim_create_autocmd("FileType", {
+	--pattern = "python",
+	--callback = function()
+		--vim.api.nvim_buf_set_keymap(0, "n", "<F5>", ":update<Bar>execute '!python3 '.shellescape(@%, 1)<CR>", vim.opt)
+		--vim.api.nvim_buf_set_keymap(
+			--0,
+			--"i",
+			--"<F5>",
+			--"<C-o>:update<Bar>execute '!python3 '.shellescape(@%, 1)<CR>",
+			--vim.opt
+		--)
+	--end,
+--})
