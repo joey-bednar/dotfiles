@@ -26,18 +26,3 @@ vim.api.nvim_create_user_command("Format", ":lua vim.lsp.buf.format({ timeout_ms
 
 -- Execute file with F5
 vim.api.nvim_buf_set_keymap(0, "n", "<F5>", ":!chmod +x % && ./%<CR>", vim.opt)
-
----- Run python files with F5
---vim.api.nvim_create_autocmd("FileType", {
-	--pattern = "python",
-	--callback = function()
-		--vim.api.nvim_buf_set_keymap(0, "n", "<F5>", ":update<Bar>execute '!python3 '.shellescape(@%, 1)<CR>", vim.opt)
-		--vim.api.nvim_buf_set_keymap(
-			--0,
-			--"i",
-			--"<F5>",
-			--"<C-o>:update<Bar>execute '!python3 '.shellescape(@%, 1)<CR>",
-			--vim.opt
-		--)
-	--end,
---})
