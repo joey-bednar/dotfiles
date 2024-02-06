@@ -26,3 +26,4 @@ else
     cd $selected
     #tmux new-window -n $selected_name -c $selected
 fi
+clear

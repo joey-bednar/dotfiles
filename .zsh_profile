@@ -16,6 +16,7 @@ if [[ $os == "Linux" ]]; then
 
     export PYTHONPATH="$HOME/personal/dsa"
     alias todo="nvim -c \"e $HOME/work/todo.txt\" $HOME/work/todo/2024.txt"
+    clear
 
     # export PATH="$HOME/idea-IC-232.10227.8/bin:$PATH"
 
@@ -23,7 +24,6 @@ if [[ $os == "Linux" ]]; then
 elif [[ $os == "Darwin" ]]; then
     alias todo="nvim $HOME/Documents/todo.txt"
 
-    cd $HOME/Code/digital-assistant
     export PYTHONPATH="$HOME/Code/gesture-recognition/src"
     clear
 fi
