@@ -61,3 +61,10 @@ nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 nnoremap n nzzzv 
 nnoremap N Nzzzv 
+
+" Paste without yank
+vnoremap <leader>p "_dP
+
+" Delete without yank
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
