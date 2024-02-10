@@ -1,12 +1,12 @@
 # Dotfiles
 
-These are the configs I use to setup my development environment. Some of the tools I use are:
+These are the configs I use to setup my development environment.
 - Editor: [Neovim](https://github.com/neovim/neovim)
 - Shell: Zsh with [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh/)
 - Terminal: [Kitty](https://github.com/kovidgoyal/kitty)
 - Terminal Multiplexer: [Tmux](https://github.com/tmux/tmux)
 - Window Manager: [i3](https://github.com/i3/i3)
-- Font: [DejaVu Sans Mono](https://github.com/ryanoasis/nerd-fonts)
+- Font: [Custom patched](https://github.com/ryanoasis/nerd-fonts#font-patcher) with [DejaVu Sans Mono](https://dejavu-fonts.github.io/) base font. 
 - Custom bash scripts
 
 ## Installation
