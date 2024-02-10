@@ -14,10 +14,10 @@ return {
 				-- DevIcon will be appended to `name`
 				override = {
 					--zsh = {
-						--icon = "",
-						--color = "#428850",
-						--cterm_color = "65",
-						--name = "Zsh",
+					--icon = "",
+					--color = "#428850",
+					--cterm_color = "65",
+					--name = "Zsh",
 					--},
 				},
 				-- globally enable different highlight colors per icon (default to true)
@@ -35,19 +35,19 @@ return {
 				-- takes effect when `strict` is true
 				override_by_filename = {
 					--["dockerfile"] = {
-						--icon = "",
-						--color = "#458ee6",
-						--cterm_color = "68",
-						--name = "Dockerfile",
+					--icon = "",
+					--color = "#458ee6",
+					--cterm_color = "68",
+					--name = "Dockerfile",
 					--},
 				},
 				-- same as `override` but specifically for overrides by extension
 				-- takes effect when `strict` is true
 				override_by_extension = {
 					--["log"] = {
-						--icon = "",
-						--color = "#81e043",
-						--name = "Log",
+					--icon = "",
+					--color = "#81e043",
+					--name = "Log",
 					--},
 				},
 			})
