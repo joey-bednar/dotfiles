@@ -1,12 +1,12 @@
 # Dotfiles
 
 These are the configs I use to setup my development environment. Some of the tools I use are:
-- [Neovim](https://github.com/neovim/neovim)
-- [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh/)
-- [Tmux](https://github.com/tmux/tmux)
-- [Kitty](https://github.com/kovidgoyal/kitty)
-- [i3](https://github.com/i3/i3)
-- [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts)
+- Editor: [Neovim](https://github.com/neovim/neovim)
+- Shell: Zsh with [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh/)
+- Terminal: [Kitty](https://github.com/kovidgoyal/kitty)
+- Terminal Multiplexer: [Tmux](https://github.com/tmux/tmux)
+- Window Manager: [i3](https://github.com/i3/i3)
+- Font: [DejaVu Sans Mono](https://github.com/ryanoasis/nerd-fonts)
 - Custom bash scripts
 
 ## Installation
@@ -91,14 +91,6 @@ stow .
 ```
 fc-cache -f -v
 ```
-
-##### Install Packer:
-```
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-```   
-
-Open Neovim `nvim` and type `:PackerSync` to install plugins. Type `q` to close the install window and `:q!` to exit to the terminal.
 
 ##### Install i3:
 ```

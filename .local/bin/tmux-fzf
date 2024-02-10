@@ -21,9 +21,9 @@ selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 
 if [[ -z $TMUX ]]; then
-    tmux new-session -c $selected
+    tmux new-session -n $selected_name -c $selected
 else
     cd $selected
-    #tmux new-window -n $selected_name -c $selected
+    tmux rename-window $selected_name
 fi
 clear
