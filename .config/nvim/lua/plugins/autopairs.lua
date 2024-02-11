@@ -2,13 +2,15 @@ return {
 	{
 		-- pair quotes/brackets
 		"windwp/nvim-autopairs",
-		lazy = false,
+		lazy = true,
+		event = { "BufReadPre", "BufNewFile" },
 		config = function() end,
 	},
 	{
 		-- close html tags
 		"windwp/nvim-ts-autotag",
-		lazy = false,
+		lazy = true,
+		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			"hrsh7th/nvim-cmp",
 		},

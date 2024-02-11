@@ -1,7 +1,8 @@
 return {
 	-- Filetree
 	"nvim-tree/nvim-tree.lua",
-	lazy = false,
+	lazy = true,
+	cmd = { "NvimTreeToggle" },
 
 	config = function()
 		-- disable netrw at the very start of your init.lua
