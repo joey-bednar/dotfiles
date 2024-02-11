@@ -26,6 +26,8 @@ autocmd TerminalOpen * setlocal nonumber norelativenumber
 " Search
 set hls
 set incsearch
+set ignorecase
+set smartcase
 
 "-- Windowing
 set splitbelow " split screen below or to right of current

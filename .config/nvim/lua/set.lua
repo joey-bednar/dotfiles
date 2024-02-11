@@ -27,6 +27,8 @@ vim.cmd("autocmd TermOpen * setlocal nonumber norelativenumber") --remove line n
 -- Search
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
+vim.opt.ignorecase = true
+vim.o.smartcase = true
 
 -- Windowing
 vim.opt.splitbelow = true -- split screen below or to right of current
