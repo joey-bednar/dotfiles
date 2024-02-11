@@ -14,8 +14,8 @@ return {
 		vim.api.nvim_create_autocmd("ColorScheme", {
 			group = grpid,
 			pattern = "gruvbox-material",
-			command = "hi NvimTreeNormal                     guibg=#181818 |"
-				.. "hi NvimTreeEndOfBuffer                guibg=#181818 |"
+			command = "hi NvimTreeNormal                  guibg=NONE ctermbg=NONE |"
+				.. "hi NvimTreeEndOfBuffer                guibg=NONE |"
 				.. "hi NoiceCmdlinePopupBorderCmdline     guifg=#ea6962 guibg=#282828 |"
 				.. "hi TelescopePromptBorder              guifg=#ea6962 guibg=#282828 |"
 				.. "hi TelescopePromptNormal              guifg=#ea6962 guibg=#282828 |"
