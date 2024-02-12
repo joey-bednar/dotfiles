@@ -14,7 +14,6 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
