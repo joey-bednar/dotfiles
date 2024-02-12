@@ -33,4 +33,7 @@ return {
 			})
 		end,
 	},
+
+	-- auto tab sizing
+	{ "tpope/vim-sleuth" },
 }
