@@ -27,6 +27,7 @@ return {
 		vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
 		vim.keymap.set("n", "<leader>fg", builtin.git_files, {})
 		vim.keymap.set("n", "<leader>fs", builtin.live_grep, {})
+		vim.keymap.set("n", "<leader>fc", builtin.git_commits, {})
 
 		-- Clone the default Telescope configuration
 		local vimgrep_arguments = { unpack(config.values.vimgrep_arguments) }
