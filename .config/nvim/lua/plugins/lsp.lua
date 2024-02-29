@@ -9,9 +9,6 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 
 		"hrsh7th/cmp-nvim-lsp", -- needed for lsp-capabilities, will remove
-
-		-- Additional lua configuration, makes nvim stuff amazing!
-		"folke/neodev.nvim",
 	},
 
 	config = function()
@@ -67,7 +64,13 @@ return {
 					runtime = {
 						version = "LuaJIT",
 					},
-					workspace = { checkThirdParty = false },
+					workspace = {
+						checkThirdParty = false,
+						library = {
+							"${3rd}/luv/library",
+							unpack(vim.api.nvim_get_runtime_file("", true)),
+						},
+					},
 					telemetry = { enable = false },
 					diagnostics = {
 						globals = { "vim" },
@@ -98,7 +101,5 @@ return {
 				},
 			},
 		})
-
-		require("neodev").setup()
 	end,
 }
