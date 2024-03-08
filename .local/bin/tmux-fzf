@@ -5,6 +5,7 @@ if [[ $# -eq 1 ]]; then
 else
 
     # Linux only
+    os=$(uname)
     if [[ $os == "Linux" ]]; then
         selected=$(find ~ ~/personal ~/work -mindepth 1 -maxdepth 1 -type d | fzf)
     # Mac only
@@ -13,16 +14,15 @@ else
     fi
 fi
 
-if [[ ! -z $selected ]]; then
+if [[ -n $selected ]]; then
 
     selected_name=$(basename "$selected" | tr . _)
-    tmux_running=$(pgrep tmux)
 
     if [[ -z $TMUX ]]; then
-        tmux new-session -n $selected_name -c $selected
+        tmux new-session -n "$selected_name" -c "$selected"
     else
-        cd $selected
-        tmux rename-window $selected_name
+        cd "$selected" || exit
+        tmux rename-window "$selected_name"
     fi
 
 fi
