@@ -13,17 +13,18 @@ else
     fi
 fi
 
-if [[ -z $selected ]]; then
-    exit 0
+if [[ ! -z $selected ]]; then
+
+    selected_name=$(basename "$selected" | tr . _)
+    tmux_running=$(pgrep tmux)
+
+    if [[ -z $TMUX ]]; then
+        tmux new-session -n $selected_name -c $selected
+    else
+        cd $selected
+        tmux rename-window $selected_name
+    fi
+
 fi
 
-selected_name=$(basename "$selected" | tr . _)
-tmux_running=$(pgrep tmux)
-
-if [[ -z $TMUX ]]; then
-    tmux new-session -n $selected_name -c $selected
-else
-    cd $selected
-    tmux rename-window $selected_name
-fi
 clear
