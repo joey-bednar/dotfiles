@@ -38,9 +38,10 @@ return {
 		require("mason-lspconfig").setup({
 			ensure_installed = {
 				"pyright",
-				"clangd",
 				"dockerls",
 				"lua_ls",
+				"bashls",
+				"yamlls",
 			},
 		})
 
