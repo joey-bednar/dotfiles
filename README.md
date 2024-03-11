@@ -39,7 +39,7 @@ cd ansible \
 
 ##### Install dependencies:
 ```
-sudo apt install curl unzip npm stow ripgrep fzf fontconfig -y
+sudo apt install curl unzip npm stow ripgrep fzf fontconfig cargo python3.10-venv -y
 ```
 
 ##### Install Neovim:
@@ -73,11 +73,6 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm \
 ```
 Press `prefix`+`I` to install tmux plugins.
 
-The `.zip` file with proportional and windows compatible fonts can be downloaded using:
-```
-curl -LO https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/DejaVuSansMono.zip
-```
-
 ##### Install configs:
 ```
 cd ~ \
@@ -87,7 +82,7 @@ bash setup \
 stow .
 ```
 
-##### Reload Fonts:
+##### Install fonts:
 ```
 fc-cache -f -v
 ```
