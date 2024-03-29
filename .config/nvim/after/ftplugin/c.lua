@@ -1,26 +1,76 @@
--- Compile and run C files with F5
--- Make with F6
--- Run project with F7
-vim.api.nvim_buf_set_keymap(0, "n", "<F5>", ":w<CR>:!gcc -o %< % && ./%< <CR>", vim.opt)
-vim.api.nvim_buf_set_keymap(0, "i", "<F5>", "<Esc>:w<CR>:!gcc -o %< % && ./%< <CR>", vim.opt)
+-- return top level if within a git directory
+-- otherwise return nil
+local function gitBase(dir)
+	local handle = io.popen("cd " .. dir .. " && git rev-parse --show-toplevel 2>/dev/null")
+	local result = handle:read("*a")
+	handle:close()
 
--- TODO: find make file or git repo and run
-local c_project_dir = os.getenv("HOME") .. "/personal/chess_old"
-local c_project_main = "main"
-vim.api.nvim_buf_set_keymap(0, "n", "<F6>", ":w<CR>:!(cd " .. c_project_dir .. " && make)<CR>", vim.opt)
-vim.api.nvim_buf_set_keymap(0, "i", "<F6>", "<Esc>:w<CR>:!(cd " .. c_project_dir .. " && make)<CR>", vim.opt)
+	if result:match("/") ~= nil then
+		return result:gsub("\n", "")
+	else
+		return nil
+	end
+end
 
-vim.api.nvim_buf_set_keymap(
-	0,
-	"n",
-	"<F7>",
-	":w<CR>:!(cd " .. c_project_dir .. " && ./" .. c_project_main .. ")<CR>",
-	vim.opt
-)
-vim.api.nvim_buf_set_keymap(
-	0,
-	"i",
-	"<F7>",
-	"<Esc>:w<CR>:!(cd " .. c_project_dir .. " && ./" .. c_project_main .. ")<CR>",
-	vim.opt
-)
+-- return true if file exists
+local function fileExists(filename)
+	local file = io.open(filename, "r")
+	if file then
+		file:close()
+		return true
+	else
+		return false
+	end
+end
+
+-- return true if makefile is in git repo base
+local function hasMakefile(dir)
+	return fileExists(dir .. "/makefile") or fileExists(dir .. "/Makefile")
+end
+
+-- select best guess for compiled C executable location
+local function selectExecutable(dir)
+	if fileExists(dir .. "/build/main") then
+		return "./build/main"
+	end
+	return "./main"
+end
+
+-- Compile and run C files/projects with F5
+--
+-- if in git directory with Makefile, make and run executable
+-- otherwise, compile current file and run with gcc
+local git_dir = gitBase(vim.fn.getcwd())
+if git_dir ~= nil then
+	if hasMakefile(git_dir) then
+		local run_executable = selectExecutable(git_dir)
+
+		vim.api.nvim_buf_set_keymap(
+			0,
+			"n",
+			"<F5>",
+			":w<CR>:!(cd " .. git_dir .. " && make && " .. run_executable .. ")<CR>",
+			vim.opt
+		)
+		vim.api.nvim_buf_set_keymap(
+			0,
+			"i",
+			"<F5>",
+			"<Esc>:w<CR>:!(cd " .. git_dir .. " && make && " .. run_executable .. ")<CR>",
+			vim.opt
+		)
+	end
+else
+	vim.api.nvim_buf_set_keymap(0, "n", "<F5>", ":w<CR>:!gcc -o %< % && ./%< <CR>", vim.opt)
+	vim.api.nvim_buf_set_keymap(0, "i", "<F5>", "<Esc>:w<CR>:!gcc -o %< % && ./%< <CR>", vim.opt)
+end
+
+--print("===== TESTS =====")
+--print("F",gitBase("~"))
+--print("T",gitBase("~/dotfiles"))
+--print("T",gitBase("~/dotfiles/.config"))
+--print("T",gitBase("~/personal/chess_old"))
+--print("=================")
+--print(hasMakefile(gitBase("~/dotfiles")))
+--print(hasMakefile(gitBase("~/personal/chess_old")))
+--print("=================")
