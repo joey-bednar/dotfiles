@@ -47,6 +47,10 @@ vim.opt.softtabstop = 4
 -- Autocompletion
 vim.opt.completeopt = "menu,menuone,noselect"
 
+-- Spelling
+vim.opt.spelllang = "en_us"
+vim.opt.spell = true
+
 local function isempty(s)
 	return s == nil or s == ""
 end
