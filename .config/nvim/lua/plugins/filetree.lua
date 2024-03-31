@@ -1,3 +1,4 @@
+--TODO: try out different filetrees like oil
 return {
 	-- Filetree
 	"nvim-tree/nvim-tree.lua",

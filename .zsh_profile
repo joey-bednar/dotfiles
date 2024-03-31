@@ -6,6 +6,9 @@ DISABLE_AUTO_TITLE="true"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#8f3f71,bold,underline"
 # Complete suggestion with <C-e>
 # Tmux scroll: <C-a>[ then use vim motions
+# Enter visual mode: <Space>
+# Yank selection: Enter
+# Paste: <C-a>]
 # Kitty scroll: <C-Shift-up>
 
 os=$(uname)
