@@ -19,6 +19,4 @@ require("lazy").setup("plugins", {
 })
 require("keymaps")
 
--- TODO: try out nvim-java
-
 -- TODO: setup debugger

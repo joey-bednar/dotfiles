@@ -12,6 +12,8 @@ return {
 	},
 
 	config = function()
+		--require('java').setup()
+
 		-- Error Settings
 		local signs = { Error = "✗", Warn = "✗", Hint = "✗", Info = "✗" }
 		for type, icon in pairs(signs) do
@@ -102,6 +104,23 @@ return {
 				},
 			},
 		})
+
+		-- Java setup
+		--lspconfig.jdtls.setup({
+		--settings = {
+		--java = {
+		--configuration = {
+		--runtimes = {
+		--{
+		--name = "JavaSE-21",
+		--path = "/opt/jdk-21",
+		--default = true,
+		--},
+		--},
+		--},
+		--},
+		--},
+		--})
 
 		-- Use LspAttach autocommand to only map the following keys
 		-- after the language server attaches to the current buffer
