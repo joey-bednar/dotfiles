@@ -32,11 +32,6 @@ return {
 		-- Clone the default Telescope configuration
 		local vimgrep_arguments = { unpack(config.values.vimgrep_arguments) }
 
-		-- Search hidden files but not git files
-		table.insert(vimgrep_arguments, "--hidden")
-		table.insert(vimgrep_arguments, "--glob")
-		table.insert(vimgrep_arguments, "!**/.git/*")
-
 		telescope.setup({
 			defaults = {
 				vimgrep_arguments = vimgrep_arguments,
@@ -49,10 +44,10 @@ return {
 			},
 			pickers = {
 				find_files = {
-					find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+					find_command = { "rg", "--files", "--hidden", "--glob", "!{**/.git/*,**/node_modules/*}" },
 				},
 				live_grep = {
-					additional_args = { "--hidden" },
+					additional_args = { "--hidden", "--glob", "!{**/.git/*,**/node_modules/*}" },
 				},
 			},
 			extensions = {

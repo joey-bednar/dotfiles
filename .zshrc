@@ -3,9 +3,9 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
 
+# TODO: investigate new zsh plugins to use
+
 plugins=(
-    git
-    history
     zsh-autosuggestions
     zsh-syntax-highlighting
     command-not-found

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 killall picom
 sleep 1

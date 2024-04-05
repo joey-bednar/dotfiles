@@ -1,2 +1,2 @@
-require('util.make')
+require("util.make")
 MakeShortcut()

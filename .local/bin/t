@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+
+# attach to tmux session if one exists, otherwise create new session
+
+tmux a &> /dev/null || tmux
