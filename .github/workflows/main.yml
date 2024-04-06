@@ -3,8 +3,33 @@ name: CI
 on: [push, pull_request]
 
 jobs:
+    build:
+      name: Run Neovim
+      runs-on: ubuntu-latest
+      steps:
+            # TODO: install dotfiles and run test
+            - uses: actions/checkout@v4
+            - name: Install Neovim
+              run: |
+                mkdir -p /tmp/nvim
+                wget -q https://github.com/neovim/neovim/releases/latest/download/nvim.appimage -O /tmp/nvim/nvim.appimage
+                cd /tmp/nvim
+                chmod a+x ./nvim.appimage
+                ./nvim.appimage --appimage-extract
+                echo "/tmp/nvim/squashfs-root/usr/bin/" >> $GITHUB_PATH
+
+            - name: Install Lazy Plugins
+              run: |
+                export XDG_CONFIG_HOME="$(pwd)/.config/nvim"
+                export LUA_PATH="$(pwd)/.config/nvim/lua"
+                export LUA_CPATH="$(pwd)/.config/nvim/lua"
+                pwd
+                ls -al
+                nvim --headless -u "$(pwd)/.config/nvim/init.lua" +"echo &runtimepath" +qa
+                nvim --headless -u "$(pwd)/.config/nvim/init.lua" "+Lazy! sync" +qa
+                nvim --headless -u "$(pwd)/.config/nvim/init.lua" +Lazy load all +qa
     format:
-        name: Stylua
+        name: Check formatting
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
@@ -18,9 +43,11 @@ jobs:
                   ~/.cargo/bin
                 key: ${{ runner.os }}-cargo-${{ hashFiles('weekly') }}
 
-            - name: Install
+            - name: Install stylua
               if: steps.cache.outputs.cache-hit != 'true'
               run: cargo install stylua
 
-            - name: Format
+            - name: Check format
               run: stylua --check .config/nvim/lua/ #--config-path=.stylua.toml
+
+
