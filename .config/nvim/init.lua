@@ -20,3 +20,6 @@ require("lazy").setup("plugins", {
 require("keymaps")
 
 -- TODO: setup debugger
+-- TODO: try git-blame.nvim
+-- TODO: test gitlab support
+-- TODO: try out twilight.nvim

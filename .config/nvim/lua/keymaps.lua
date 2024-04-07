@@ -30,3 +30,5 @@ vim.api.nvim_buf_set_keymap(0, "n", "<F5>", ":!chmod +x % && ./%<CR>", vim.opt)
 vim.keymap.set("n", "<leader>G", "<cmd>Gvdiffsplit!<CR>")
 vim.keymap.set("n", "gh", "<cmd>diffget //2<CR>")
 vim.keymap.set("n", "gl", "<cmd>diffget //3<CR>")
+
+-- TODO: look into system/nvim yank/paste

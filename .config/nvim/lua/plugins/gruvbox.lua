@@ -41,3 +41,4 @@ return {
 		vim.cmd("colorscheme gruvbox-material")
 	end,
 }
+-- TODO: change red border on cmp to gruvbox theme

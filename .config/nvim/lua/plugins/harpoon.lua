@@ -31,3 +31,4 @@ return {
 		vim.api.nvim_set_keymap("t", "<C-d>", [[<C-\><C-n>]], { noremap = true })
 	end,
 }
+-- TODO: migrate to harpoon2
