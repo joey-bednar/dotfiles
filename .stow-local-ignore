@@ -5,4 +5,5 @@
 ^/README.*
 ^/LICENSE.*
 
-setup       # ignore setup script
+setup
+Makefile
