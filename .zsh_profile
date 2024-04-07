@@ -2,14 +2,12 @@ export PATH="$HOME/.local/bin:$PATH" # add custom binaries
 export PATH="$HOME/.local/share/nvim/mason/bin:$PATH" # add mason binaries
 bindkey -s ^f ". tmux-fzf\n"
 
-# TODO: use nvim mappings for tmux copy paste
-
 DISABLE_AUTO_TITLE="true"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#8f3f71,bold,underline"
 # Complete suggestion with <C-e>
 # Tmux normal mode: <C-a>[ then use vim motions
-# Enter visual mode: <Space>
-# Yank selection: Enter
+# Enter visual mode: v or <Space>
+# Yank selection: y or <CR>
 # Paste: <C-a>]
 # Kitty scroll: <C-Shift-up>
 
