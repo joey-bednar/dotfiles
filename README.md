@@ -78,7 +78,7 @@ Press `prefix`+`I` to install tmux plugins.
 cd ~ \
 git clone https://github.com/joey-bednar/dotfiles \
 cd ~/dotfiles \
-bash setup \
+bash .local/bin/setup \
 stow .
 ```
 

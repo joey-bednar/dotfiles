@@ -26,5 +26,4 @@ elif [[ $os == "Darwin" ]]; then
 else
     echo "Unsupported OS: ${os}"
 fi
-
-# TODO: use makefile and move this to .local/bin
+# TODO: split into conda-init, kitty-setup

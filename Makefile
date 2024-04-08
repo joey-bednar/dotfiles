@@ -12,4 +12,9 @@ update:
 	git reset --hard origin/main
 	stow . --restow
 
+.PHONY: setup
+.SILENT: setup
+setup:
+	bash .local/bin/setup
+
 # TODO: add default: pull, conda init, remove symlinks, stow
