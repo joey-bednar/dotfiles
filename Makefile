@@ -4,6 +4,7 @@ format:
 	stylua .config/nvim/
 
 .PHONY: update
+.SILENT: update
 update:
 	git fetch origin
 	git reset --hard origin/main
