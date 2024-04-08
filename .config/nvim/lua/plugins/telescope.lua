@@ -64,3 +64,4 @@ return {
 		require("telescope").load_extension("fzf")
 	end,
 }
+-- TODO: find starting at base of git dir

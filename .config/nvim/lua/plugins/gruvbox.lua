@@ -22,21 +22,22 @@ return {
 				.. "hi TelescopePromptTitle               guifg=#ebdbb2 guibg=#282828 |"
 				.. "hi TelescopePromptPrefix              guifg=#ebdbb2 guibg=#282828 |"
 				.. "hi TelescopePromptCounter             guifg=#ebdbb2 guibg=#282828 |"
-				.. "hi TelescopePreviewTitle              guifg=#89b482 guibg=#282828 |"
-				.. "hi TelescopePreviewBorder             guifg=#89b482 guibg=#282828 |"
-				.. "hi TelescopeResultsTitle              guifg=#89b482 guibg=#282828 |"
-				.. "hi TelescopeResultsBorder             guifg=#89b482 guibg=#282828 |"
-				.. "hi TelescopeMatching                  guifg=#d8a657 guibg=#282828 |"
+				.. "hi TelescopePreviewTitle              guifg=#ebdbb2 guibg=#282828 |"
+				.. "hi TelescopePreviewBorder             guifg=#ebdbb2 guibg=#282828 |"
+				.. "hi TelescopeResultsTitle              guifg=#ebdbb2 guibg=#282828 |"
+				.. "hi TelescopeResultsBorder             guifg=#ebdbb2 guibg=#282828 |"
+				.. "hi TelescopeMatching                  guifg=#d79921 guibg=#282828 |"
 				.. "hi TelescopeSelection                 guifg=#ffffff guibg=#32302f |"
 				.. "hi FloatBorder                        guifg=#ebdbb2 guibg=#282828 |"
 				.. "hi BqfPreviewBorder                   guifg=#ebdbb2 guibg=#282828 |"
 				.. "hi NormalFloat                        guibg=#282828 |"
 				.. "hi IndentBlanklineContextChar         guifg=#d3869b |"
-				.. "hi StatusColumnBorder                 guifg=#232323 |"
+				.. "hi StatusColumnBorder                 guifg=#282828 |"
 				.. "hi StatusColumnBuffer                 guibg=#282828 |"
-				.. "hi CursorLineNr                       guifg=#d8a657 |"
+				.. "hi CursorLineNr                       guifg=#d79921 |"
 				.. "hi CodewindowBorder                   guifg=#ebdbb2 |"
-				.. "hi TabLine                            guibg=#282828 |",
+				.. "hi TabLine                            guibg=#282828 |"
+				.. "hi TreesitterContext				  guibg=#1d2021",
 		})
 		vim.cmd("colorscheme gruvbox-material")
 	end,
