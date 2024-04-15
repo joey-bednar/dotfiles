@@ -29,7 +29,7 @@ set incsearch
 set ignorecase
 set smartcase
 
-"-- Windowing
+" Windowing
 set splitbelow " split screen below or to right of current
 set splitright
 

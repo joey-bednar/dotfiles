@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# starts tmux
-
 # TODO: add updating year in todo
 
 os=$(uname)

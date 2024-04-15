@@ -65,3 +65,5 @@ return {
 	end,
 }
 -- TODO: find starting at base of git dir
+-- TODO: try telescope lsp_stuff
+-- TODO: setup telescope file_browser to search, add files
