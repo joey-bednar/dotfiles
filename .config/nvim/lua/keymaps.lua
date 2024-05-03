@@ -27,8 +27,11 @@ vim.api.nvim_create_user_command("Format", ":lua vim.lsp.buf.format({ timeout_ms
 -- Execute file with F5
 vim.api.nvim_buf_set_keymap(0, "n", "<F5>", ":!chmod +x % && ./%<CR>", vim.opt)
 
-vim.keymap.set("n", "<leader>G", "<cmd>Gvdiffsplit!<CR>")
-vim.keymap.set("n", "gh", "<cmd>diffget //2<CR>")
-vim.keymap.set("n", "gl", "<cmd>diffget //3<CR>")
+-- Git conflict diffs
+vim.keymap.set("n", "<leader>gc", "<cmd>Gvdiffsplit!<CR>") -- git conflict diff
+vim.keymap.set("n", "gh", "<cmd>diffget //2<CR>") -- use left
+vim.keymap.set("n", "gl", "<cmd>diffget //3<CR>") -- use right
 
--- TODO: look into system/nvim yank/paste
+vim.keymap.set("n", "<leader>gb", "<cmd>Git blame<CR>") -- git blame
+
+-- TODO: look into system/nvim yank/paste on VM
