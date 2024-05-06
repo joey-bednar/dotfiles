@@ -1,5 +1,12 @@
-#!/bin/bash
+#!/bin/sh
 
-killall picom
-sleep 1
-systemctl suspend
+# locks to black screen, enables power saving mode only during locking process
+# to turn off screens. Does not suspend system.
+
+revert() {
+    xset dpms 0 0 0
+}
+trap revert HUP INT TERM
+xset +dpms dpms 5 5 5
+i3lock -n -c 000000
+revert
