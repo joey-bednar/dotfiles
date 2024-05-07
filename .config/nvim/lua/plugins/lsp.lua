@@ -130,24 +130,41 @@ return {
 				-- Buffer local mappings.
 				-- See `:help vim.lsp.*` for documentation on any of the below functions
 				local opts = { buffer = ev.buf }
+
+				-- goto definition
 				vim.keymap.set("n", "gd", function()
 					vim.lsp.buf.definition()
 				end, opts)
+
+				--not currently useful
+				vim.keymap.set("n", "gD", function()
+					vim.lsp.buf.declaration()
+				end, opts)
+
+				-- goto type definition
+				vim.keymap.set("n", "gT", function()
+					vim.lsp.buf.type_definition()
+				end, opts)
+
+				-- hover
 				vim.keymap.set("n", "K", function()
 					vim.lsp.buf.hover()
 				end, opts)
+
+				-- next/prev diagnostic
 				vim.keymap.set("n", "[d", function()
 					vim.diagnostic.goto_next()
 				end, opts)
 				vim.keymap.set("n", "]d", function()
 					vim.diagnostic.goto_prev()
 				end, opts)
-				vim.keymap.set("n", "<leader>rr", function()
-					vim.lsp.buf.references()
-				end, opts)
+
+				-- rename
 				vim.keymap.set("n", "<leader>rn", function()
 					vim.lsp.buf.rename()
 				end, opts)
+
+				-- show error
 				vim.keymap.set("n", "<leader>e", function()
 					vim.diagnostic.open_float(0, { scope = "line" })
 				end, opts)
