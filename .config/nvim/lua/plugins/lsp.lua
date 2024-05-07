@@ -136,11 +136,6 @@ return {
 					vim.lsp.buf.definition()
 				end, opts)
 
-				--not currently useful
-				vim.keymap.set("n", "gD", function()
-					vim.lsp.buf.declaration()
-				end, opts)
-
 				-- goto type definition
 				vim.keymap.set("n", "gT", function()
 					vim.lsp.buf.type_definition()

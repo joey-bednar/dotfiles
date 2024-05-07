@@ -28,18 +28,28 @@ return {
 		-- Resume Telescope
 		vim.keymap.set("n", "<leader>fr", builtin.resume, {})
 
+		-- Spelling suggestions
+		vim.keymap.set("n", "z=", builtin.spell_suggest, {})
+
 		-- Find files
 		vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
 		vim.keymap.set("n", "<leader>fg", builtin.git_files, {})
+		vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
 
 		-- Find strings
 		vim.keymap.set("n", "<leader>fs", builtin.live_grep, {})
+		vim.keymap.set(
+			"n",
+			"<leader>f/",
+			":Telescope current_buffer_fuzzy_find sorting_strategy=ascending prompt_position=top<CR>",
+			{}
+		)
 
 		-- Find git
 		vim.keymap.set("n", "<leader>fc", builtin.git_commits, {})
 
 		-- Find all references to var under cursor
-		vim.keymap.set("n", "<leader>gr", builtin.lsp_references, {})
+		vim.keymap.set("n", "gr", builtin.lsp_references, {})
 
 		-- Show all keymaps
 		vim.keymap.set("n", "<leader>fk", builtin.keymaps, {})
@@ -50,10 +60,15 @@ return {
 		telescope.setup({
 			defaults = {
 				vimgrep_arguments = vimgrep_arguments,
+				preview = {
+					filesize_limit = 0.1, -- MB
+				},
 				mappings = {
 					i = {
 						["<C-k>"] = actions.move_selection_previous,
 						["<C-j>"] = actions.move_selection_next,
+						["<C-u>"] = actions.preview_scrolling_up,
+						["<C-d>"] = actions.preview_scrolling_down,
 					},
 				},
 			},

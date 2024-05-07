@@ -29,7 +29,7 @@ vim.keymap.set("n", "<leader>lf", ":Format<CR>")
 vim.api.nvim_buf_set_keymap(0, "n", "<F5>", ":!chmod +x % && ./%<CR>", vim.opt)
 
 -- Git conflict diffs
-vim.keymap.set("n", "<leader>gc", "<cmd>Gvdiffsplit!<CR>") -- git conflict diff
+vim.keymap.set("n", "<leader>gd", "<cmd>Gvdiffsplit!<CR>") -- git conflict diff
 vim.keymap.set("n", "gh", "<cmd>diffget //2<CR>") -- use left
 vim.keymap.set("n", "gl", "<cmd>diffget //3<CR>") -- use right
 
