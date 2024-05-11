@@ -42,4 +42,3 @@ return {
 		vim.cmd("colorscheme gruvbox-material")
 	end,
 }
--- TODO: adjust telescope colors

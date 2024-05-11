@@ -3,8 +3,6 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
 
-# TODO: investigate new zsh plugins to use
-
 plugins=(
     zsh-autosuggestions
     zsh-syntax-highlighting
