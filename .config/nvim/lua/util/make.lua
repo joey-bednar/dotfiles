@@ -51,19 +51,31 @@ function MakeShortcut()
 				"n",
 				"<F5>",
 				":w<CR>:!(cd " .. git_dir .. " && make && " .. run_executable .. ")<CR>",
-				vim.opt
+				{ desc = "Run make and execute in git directory." }
 			)
 			vim.api.nvim_buf_set_keymap(
 				0,
 				"i",
 				"<F5>",
 				"<Esc>:w<CR>:!(cd " .. git_dir .. " && make && " .. run_executable .. ")<CR>",
-				vim.opt
+				{ desc = "Run make and execute in git directory." }
 			)
 		end
 	else
-		vim.api.nvim_buf_set_keymap(0, "n", "<F5>", ":w<CR>:!gcc -o %< % && ./%< <CR>", vim.opt)
-		vim.api.nvim_buf_set_keymap(0, "i", "<F5>", "<Esc>:w<CR>:!gcc -o %< % && ./%< <CR>", vim.opt)
+		vim.api.nvim_buf_set_keymap(
+			0,
+			"n",
+			"<F5>",
+			":w<CR>:!gcc -o %< % && ./%< <CR>",
+			{ desc = "Compile and execute." }
+		)
+		vim.api.nvim_buf_set_keymap(
+			0,
+			"i",
+			"<F5>",
+			"<Esc>:w<CR>:!gcc -o %< % && ./%< <CR>",
+			{ desc = "Compile and execute." }
+		)
 	end
 end
 

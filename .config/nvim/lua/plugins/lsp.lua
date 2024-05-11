@@ -134,35 +134,35 @@ return {
 				-- goto definition
 				vim.keymap.set("n", "gd", function()
 					vim.lsp.buf.definition()
-				end, opts)
+				end, { buffer = ev.buf, desc = "LSP goto definition." })
 
 				-- goto type definition
 				vim.keymap.set("n", "gT", function()
 					vim.lsp.buf.type_definition()
-				end, opts)
+				end, { buffer = ev.buf, desc = "LSP goto type definition." })
 
 				-- hover
 				vim.keymap.set("n", "K", function()
 					vim.lsp.buf.hover()
-				end, opts)
+				end, { buffer = ev.buf, desc = "LSP hover show information." })
 
 				-- next/prev diagnostic
 				vim.keymap.set("n", "[d", function()
 					vim.diagnostic.goto_next()
-				end, opts)
+				end, { buffer = ev.buf, desc = "LSP goto next diagnostic." })
 				vim.keymap.set("n", "]d", function()
 					vim.diagnostic.goto_prev()
-				end, opts)
+				end, { buffer = ev.buf, desc = "LSP goto previous diagnostic." })
 
 				-- rename
 				vim.keymap.set("n", "<leader>rn", function()
 					vim.lsp.buf.rename()
-				end, opts)
+				end, { buffer = ev.buf, desc = "LSP rename value under cursor." })
 
 				-- show error
 				vim.keymap.set("n", "<leader>e", function()
 					vim.diagnostic.open_float(0, { scope = "line" })
-				end, opts)
+				end, { buffer = ev.buf, desc = "LSP show diagnostic error." })
 			end,
 		})
 	end,

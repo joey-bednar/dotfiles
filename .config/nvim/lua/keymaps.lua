@@ -1,38 +1,47 @@
 -- Keybinds
-vim.keymap.set("i", "<C-c>", "<Esc>")
+vim.keymap.set("i", "<C-c>", "<Esc>", { desc = "Map <Esc> to <C-c>" })
 
 -- File explorer
-vim.keymap.set("n", "<leader>pv", ":NvimTreeToggle<CR>")
+vim.keymap.set("n", "<leader>pv", ":NvimTreeToggle<CR>", { desc = "NvimTree toggle." })
 
 -- Move selection in visual mode
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection down." })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up." })
 
 -- Remain in center screen using Up/Down/Find
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Move down half page." })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Move up half page." })
+vim.keymap.set("n", "n", "nzzzv", { desc = "Move to next search." })
+vim.keymap.set("n", "N", "Nzzzv", { desc = "Move to previous search." })
 
 -- Delete/Paste without copying
-vim.keymap.set("x", "<leader>p", [["_dP]])
-vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
+vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste over selection without yank." })
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete without yank." })
 
--- Sum all rows in file with :Sum
-vim.api.nvim_create_user_command("Sum", ":%!awk '{print; total+=$1}END{print total}'", {})
+vim.api.nvim_create_user_command(
+	"Sum",
+	":%!awk '{print; total+=$1}END{print total}'",
+	{ desc = "Sum all rows in buffer." }
+)
 
 -- Format file with :Format or <leader>lf
-vim.api.nvim_create_user_command("Format", ":lua vim.lsp.buf.format({ timeout_ms = 2000 })", {})
-vim.keymap.set("n", "<leader>lf", ":Format<CR>")
+vim.api.nvim_create_user_command(
+	"Format",
+	":lua vim.lsp.buf.format({ timeout_ms = 2000 })",
+	{ desc = "LSP format buffer." }
+)
+vim.keymap.set("n", "<leader>lf", ":Format<CR>", { desc = "LSP format buffer." })
 
 -- Execute file with F5
-vim.api.nvim_buf_set_keymap(0, "n", "<F5>", ":!chmod +x % && ./%<CR>", vim.opt)
+vim.api.nvim_buf_set_keymap(0, "n", "<F5>", ":!chmod +x % && ./%<CR>", { desc = "Execute file." })
 
--- Git conflict diffs
-vim.keymap.set("n", "<leader>gd", "<cmd>Gvdiffsplit!<CR>") -- git conflict diff
-vim.keymap.set("n", "gh", "<cmd>diffget //2<CR>") -- use left
-vim.keymap.set("n", "gl", "<cmd>diffget //3<CR>") -- use right
+-- Git conflicts
+vim.keymap.set("n", "<leader>gd", "<cmd>Gvdiffsplit!<CR>", { desc = "Fugitive git diff split." })
+vim.keymap.set("n", "gh", "<cmd>diffget //2<CR>", { desc = "Fugitive select left diff." })
+vim.keymap.set("n", "gl", "<cmd>diffget //3<CR>", { desc = "Fugitive select right diff." })
 
-vim.keymap.set("n", "<leader>gb", "<cmd>Git blame<CR>") -- git blame
+-- Git fugitive
+vim.keymap.set("n", "<leader>gs", "<cmd>G<CR>", { desc = "Fugitive menu." })
+vim.keymap.set("n", "<leader>gb", "<cmd>Git blame<CR>", { desc = "Fugitive git blame." })
 
 -- TODO: look into system/nvim yank/paste on VM

@@ -23,7 +23,7 @@ return {
 			})
 
 			-- search todos keymap
-			vim.keymap.set("n", "<leader>ft", ":TodoTelescope keywords=TODO<CR>")
+			vim.keymap.set("n", "<leader>ft", ":TodoTelescope keywords=TODO<CR>", { desc = "Telescope search todos." })
 		end,
 	},
 }

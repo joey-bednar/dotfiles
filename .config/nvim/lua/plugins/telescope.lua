@@ -26,33 +26,39 @@ return {
 		-- Telescope Mappings
 
 		-- Resume Telescope
-		vim.keymap.set("n", "<leader>fr", builtin.resume, {})
+		vim.keymap.set("n", "<leader>fr", builtin.resume, { desc = "Telescope resume." })
 
 		-- Spelling suggestions
-		vim.keymap.set("n", "z=", builtin.spell_suggest, {})
+		vim.keymap.set("n", "z=", builtin.spell_suggest, { desc = "Search spelling suggestions." })
 
 		-- Find files
-		vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
-		vim.keymap.set("n", "<leader>fg", builtin.git_files, {})
-		vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
+		vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files." })
+		vim.keymap.set("n", "<leader>fg", builtin.git_files, { desc = "Telescope find git versioned files." })
 
 		-- Find strings
-		vim.keymap.set("n", "<leader>fs", builtin.live_grep, {})
+		vim.keymap.set("n", "<leader>fs", builtin.live_grep, { desc = "Telescope find string live grep." })
 		vim.keymap.set(
 			"n",
 			"<leader>f/",
 			":Telescope current_buffer_fuzzy_find sorting_strategy=ascending prompt_position=top<CR>",
-			{}
+			{ desc = "Telescope find string in current buffer." }
 		)
 
-		-- Find git
-		vim.keymap.set("n", "<leader>fc", builtin.git_commits, {})
+		-- Find git commits/branches
+		vim.keymap.set("n", "<leader>fc", builtin.git_commits, { desc = "Telescope find commits." })
+		vim.keymap.set(
+			"n",
+			"<leader>fC",
+			builtin.git_bcommits,
+			{ desc = "Telescope find commits from current buffer." }
+		)
+		vim.keymap.set("n", "<leader>fb", builtin.git_branches, { desc = "Telescope find git branches." })
 
 		-- Find all references to var under cursor
-		vim.keymap.set("n", "gr", builtin.lsp_references, {})
+		vim.keymap.set("n", "gr", builtin.lsp_references, { desc = "LSP find all references under cursor." })
 
 		-- Show all keymaps
-		vim.keymap.set("n", "<leader>fk", builtin.keymaps, {})
+		vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "Telescopeo find keymaps." })
 
 		-- Clone the default Telescope configuration
 		local vimgrep_arguments = { unpack(config.values.vimgrep_arguments) }
