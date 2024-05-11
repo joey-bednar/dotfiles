@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 # attach to tmux session if one exists, otherwise create new session
 

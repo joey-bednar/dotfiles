@@ -2,7 +2,7 @@
 
 These are the configs I use to setup my development environment.
 - Editor: [Neovim](https://github.com/neovim/neovim)
-- Shell: Zsh with [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh/)
+- Shell: [Zsh](https://www.zsh.org) with [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh/)
 - Terminal: [Kitty](https://github.com/kovidgoyal/kitty)
 - Terminal Multiplexer: [Tmux](https://github.com/tmux/tmux)
 - Window Manager: [i3](https://github.com/i3/i3)
@@ -12,25 +12,13 @@ These are the configs I use to setup my development environment.
 ## Installation
 
 <details>
-  <summary>Docker Container</summary>
-
-##### Run in a Docker Container:
-```
-git clone https://github.com/joey-bednar/ansible \
-cd ansible \
-./test
-```
-Root password is `joey`.
-</details>
-
-<details>
   <summary>Automatic</summary>
 
 ##### Install using ansible:
 ```
 git clone https://github.com/joey-bednar/ansible \
 cd ansible \
-./install
+./install [option]
 ```
 </details>
 
@@ -98,5 +86,17 @@ sudo ubuntu-drivers install
 sudo nvidia-settings
 ```
 Go to "Display Configuration", check "Force Full Composition Pipeline". Click "Apply".
+</details>
+
+<details>
+  <summary>Docker Container</summary>
+
+##### Run in a Docker Container:
+```
+git clone https://github.com/joey-bednar/ansible \
+cd ansible \
+./install container
+```
+Root password is `joey`.
 </details>
 
