@@ -37,6 +37,9 @@ return {
 
 		-- Find strings
 		vim.keymap.set("n", "<leader>fs", builtin.live_grep, { desc = "Telescope find string live grep." })
+		vim.keymap.set("n", "<leader>fS", function()
+			builtin.grep_string({ search = vim.fn.input("Grep > ") })
+		end, { desc = "Telescope find string without live grep." })
 		vim.keymap.set(
 			"n",
 			"<leader>f/",
@@ -65,7 +68,18 @@ return {
 
 		telescope.setup({
 			defaults = {
-				vimgrep_arguments = vimgrep_arguments,
+				vimgrep_arguments = {
+					"rg",
+					"--color=never",
+					"--no-heading",
+					"--with-filename",
+					"--line-number",
+					"--column",
+					"--smart-case",
+					"--hidden",
+					"--glob",
+					"!{**/.git/*,**/node_modules/*}",
+				},
 				preview = {
 					filesize_limit = 0.1, -- MB
 				},
@@ -101,5 +115,4 @@ return {
 	end,
 }
 -- TODO: find starting at base of git dir
--- TODO: setup telescope pre-search string -> live grep
 -- TODO: setup telescope file_browser to search, add files
