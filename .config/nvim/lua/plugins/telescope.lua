@@ -115,4 +115,3 @@ return {
 	end,
 }
 -- TODO: find starting at base of git dir
--- TODO: setup telescope file_browser to search, add files
