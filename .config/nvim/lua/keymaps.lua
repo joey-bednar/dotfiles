@@ -1,10 +1,16 @@
 -- Keybinds
+
+-- <C-c> map to <Esc>/:noh
 vim.keymap.set("i", "<C-c>", "<Esc>", { desc = "Map <Esc> to <C-c>" })
+vim.keymap.set("n", "<C-c>", function()
+	vim.cmd.noh()
+end, { desc = "Clear highlights" })
 
 -- File explorer
-vim.keymap.set("n", "<leader>pv", ":NvimTreeToggle<CR>", { desc = "NvimTree toggle." })
+vim.keymap.set("n", "<leader>pv", "<cmd>NvimTreeToggle<CR>", { desc = "NvimTree toggle." })
 
 -- Move selection in visual mode
+-- TODO: replace with mini.nvim
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection down." })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up." })
 
@@ -30,7 +36,7 @@ vim.api.nvim_create_user_command(
 	":lua vim.lsp.buf.format({ timeout_ms = 2000 })",
 	{ desc = "LSP format buffer." }
 )
-vim.keymap.set("n", "<leader>lf", ":Format<CR>", { desc = "LSP format buffer." })
+vim.keymap.set("n", "<leader>lf", "<cmd>Format<CR>", { desc = "LSP format buffer." })
 
 -- Execute file with F5
 vim.api.nvim_buf_set_keymap(0, "n", "<F5>", ":!chmod +x % && ./%<CR>", { desc = "Execute file." })
