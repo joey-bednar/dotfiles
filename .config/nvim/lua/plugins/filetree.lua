@@ -1,4 +1,4 @@
---TODO: try out different filetrees like oil
+--TODO: remove filetree
 return {
 	-- Filetree
 	"nvim-tree/nvim-tree.lua",
