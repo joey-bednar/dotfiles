@@ -2,6 +2,10 @@ export PATH="$HOME/.local/bin:$PATH" # add custom binaries
 export PATH="$HOME/.local/share/nvim/mason/bin:$PATH" # add mason binaries
 bindkey -s ^f ". tmux-fzf\n"
 
+# TODO: git shortcuts
+alias gs="git status"
+alias gl="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all"
+
 DISABLE_AUTO_TITLE="true"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#8f3f71,bold,underline"
 # Complete suggestion with <C-e>
@@ -21,8 +25,6 @@ if [[ $os == "Linux" ]]; then
 
     export PYTHONPATH="$HOME/personal/dsa"
     clear
-
-    # export PATH="$HOME/idea-IC-232.10227.8/bin:$PATH"
 
 # Mac only
 elif [[ $os == "Darwin" ]]; then

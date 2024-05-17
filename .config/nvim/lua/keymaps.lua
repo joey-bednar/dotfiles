@@ -9,11 +9,6 @@ end, { desc = "Clear highlights" })
 -- File explorer
 vim.keymap.set("n", "<leader>pv", "<cmd>NvimTreeToggle<CR>", { desc = "NvimTree toggle." })
 
--- Move selection in visual mode
--- TODO: replace with mini.nvim
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection down." })
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up." })
-
 -- Remain in center screen using Up/Down/Find
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Move down half page." })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Move up half page." })
@@ -51,3 +46,4 @@ vim.keymap.set("n", "<leader>gs", "<cmd>G<CR>", { desc = "Fugitive menu." })
 vim.keymap.set("n", "<leader>gb", "<cmd>Git blame<CR>", { desc = "Fugitive git blame." })
 
 -- TODO: look into system/nvim yank/paste on VM
+-- TODO: resize splits keymap
