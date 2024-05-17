@@ -7,6 +7,7 @@ return {
 		-- Automatically install LSPs to stdpath for neovim
 		{ "williamboman/mason.nvim", config = true },
 		"williamboman/mason-lspconfig.nvim",
+		"folke/neodev.nvim",
 
 		"hrsh7th/cmp-nvim-lsp", -- needed for lsp-capabilities, will remove
 	},
@@ -60,24 +61,18 @@ return {
 			end,
 		})
 
+		require("neodev").setup({
+			override = function(_, library)
+				library.enabled = true
+				library.plugins = true
+			end,
+			pathStrict = true,
+		})
+
 		-- Fix Undefined global 'vim'
 		lspconfig.lua_ls.setup({
 			settings = {
 				Lua = {
-					runtime = {
-						version = "LuaJIT",
-					},
-					workspace = {
-						checkThirdParty = false,
-						library = {
-							"${3rd}/luv/library",
-							unpack(vim.api.nvim_get_runtime_file("", true)),
-						},
-					},
-					telemetry = { enable = false },
-					diagnostics = {
-						globals = { "vim" },
-					},
 					completion = {
 						callSnippet = "Replace",
 					},
