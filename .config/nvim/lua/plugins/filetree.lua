@@ -23,8 +23,6 @@ return {
 			filters = {
 				dotfiles = false,
 			},
-
 		})
-
 	end,
 }

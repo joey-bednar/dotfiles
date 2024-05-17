@@ -77,8 +77,8 @@ return {
 						callSnippet = "Replace",
 					},
 					diagnostics = {
-						disable = {"missing-parameters","missing-fields"}
-					}
+						disable = { "missing-parameters", "missing-fields" },
+					},
 				},
 			},
 		})
