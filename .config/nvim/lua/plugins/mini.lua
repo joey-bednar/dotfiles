@@ -6,8 +6,8 @@ return {
 				-- Module mappings. Use `''` (empty string) to disable one.
 				mappings = {
 					-- Move visual selection in Visual mode.
-					left = "",
-					right = "",
+					left = "<",
+					right = ">",
 					down = "J",
 					up = "K",
 
