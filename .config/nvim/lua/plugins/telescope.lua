@@ -42,7 +42,7 @@ return {
 		end, { desc = "Telescope find string without live grep." })
 		vim.keymap.set(
 			"n",
-			"<leader>f/",
+			"<leader>/",
 			":Telescope current_buffer_fuzzy_find sorting_strategy=ascending prompt_position=top<CR>",
 			{ desc = "Telescope find string in current buffer." }
 		)

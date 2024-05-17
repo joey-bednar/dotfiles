@@ -61,6 +61,7 @@ return {
 			end,
 		})
 
+		-- Lua/nvim config LSP
 		require("neodev").setup({
 			override = function(_, library)
 				library.enabled = true
@@ -69,7 +70,6 @@ return {
 			pathStrict = true,
 		})
 
-		-- Fix Undefined global 'vim'
 		lspconfig.lua_ls.setup({
 			settings = {
 				Lua = {
@@ -125,6 +125,14 @@ return {
 				-- Buffer local mappings.
 				-- See `:help vim.lsp.*` for documentation on any of the below functions
 				local opts = { buffer = ev.buf }
+
+				-- Format file with :Format or <leader>lf
+				vim.api.nvim_create_user_command(
+					"Format",
+					":lua vim.lsp.buf.format({ timeout_ms = 2000 })",
+					{ desc = "LSP format buffer." }
+				)
+				vim.keymap.set("n", "<leader>lf", "<cmd>Format<CR>", { desc = "LSP format buffer." })
 
 				-- goto definition
 				vim.keymap.set("n", "gd", function()
