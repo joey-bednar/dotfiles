@@ -48,13 +48,31 @@ return {
 		)
 
 		-- Find git commits/branches
-		vim.keymap.set("n", "<leader>fc", builtin.git_commits, { desc = "Telescope find commits." })
-		vim.keymap.set(
-			"n",
-			"<leader>fC",
-			builtin.git_bcommits,
-			{ desc = "Telescope find commits from current buffer." }
-		)
+		vim.keymap.set("n", "<leader>fc", function()
+			builtin.git_commits({
+				git_command = {
+					"git",
+					"log",
+					"--pretty=%h %<(20)%ar %<(20)%s",
+					"--abbrev-commit",
+					"--decorate",
+					"--",
+					".",
+				},
+			})
+		end, { desc = "Telescope find commits." })
+
+		vim.keymap.set("n", "<leader>fC", function()
+			builtin.git_bcommits({
+
+				git_command = {
+					"git",
+					"log",
+					"--pretty=%h %<(20)%ar %<(20)%s",
+					"--abbrev-commit",
+				},
+			})
+		end, { desc = "Telescope find commits from current buffer." })
 		vim.keymap.set("n", "<leader>fb", builtin.git_branches, { desc = "Telescope find git branches." })
 
 		-- Find all references to var under cursor
