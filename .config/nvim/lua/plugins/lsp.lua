@@ -103,6 +103,16 @@ return {
 			},
 		})
 
+		-- Start Ansible LSP only in ansible dir
+		vim.filetype.add({
+			pattern = {
+				[".*/ansible/.*.yml"] = "yaml.ansible",
+			},
+		})
+		lspconfig.ansiblels.setup({
+			filetypes = { "yaml.ansible" },
+		})
+
 		-- Java setup
 		--lspconfig.jdtls.setup({
 		--settings = {
