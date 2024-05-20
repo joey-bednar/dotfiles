@@ -30,7 +30,8 @@ return {
 			sources = {
 				-- use shfmt for zsh formatting
 				null_ls.builtins.formatting.shfmt.with({
-					filetypes = { "bash", "zsh" },
+					filetypes = { "sh", "bash", "zsh" },
+					args = { "--indent", 4, "--space-redirects", "$FILENAME" },
 				}),
 			},
 		})

@@ -8,6 +8,7 @@ all:
 .PHONY: format
 format:
 	stylua .config/nvim/
+	shfmt --indent 4 --space-redirects --write . .zshrc .zsh_profile
 
 .PHONY: update
 update:
