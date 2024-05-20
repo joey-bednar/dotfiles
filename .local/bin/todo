@@ -1,11 +1,10 @@
 #!/bin/bash
 
-# TODO: add updating year in todo
-
 os=$(uname)
 
 if [[ $os == "Linux" ]]; then
-    nvim -c "e $HOME/work/todo.txt" $HOME/work/todo/2024.txt
+    year=$(date "+%Y")
+    nvim -c "e $HOME/work/todo.txt" $HOME/work/todo/${year}.txt
 elif [[ $os == "Darwin" ]]; then
     nvim $HOME/Documents/todo.txt
 fi
