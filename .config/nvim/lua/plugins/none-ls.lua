@@ -12,9 +12,12 @@ return {
 		require("mason-null-ls").setup({
 			ensure_installed = {
 				-- Opt to list sources here, when available in mason.
-				"pylint",
+				"ansible-lint",
 				"black",
+				"clang-format",
 				"prettier",
+				"pylint",
+				"selene",
 				"shfmt",
 				"stylua",
 			},
@@ -22,10 +25,13 @@ return {
 			handlers = {},
 		})
 
-		--local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-		require("null-ls").setup({
+		local null_ls = require("null-ls")
+		null_ls.setup({
 			sources = {
-				-- Anything not supported by mason.
+				-- use shfmt for zsh formatting
+				null_ls.builtins.formatting.shfmt.with({
+					filetypes = { "bash", "zsh" },
+				}),
 			},
 		})
 	end,
