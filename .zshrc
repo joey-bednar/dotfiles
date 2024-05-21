@@ -43,3 +43,5 @@ export NVM_DIR="$HOME/.nvm"
 source ~/.zsh_profile
 
 # TODO: switch to zinit
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
