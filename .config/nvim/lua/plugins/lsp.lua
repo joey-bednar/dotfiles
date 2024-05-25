@@ -108,11 +108,11 @@ return {
 		-- Start Ansible LSP only in ansible dir
 		vim.filetype.add({
 			pattern = {
-				[".*/ansible/.*.yml"] = "yaml.ansible",
+				[".*/ansible/.*.yml"] = "ansible.yaml",
 			},
 		})
 		lspconfig.ansiblels.setup({
-			filetypes = { "yaml.ansible" },
+			filetypes = { "ansible.yaml" },
 		})
 
 		-- Java setup
@@ -144,7 +144,7 @@ return {
 				-- Format file with :Format or <leader>lf
 				vim.api.nvim_create_user_command(
 					"Format",
-					":lua vim.lsp.buf.format({ timeout_ms = 2000 })",
+					":lua vim.lsp.buf.format({ timeout_ms = 5000 })",
 					{ desc = "LSP format buffer." }
 				)
 				vim.keymap.set("n", "<leader>lf", "<cmd>Format<CR>", { desc = "LSP format buffer." })
