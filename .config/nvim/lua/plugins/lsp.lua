@@ -37,7 +37,6 @@ return {
 			},
 		})
 
-		require("mason").setup()
 		require("mason-lspconfig").setup({
 			ensure_installed = {
 				"bashls",
@@ -104,12 +103,48 @@ return {
 			},
 		})
 
-		-- Start Ansible LSP only in ansible dir
+		-- Filetype handling for YAML/Helm/Ansible
+		local function is_helm_file(path)
+			local check = vim.fs.find("Chart.yaml", { path = vim.fs.dirname(path), upward = true })
+			return not vim.tbl_isempty(check)
+		end
+
+		local function is_ansible_file(path)
+			local check = vim.fs.find("ansible", { path = vim.fs.dirname(path), upward = true })
+			return not vim.tbl_isempty(check)
+		end
+
+		local function yaml_filetype(path, bufname)
+			if is_helm_file(path) then
+				return "helm.yaml"
+			elseif is_ansible_file(path) then
+				return "ansible.yaml"
+			end
+			return "yaml"
+		end
+
+		local function tmpl_filetype(path, bufname)
+			return is_helm_file(path) and "helm.tmpl" or "template"
+		end
+
+		local function tpl_filetype(path, bufname)
+			return is_helm_file(path) and "helm.tmpl" or "smarty"
+		end
+
 		vim.filetype.add({
-			pattern = {
-				[".*/ansible/.*.yml"] = "ansible.yaml",
+			extension = {
+				yaml = yaml_filetype,
+				yml = yaml_filetype,
+				tmpl = tmpl_filetype,
+				tpl = tpl_filetype,
+			},
+			filename = {
+				["Chart.yaml"] = "yaml",
+				["Chart.lock"] = "yaml",
 			},
 		})
+
+		-- Start Ansible LSP only in ansible dir
 		lspconfig.ansiblels.setup({
 			filetypes = { "ansible.yaml" },
 		})
