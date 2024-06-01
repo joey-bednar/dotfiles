@@ -12,11 +12,7 @@ return {
 		require("mason-null-ls").setup({
 			ensure_installed = {
 				-- Opt to list sources here, when available in mason.
-				"black",
-				"clang-format",
 				"prettier",
-				"pylint",
-				"selene",
 				"shfmt",
 				"stylua",
 			},
