@@ -11,7 +11,7 @@ set $m_left DP-5
 set $m_right DP-3
 
 # Desktop Background Image
-set $desktop_background ~/ansible/ubuntu-background.jpg
+set $desktop_background ~/ansible/wallpapers/gruvb_solarsys.png
 
 # Touchpad device name
 #
@@ -22,6 +22,14 @@ set $touchpad "ELAN0307:00 04F3:3282 Touchpad"
 
 # Default terminal
 set $terminal terminal
+
+# Font
+#
+#- default font: monospace 8
+#
+set $font DejaVuSansM Nerd Font Mono
+set $fontsize 8
+set $fontsizebar 10
 
 #################################################################################################
 
@@ -54,19 +62,13 @@ exec_always --no-startup-id xinput set-prop $touchpad "libinput Natural Scrollin
 # Set desktop background
 exec_always --no-startup-id feh --bg-scale $desktop_background
 
-# Remove borders
-for_window [class="^.*"] border pixel 1
-#                        class          border  backgr. text    indicator child_border
-for_window [class="^.*"] client.focused #77dd77 #285577 #ffffff #2e9ef4   #285577
-
 # Lock keybind
 bindsym $mod+Control+l exec --no-startup-id i3-suspend
 
 #################################################################################################
 
 # Set font
-#font pango:monospace 8
-font pango: DejaVuSansM Nerd Font Mono 8
+font pango: $font $fontsize
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -238,12 +240,49 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-        status_command i3status
-}
-
 # TODO: assignments
-# TODO: sed script to load variables
+# TODO: symlink to multiple configs per computer
 # TODO: brightness button support
+
+
+
+# set primary gruvbox colorscheme colors
+set $bg #282828
+set $red #cc241d
+set $green #98971a
+set $yellow #d79921
+set $blue #458588
+set $purple #b16286
+set $aqua #689d68
+set $gray #a89984
+set $darkgray #1d2021
+
+
+# # Remove borders
+for_window [class="^.*"] border pixel 1
+# #                        class          border  backgr. text    indicator child_border
+# for_window [class="^.*"] client.focused #77dd77 #285577 #ffffff #2e9ef4   #285577
+client.focused #77dd77 #285577 #ffffff $yellow $yellow
+
+
+
+bar {
+    font pango: $font $fontsizebar
+    position top
+    tray_output none
+    # status_command i3status
+    status_command i3blocks -c ~/.config/i3/i3blocks.conf
+    colors {
+        # bar background color
+        background $bg
+        # text color used for blocks that do not have a color specified.
+        statusline $green
+
+        # workspaces
+        #                    border  backgr. text
+        focused_workspace    $darkgray $yellow $darkgray
+        inactive_workspace   $darkgray $darkgray $yellow
+        active_workspace     $darkgray $darkgray $yellow
+        urgent_workspace     $red $red $bg
+    }
+}
