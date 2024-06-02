@@ -258,11 +258,10 @@ set $gray #a89984
 set $darkgray #1d2021
 
 
-# # Remove borders
+# border width
 for_window [class="^.*"] border pixel 1
-# #                        class          border  backgr. text    indicator child_border
-# for_window [class="^.*"] client.focused #77dd77 #285577 #ffffff #2e9ef4   #285577
-client.focused #77dd77 #285577 #ffffff $yellow $yellow
+#              class border backgr. text     indicator child_border
+client.focused $green $blue #ffffff $yellow $yellow
 
 
 
@@ -272,9 +271,10 @@ bar {
     tray_output none
     # status_command i3status
     status_command i3blocks -c ~/.config/i3/i3blocks.conf
+    i3bar_command i3bar --transparency
     colors {
         # bar background color
-        background $bg
+        background #00000000
         # text color used for blocks that do not have a color specified.
         statusline $green
 
