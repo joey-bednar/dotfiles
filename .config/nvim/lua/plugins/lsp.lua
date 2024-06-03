@@ -37,12 +37,9 @@ return {
 			},
 		})
 
-		require("mason").setup()
 		require("mason-lspconfig").setup({
 			ensure_installed = {
-				"ansiblels",
 				"bashls",
-				"clangd",
 				"dockerls",
 				"lua_ls",
 				"pyright",
@@ -105,14 +102,50 @@ return {
 			},
 		})
 
-		-- Start Ansible LSP only in ansible dir
+		-- Filetype handling for YAML/Helm/Ansible
+		local function is_helm_file(path)
+			local check = vim.fs.find("Chart.yaml", { path = vim.fs.dirname(path), upward = true })
+			return not vim.tbl_isempty(check)
+		end
+
+		local function is_ansible_file(path)
+			local check = vim.fs.find("ansible", { path = vim.fs.dirname(path), upward = true })
+			return not vim.tbl_isempty(check)
+		end
+
+		local function yaml_filetype(path, bufname)
+			if is_helm_file(path) then
+				return "helm.yaml"
+			elseif is_ansible_file(path) then
+				return "ansible.yaml"
+			end
+			return "yaml"
+		end
+
+		local function tmpl_filetype(path, bufname)
+			return is_helm_file(path) and "helm.tmpl" or "template"
+		end
+
+		local function tpl_filetype(path, bufname)
+			return is_helm_file(path) and "helm.tmpl" or "smarty"
+		end
+
 		vim.filetype.add({
-			pattern = {
-				[".*/ansible/.*.yml"] = "yaml.ansible",
+			extension = {
+				yaml = yaml_filetype,
+				yml = yaml_filetype,
+				tmpl = tmpl_filetype,
+				tpl = tpl_filetype,
+			},
+			filename = {
+				["Chart.yaml"] = "yaml",
+				["Chart.lock"] = "yaml",
 			},
 		})
+
+		-- Start Ansible LSP only in ansible dir
 		lspconfig.ansiblels.setup({
-			filetypes = { "yaml.ansible" },
+			filetypes = { "ansible.yaml" },
 		})
 
 		-- Java setup
@@ -144,7 +177,7 @@ return {
 				-- Format file with :Format or <leader>lf
 				vim.api.nvim_create_user_command(
 					"Format",
-					":lua vim.lsp.buf.format({ timeout_ms = 2000 })",
+					":lua vim.lsp.buf.format({ timeout_ms = 5000 })",
 					{ desc = "LSP format buffer." }
 				)
 				vim.keymap.set("n", "<leader>lf", "<cmd>Format<CR>", { desc = "LSP format buffer." })
