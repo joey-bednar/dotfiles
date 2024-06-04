@@ -31,6 +31,7 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
+zinit light conda-incubator/conda-zsh-completion
 
 # Add in snippets
 zinit snippet OMZP::git
@@ -92,7 +93,10 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# load fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# add completions
 source <(kubectl completion zsh)
 source <(helm completion zsh)
 source <(minikube completion zsh)
