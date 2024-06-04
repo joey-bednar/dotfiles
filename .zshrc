@@ -23,7 +23,8 @@ fi
 source "${ZINIT_HOME}/zinit.zsh"
 
 # Add in Powerlevel10k
-zinit ice depth=1; zinit light romkatv/powerlevel10k
+zinit ice depth=1
+zinit light romkatv/powerlevel10k
 
 # Add in zsh plugins
 zinit light zsh-users/zsh-syntax-highlighting
@@ -91,10 +92,21 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(kubectl completion zsh)
+source <(helm completion zsh)
+source <(minikube completion zsh)
+
+# >>> NVM configuration >>>
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+nvm() {
+  unset -f nvm
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # load nvm
+  nvm $@ # copy arguments after nvm
+}
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # load nvm bash_completion
+# <<< NVM configuration <<<
+
 
 source ~/.zsh_profile
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
