@@ -1,5 +1,6 @@
 export PATH="$HOME/.local/bin:$PATH"                  # add custom binaries
 export PATH="$HOME/.local/share/nvim/mason/bin:$PATH" # add mason binaries
+export PATH="/usr/local/texlive/2024/bin/x86_64-linux:$PATH"
 bindkey -s ^f ". tmux-fzf\n"
 
 # TODO: git shortcuts
