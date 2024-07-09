@@ -32,6 +32,8 @@ end
 local function selectExecutable(dir)
 	if fileExists(dir .. "/build/main") then
 		return "./build/main"
+	elseif fileExists(dir .. "/build/annie") then
+		return "./build/annie"
 	end
 	return "./main"
 end
