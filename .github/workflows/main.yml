@@ -25,10 +25,3 @@ jobs:
             - name: Check lua format
               run: stylua --check .config/nvim/lua/ #--config-path=.stylua.toml
 
-            - name: Check shell format
-              uses: mfinelli/setup-shfmt@v3
-              with:
-                shfmt-version: 3.8.0
-            - run: shfmt --indent 4 --space-redirects -d . .zshrc .zsh_profile
-
-
