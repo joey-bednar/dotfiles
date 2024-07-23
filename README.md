@@ -2,7 +2,7 @@
 
 These are the configs I use to setup my development environment.
 - Editor: [Neovim](https://github.com/neovim/neovim)
-- Shell: [Zsh](https://www.zsh.org) with [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh/)
+- Shell: [Zsh](https://www.zsh.org) with [Zinit](https://github.com/zdharma-continuum/zinit)
 - Terminal: [Kitty](https://github.com/kovidgoyal/kitty)
 - Terminal Multiplexer: [Tmux](https://github.com/tmux/tmux)
 - Window Manager: [i3](https://github.com/i3/i3)
@@ -43,15 +43,6 @@ sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
 ```
 sudo apt install kitty -y \
 sudo update-alternatives --config x-terminal-emulator
-```
-
-##### Install ohmyzsh:
-```
-sudo apt install zsh -y \
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
-chsh -s `which zsh` \
-git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions \
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting \
 ```
 
 ##### Install tmux:
