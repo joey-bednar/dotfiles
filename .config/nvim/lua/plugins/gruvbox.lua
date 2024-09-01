@@ -37,7 +37,8 @@ return {
 				.. "hi CursorLineNr                       guifg=#d79921 |"
 				.. "hi CodewindowBorder                   guifg=#ebdbb2 |"
 				.. "hi TabLine                            guibg=#282828 |"
-				.. "hi TreesitterContext				  guibg=#1d2021",
+				.. "hi TreesitterContext				  guibg=#1d2021 |"
+				.. "hi LineNr							  guifg=#7c6f64",
 		})
 		vim.cmd("colorscheme gruvbox-material")
 	end,
