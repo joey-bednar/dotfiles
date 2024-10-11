@@ -45,6 +45,7 @@ bindkey '^[w' kill-region
 bindkey -s '^o' ". tmux-fzf\n"
 
 # history
+HISTCONTROL=ignorespace
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE

@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# exit on failed command
+set -e
+set -o pipefail
+
+REMOTE="origin"
+
+# check if git rev-parse works
+if ! git rev-parse --is-inside-work-tree &> /dev/null; then
+    echo "Not in a git repository."
+    exit 1
+fi
+
+# name of current branch
+BRANCH=$(git rev-parse --symbolic-full-name --abbrev-ref HEAD)
+echo "Branch: ${BRANCH}"
+
+# check that remote branch with matching name exists
+if ! git ls-remote --exit-code --heads ${REMOTE} ${BRANCH} &> /dev/null; then
+    echo "Remote branch does not exist."
+    exit 1
+fi
+
+AHEAD=$(git rev-list --count ${REMOTE}/${BRANCH}..${BRANCH})
+
+# exit if current with remote branch
+if [ "$AHEAD" -eq 0 ]; then
+    echo "Not ahead any commits on ${BRANCH} branch."
+    exit 1
+else
+    echo "Ahead ${AHEAD} commits on ${BRANCH} branch."
+fi
+
+# push one commit only
+PUSH="$((${AHEAD}-1))"
+
+# redate commits
+git rebase ${BRANCH}~${AHEAD} --exec "git commit --amend --no-edit --date 'now'"
+
+# push single commit
+git push -u ${REMOTE} ${BRANCH}~${PUSH}:${BRANCH}
