@@ -34,7 +34,7 @@ set $fontsizebar 10
 #################################################################################################
 
 # Typing rate
-exec --no-startup-id xset r rate 450 40
+exec_always --no-startup-id xset r rate 450 40
 
 # Keep monitors on
 exec_always --no-startup-id xset s off

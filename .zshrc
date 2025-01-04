@@ -42,7 +42,7 @@ bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey '^[w' kill-region
-bindkey -s '^o' ". tmux-fzf\n"
+bindkey -s '^o' " . tmux-fzf\n"
 
 # history
 HISTCONTROL=ignorespace
@@ -111,8 +111,12 @@ export PATH="$HOME/.local/share/nvim/mason/bin:$PATH" # add mason binaries
 alias gs="git status"
 alias gl="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all"
 
+
+alias joey="ssh -p 4567 joey@joeybednar.com"
+
 export TERM="screen-256color"
 export LANG="en_US.UTF-8"
+export EDITOR="nvim"
 
 DISABLE_AUTO_TITLE="true"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#928374,bold"
@@ -130,7 +134,7 @@ os=$(uname)
 if [[ $os == "Linux" ]]; then
 
     # disable <C-;> behavior
-    gsettings set org.freedesktop.ibus.panel.emoji hotkey "[]" || echo "gsettings not found"
+    command -v gsettings &> /dev/null && gsettings set org.freedesktop.ibus.panel.emoji hotkey "[]"
 
     export PYTHONPATH="$HOME/personal/dsa"
     clear
