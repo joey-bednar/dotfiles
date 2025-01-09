@@ -102,19 +102,28 @@ return {
 			},
 		})
 
-		-- Filetype handling for YAML/Helm/Ansible
+		-- Is Helm file if Chart.yaml in current or parent dirs
 		local function is_helm_file(path)
 			local check = vim.fs.find("Chart.yaml", { path = vim.fs.dirname(path), upward = true })
 			return not vim.tbl_isempty(check)
 		end
 
+		-- Is Ansible file if path contains ansible
 		local function is_ansible_file(path)
-			local check = vim.fs.find("ansible", { path = vim.fs.dirname(path), upward = true })
-			return not vim.tbl_isempty(check)
+			return string.find(vim.fs.dirname(path),"ansible")
 		end
 
+		-- Is Docker compose file if filename contains "compose"
+		local function is_compose_file(path)
+			local check = string.find(vim.fn.expand("%"),".*compose%.ya?ml$")
+			return check
+		end
+
+		-- Is YAML otherwise
 		local function yaml_filetype(path, bufname)
-			if is_helm_file(path) then
+			if is_compose_file(path) then
+				return "yaml"
+			elseif is_helm_file(path) then
 				return "helm.yaml"
 			elseif is_ansible_file(path) then
 				return "ansible.yaml"
@@ -122,20 +131,10 @@ return {
 			return "yaml"
 		end
 
-		local function tmpl_filetype(path, bufname)
-			return is_helm_file(path) and "helm.tmpl" or "template"
-		end
-
-		local function tpl_filetype(path, bufname)
-			return is_helm_file(path) and "helm.tmpl" or "smarty"
-		end
-
 		vim.filetype.add({
 			extension = {
 				yaml = yaml_filetype,
 				yml = yaml_filetype,
-				tmpl = tmpl_filetype,
-				tpl = tpl_filetype,
 			},
 			filename = {
 				["Chart.yaml"] = "yaml",
