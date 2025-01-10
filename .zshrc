@@ -33,7 +33,13 @@ zinit snippet OMZP::sudo
 zinit snippet OMZP::command-not-found
 
 # load completions
-autoload -Uz compinit && compinit
+# autoload -Uz compinit && compinit -C
+#
+autoload -Uz compinit
+for dump in ~/.zcompdump(N.mh+24); do
+  compinit
+done
+compinit -C
 
 zinit cdreplay -q
 
@@ -93,15 +99,15 @@ command -v kubectl &> /dev/null && source <(kubectl completion zsh)
 command -v helm &> /dev/null && source <(helm completion zsh)
 command -v minikube &> /dev/null && source <(minikube completion zsh)
 
-# >>> NVM configuration >>>
-export NVM_DIR="$HOME/.nvm"
-nvm() {
-  unset -f nvm
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # load nvm
-  nvm $@ # copy arguments after nvm
-}
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # load nvm bash_completion
-# <<< NVM configuration <<<
+# # >>> NVM configuration >>>
+# export NVM_DIR="$HOME/.nvm"
+# nvm() {
+#   unset -f nvm
+#   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # load nvm
+#   nvm $@ # copy arguments after nvm
+# }
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # load nvm bash_completion
+# # <<< NVM configuration <<<
 
 # add paths
 export PATH="$HOME/.local/bin:$PATH"                  # add custom binaries
