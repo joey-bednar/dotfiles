@@ -99,16 +99,6 @@ command -v kubectl &> /dev/null && source <(kubectl completion zsh)
 command -v helm &> /dev/null && source <(helm completion zsh)
 command -v minikube &> /dev/null && source <(minikube completion zsh)
 
-# # >>> NVM configuration >>>
-# export NVM_DIR="$HOME/.nvm"
-# nvm() {
-#   unset -f nvm
-#   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # load nvm
-#   nvm $@ # copy arguments after nvm
-# }
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # load nvm bash_completion
-# # <<< NVM configuration <<<
-
 # add paths
 export PATH="$HOME/.local/bin:$PATH"                  # add custom binaries
 export PATH="$HOME/.local/share/nvim/mason/bin:$PATH" # add mason binaries
