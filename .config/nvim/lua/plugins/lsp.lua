@@ -110,12 +110,12 @@ return {
 
 		-- Is Ansible file if path contains ansible
 		local function is_ansible_file(path)
-			return string.find(vim.fs.dirname(path),"ansible")
+			return string.find(vim.fs.dirname(path), "ansible")
 		end
 
 		-- Is Docker compose file if filename contains "compose"
 		local function is_compose_file(path)
-			local check = string.find(vim.fn.expand("%"),".*compose%.ya?ml$")
+			local check = string.find(vim.fn.expand("%"), ".*compose%.ya?ml$")
 			return check
 		end
 
