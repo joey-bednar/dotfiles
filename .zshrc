@@ -113,6 +113,7 @@ alias joey="ssh -p 4567 joey@joeybednar.com"
 export TERM="screen-256color"
 export LANG="en_US.UTF-8"
 export EDITOR="nvim"
+export SHELL="/usr/bin/zsh"
 
 DISABLE_AUTO_TITLE="true"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#928374,bold"
