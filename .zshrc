@@ -141,3 +141,5 @@ elif [[ $os == "Darwin" ]]; then
     export PYTHONPATH="$HOME/Code/gesture-recognition/src"
     clear
 fi
+
+[ -f ~/.zsh_local ] && source ~/.zsh_local

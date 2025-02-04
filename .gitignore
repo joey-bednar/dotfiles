@@ -2,3 +2,13 @@ packer_compiled.lua
 kitty.conf
 i3blocks.conf
 .uuid
+
+.local/bin/*
+!.local/bin/i3-suspend
+!.local/bin/rcommit
+!.local/bin/redate
+!.local/bin/setup
+!.local/bin/t
+!.local/bin/terminal
+!.local/bin/tmux-fzf
+!.local/bin/todo
