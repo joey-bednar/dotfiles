@@ -142,4 +142,4 @@ elif [[ $os == "Darwin" ]]; then
     clear
 fi
 
-[ -f ~/.zsh_local ] && source ~/.zsh_local
+[ -f ~/.zsh_local ] && source ~/.zsh_local || true

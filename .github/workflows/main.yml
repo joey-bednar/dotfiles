@@ -1,6 +1,10 @@
 name: CI
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
     format:
@@ -25,3 +29,10 @@ jobs:
             - name: Check lua format
               run: stylua --check .config/nvim/lua/ #--config-path=.stylua.toml
 
+    docker-build:
+      name: Build Docker image
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v4
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag dev-env:$(date +%s)
