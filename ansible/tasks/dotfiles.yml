@@ -1,0 +1,74 @@
+- name: Install dotfiles dependencies
+  become: true
+  ansible.builtin.apt:
+    name:
+      - stow
+      - fontconfig
+      - make
+    state: present
+  tags:
+    - dotfiles
+
+
+- name: Make dotfiles
+  ansible.builtin.shell: |
+    rm {{ home_dir }}/.zshrc
+    cd {{ home_dir }}/dotfiles
+    make stow
+    make setup
+  changed_when: true
+  tags:
+    - dotfiles
+
+- name: Reload fonts
+  ansible.builtin.command: fc-cache -f -v
+  when: true
+  changed_when: true
+  tags:
+    - dotfiles
+
+- name: Create personal directory
+  ansible.builtin.file:
+    path: "{{ home_dir }}/personal"
+    state: directory
+    mode: "0755"
+  tags:
+    - dotfiles
+
+- name: Create work directory
+  ansible.builtin.file:
+    path: "{{ home_dir }}/work"
+    state: directory
+    mode: "0755"
+  tags:
+    - dotfiles
+
+- name: Check if nvim is installed
+  become: true
+  ansible.builtin.stat:
+    path: "/usr/bin/nvim"
+  register: nvim_status
+  tags:
+    - dotfiles
+
+- name: Install Neovim Plugins
+  ansible.builtin.command: nvim --headless "+Lazy! sync" +qa
+  when: nvim_status.stat.exists
+  changed_when: nvim_status.stat.exists
+  tags:
+    - dotfiles
+
+- name: Check if zsh is installed
+  ansible.builtin.command: which zsh
+  changed_when: true
+  register: zsh_installed
+  ignore_errors: true
+  tags:
+    - dotfiles
+
+- name: Source .zshrc
+  ansible.builtin.command: zsh {{ home_dir }}/.zshrc
+  when: zsh_installed.rc == 0
+  changed_when: true
+  tags:
+    - dotfiles

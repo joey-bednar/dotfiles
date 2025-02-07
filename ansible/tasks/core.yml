@@ -1,0 +1,20 @@
+- name: Install Packages
+  become: true
+  ansible.builtin.apt:
+    name:
+      - unzip
+      - curl
+      - ca-certificates
+      - make
+    state: present
+  tags:
+    - always
+
+- name: Install Utils
+  become: true
+  ansible.builtin.apt:
+    name:
+      - xclip
+    state: present
+  tags:
+    - always

@@ -1,0 +1,17 @@
+- name: Install npm
+  become: true
+  ansible.builtin.apt:
+    name:
+      - npm
+    state: present
+  tags:
+    - node
+
+- name: Install n
+  become: true
+  ansible.builtin.shell: |
+    npm install -g n
+    n lts
+  changed_when: true
+  tags:
+    - node

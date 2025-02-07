@@ -2,6 +2,7 @@ packer_compiled.lua
 kitty.conf
 i3blocks.conf
 .uuid
+.zsh_local
 
 .local/bin/*
 !.local/bin/i3-suspend

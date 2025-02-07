@@ -6,3 +6,6 @@
 ^/LICENSE.*
 
 Makefile
+ansible
+\.dockerignore
+\Dockerfile

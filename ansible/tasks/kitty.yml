@@ -1,0 +1,8 @@
+- name: Install kitty
+  become: true
+  ansible.builtin.apt:
+    name:
+      - kitty
+    state: present
+  tags:
+    - kitty

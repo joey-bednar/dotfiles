@@ -1,0 +1,23 @@
+- name: Download fzf # noqa latest
+  ansible.builtin.git:
+    repo: https://github.com/junegunn/fzf.git
+    dest: "{{ home_dir }}/.fzf"
+    clone: true
+    update: true
+    force: true
+  tags:
+    - fzf
+    - dotfiles
+    - zsh
+    - nvim
+
+- name: Install fzf
+  ansible.builtin.shell: |
+    cd {{ home_dir }}
+    .fzf/install
+  changed_when: true
+  tags:
+    - fzf
+    - dotfiles
+    - zsh
+    - nvim

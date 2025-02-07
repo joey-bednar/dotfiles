@@ -1,0 +1,23 @@
+- name: Install i3
+  become: true
+  ansible.builtin.apt:
+    name:
+      - i3
+      - i3blocks
+      - picom
+      - feh
+      - acpi
+      - brightnessctl
+      - net-tools
+      - lm-sensors
+    state: present
+  tags:
+    - i3
+
+- name: Modify brightnessctl permissions
+  become: true
+  ansible.builtin.shell: |
+    chmod +s $(which brightnessctl)
+  changed_when: true
+  tags:
+    - i3
