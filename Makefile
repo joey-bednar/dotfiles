@@ -2,8 +2,7 @@ MAKEFLAGS += --silent
 
 .PHONY: all
 all:
-	make -s update
-	make -s setup
+	ansible/install personal
 
 .PHONY: personal
 personal:
@@ -38,10 +37,6 @@ update:
 .PHONY: stow
 stow:
 	stow . --restow
-	make -s prune-links
-
-.PHONY: prune-links
-prune-links:
 	find ${HOME} -maxdepth 1 -xtype l -delete
 	find ${HOME}/.config/ -xtype l -delete
 	find ${HOME}/.fonts/ -xtype l -delete

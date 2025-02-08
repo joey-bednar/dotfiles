@@ -35,9 +35,6 @@ elif [[ $1 == "container" ]]; then
 	echo ""
 	echo "Dev container built. Run using:"
 	echo "docker run --rm -it dev"
-elif [[ $1 == "internal-container" ]]; then
-	install_ansible
-	ansible-playbook "${HOME}/dotfiles/ansible/main.yml" -i localhost, -K --tags "${DEV_TAGS}"
 elif [[ $1 == "dev" ]]; then
 	install_ansible
 	ansible-playbook "${HOME}/dotfiles/ansible/main.yml" -i localhost, -K --tags "${DEV_TAGS}"

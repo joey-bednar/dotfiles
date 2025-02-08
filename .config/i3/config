@@ -63,7 +63,7 @@ exec_always --no-startup-id xinput set-prop $touchpad "libinput Natural Scrollin
 exec_always --no-startup-id feh --bg-scale $desktop_background
 
 # Lock keybind
-bindsym $mod+Control+l exec --no-startup-id i3-suspend
+bindsym Mod4+L exec --no-startup-id i3-suspend
 
 #################################################################################################
 
