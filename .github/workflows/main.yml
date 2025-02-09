@@ -1,10 +1,6 @@
 name: CI
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+on: [push, pull_request]
 
 jobs:
     format:
@@ -30,9 +26,18 @@ jobs:
               run: stylua --check .config/nvim/lua/ #--config-path=.stylua.toml
 
     docker-build:
-      name: Build Docker image
-      runs-on: ubuntu-latest
-      steps:
-      - uses: actions/checkout@v4
-      - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag dev-env:$(date +%s)
+        name: Build Docker image
+        runs-on: ubuntu-latest
+        steps:
+            - name: Log in to GitHub Container Registry
+              run: echo "${{ secrets.CI }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+            - uses: actions/checkout@v4
+            - name: Build the Docker image
+              run: docker build . --file Dockerfile --tag dev-env:${{ github.run_id }}
+
+            - name: Push the image
+              if: github.ref == 'refs/heads/main'
+              run: |
+                  docker tag dev-env:${{ github.run_id }} ghcr.io/${{ github.repository_owner }}/dev-env:latest
+                  docker push ghcr.io/${{ github.repository_owner }}/dev-env:latest
