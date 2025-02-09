@@ -7,9 +7,6 @@
     force: true
   tags:
     - fzf
-    - dotfiles
-    - zsh
-    - nvim
 
 - name: Install fzf
   ansible.builtin.shell: |
@@ -18,6 +15,3 @@
   changed_when: true
   tags:
     - fzf
-    - dotfiles
-    - zsh
-    - nvim

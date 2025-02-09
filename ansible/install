@@ -9,7 +9,7 @@ install_ansible() {
 	fi
 }
 
-DEV_TAGS="dotfiles,zsh,tmux,nvim,node,git"
+DEV_TAGS="dotfiles,zsh,fzf,tmux,nvim,node,git"
 VM_TAGS="${DEV_TAGS},docker,python,gnome,i3,k8s"
 WORK_TAGS="${VM_TAGS},kitty"
 
