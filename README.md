@@ -9,8 +9,27 @@ These are the configs I use to setup my development environment.
 - Font: [Custom patched](https://github.com/ryanoasis/nerd-fonts#font-patcher) with [DejaVu Sans Mono](https://dejavu-fonts.github.io/) base font. 
 - Custom bash scripts
 
-## Installation
+## Local Install
 
+> [!NOTE]
+> Requires `Ubuntu 24.04.04 (Noble)` or `Ubuntu 22.04.04 (Jammy)`.
+
+Install one of the preset profiles:
 ```
-make [personal|work|vm|dev|container]
+make [personal|work|vm|dev]
+```
+
+and logout. During login choose the i3 interface.
+
+## Docker
+
+Try out the environment inside a Docker container by pulling the latest image:
+```
+docker pull ghcr.io/joey-bednar/dev-env:latest
+docker run --rm -it ghcr.io/joey-bednar/dev-env:latest
+```
+or by building the Docker image yourself:
+```
+make container
+docker run --rm -it dev-env
 ```

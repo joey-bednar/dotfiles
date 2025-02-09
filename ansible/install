@@ -31,10 +31,10 @@ elif [[ $1 == "vm" ]]; then
 	install_ansible
 	ansible-playbook "${HOME}/dotfiles/ansible/main.yml"  -i localhost, -K --tags "${VM_TAGS}"
 elif [[ $1 == "container" ]]; then
-	docker build -t "dev" .
+	docker build -t "dev-env" .
 	echo ""
 	echo "Dev container built. Run using:"
-	echo "docker run --rm -it dev"
+	echo "docker run --rm -it dev-env"
 elif [[ $1 == "dev" ]]; then
 	install_ansible
 	ansible-playbook "${HOME}/dotfiles/ansible/main.yml" -i localhost, -K --tags "${DEV_TAGS}"
