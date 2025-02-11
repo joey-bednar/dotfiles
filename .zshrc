@@ -71,11 +71,6 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
-# aliases
-alias ls='ls --color'
-alias la='ls -a --color'
-alias ll='ls -al --color'
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -103,10 +98,14 @@ command -v minikube &> /dev/null && source <(minikube completion zsh)
 export PATH="$HOME/.local/bin:$PATH"                  # add custom binaries
 export PATH="$HOME/.local/share/nvim/mason/bin:$PATH" # add mason binaries
 
-# git shortcuts
-alias gs="git status"
-alias gl="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all"
+# aliases
+alias ls='ls --color'
+alias la='ls -a --color'
+alias ll='ls -al --color'
 
+alias gs="git status"
+alias gl="git log"
+alias gb="git switch \$(git branch | fzf)"
 
 alias joey="ssh -p 4567 joey@joeybednar.com"
 
@@ -131,7 +130,7 @@ os=$(uname)
 if [[ $os == "Linux" ]]; then
 
     # disable <C-;> behavior
-    command -v gsettings &> /dev/null && gsettings set org.freedesktop.ibus.panel.emoji hotkey "[]"
+    command -v gsettings &> /dev/null && gsettings set org.freedesktop.ibus.panel.emoji hotkey "[]" &> /dev/null
 
     export PYTHONPATH="$HOME/personal/dsa"
     clear
