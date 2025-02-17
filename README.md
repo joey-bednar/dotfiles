@@ -16,7 +16,7 @@ These are the configs I use to setup my development environment.
 
 Install one of the preset profiles:
 ```
-make [personal|work|vm|dev]
+make [personal|work|dev]
 ```
 
 and logout. During login choose the i3 interface.

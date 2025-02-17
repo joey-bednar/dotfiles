@@ -10,8 +10,7 @@ install_ansible() {
 }
 
 DEV_TAGS="dotfiles,zsh,fzf,tmux,nvim,node,git"
-VM_TAGS="${DEV_TAGS},docker,python,gnome,i3,k8s"
-WORK_TAGS="${VM_TAGS},kitty"
+WORK_TAGS="${DEV_TAGS},docker,python,gnome,i3,k8s,kitty"
 
 if [[ $# -le 0 || -z $1 ]]; then
 	echo "usage: install [option]"
@@ -20,16 +19,12 @@ if [[ $# -le 0 || -z $1 ]]; then
 	echo ""
 	echo "  personal        install everything"
 	echo "  work            install all work tasks"
-	echo "  vm              install all work tasks minus kitty"
 	echo "  dev             install zsh,nvim,tmux,fzf"
 	echo "  container       build a docker dev container"
 	echo "  test [tag]      install tasks with specified tag"
 elif [[ $1 == "work" ]]; then
 	install_ansible
 	ansible-playbook "${HOME}/dotfiles/ansible/main.yml" -i localhost, -K --tags "${WORK_TAGS}"
-elif [[ $1 == "vm" ]]; then
-	install_ansible
-	ansible-playbook "${HOME}/dotfiles/ansible/main.yml"  -i localhost, -K --tags "${VM_TAGS}"
 elif [[ $1 == "container" ]]; then
 	docker build -t "dev-env" .
 	echo ""

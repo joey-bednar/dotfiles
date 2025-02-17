@@ -12,10 +12,6 @@ personal:
 work:
 	ansible/install work
 
-.PHONY: vm
-vm:
-	ansible/install vm
-
 .PHONY: dev
 dev:
 	ansible/install dev
