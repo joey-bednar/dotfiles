@@ -107,6 +107,11 @@ alias gs="git status"
 alias gl="git log"
 alias gb="git switch \$(git branch | fzf)"
 
+alias nvm="/usr/local/bin/n"
+alias n="nvim"
+alias nf="nvim -c ':Telescope find_files'"
+alias nd="nvim -c ':Oil'"
+
 alias joey="ssh -p 4567 joey@joeybednar.com"
 
 export TERM="screen-256color"
@@ -137,7 +142,6 @@ if [[ $os == "Linux" ]]; then
 
 # Mac only
 elif [[ $os == "Darwin" ]]; then
-    export PYTHONPATH="$HOME/Code/gesture-recognition/src"
     clear
 fi
 
