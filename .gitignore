@@ -8,6 +8,10 @@ kitty.conf
 i3blocks.conf
 .zsh_local
 
+# ignore wallpapers
+ansible/wallpapers/*
+!ansible/wallpapers/gruvbox_ubuntu.png
+
 # ignore local binaries
 .local/bin/*
 !.local/bin/i3-suspend
