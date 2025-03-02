@@ -1,5 +1,6 @@
 packer_compiled.lua
 kitty.conf
+.config/i3/config
 i3blocks.conf
 .uuid
 .zsh_local

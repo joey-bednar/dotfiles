@@ -9,10 +9,16 @@ if [[ $os == "Linux" ]]; then
     echo "Configuring Kitty for Ubuntu"
     ln -sf "$KITTYPATH/ubuntu.conf" "$KITTYPATH/kitty.conf"
 
+
+    echo "Configuring i3 for Ubuntu"
     if [[ $(hostname) == "joey-PC" ]]; then
+        ln -sf "$I3PATH/i3-desktop.conf" "$I3PATH/config"
         ln -sf "$I3PATH/i3blocks-desktop.conf" "$I3PATH/i3blocks.conf"
     elif [[ $(hostname) == "joey-laptop" ]]; then
+        ln -sf "$I3PATH/i3-laptop.conf" "$I3PATH/config"
         ln -sf "$I3PATH/i3blocks-laptop.conf" "$I3PATH/i3blocks.conf"
+    else
+        ln -sf "$I3PATH/i3-default.conf" "$I3PATH/config"
     fi
 
     if [[ -n $(command -v conda) ]]; then
