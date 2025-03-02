@@ -1,10 +1,14 @@
+# generated files
 packer_compiled.lua
+.uuid
+
+# symlink configs
 kitty.conf
 .config/i3/config
 i3blocks.conf
-.uuid
 .zsh_local
 
+# ignore local binaries
 .local/bin/*
 !.local/bin/i3-suspend
 !.local/bin/rcommit

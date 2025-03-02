@@ -1,6 +1,6 @@
 - name: Set wallpaper
   ansible.builtin.shell: |
-    gsettings set org.gnome.desktop.background picture-uri file://{{ home_dir }}/dotfiles/ansible/wallpapers/ubuntu-background.jpg
+    gsettings set org.gnome.desktop.background picture-uri file://{{ home_dir }}/dotfiles/ansible/wallpapers/gruvbox_ubuntu.png
   tags:
     - gnome
 
