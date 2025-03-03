@@ -1,24 +1,22 @@
 #!/usr/bin/env bash
 
 os=$(uname)
-KITTYPATH="$HOME/dotfiles/.config/kitty"
-I3PATH="$HOME/dotfiles/.config/i3"
+KITTY_PATH="$HOME/dotfiles/.config/kitty"
+I3_PATH="$HOME/dotfiles/.config/i3"
 
 # Linux
 if [[ $os == "Linux" ]]; then
     echo "Configuring Kitty for Ubuntu"
-    ln -sf "$KITTYPATH/ubuntu.conf" "$KITTYPATH/kitty.conf"
+    ln -sf "$KITTY_PATH/ubuntu.conf" "$KITTY_PATH/kitty.conf"
 
 
     echo "Configuring i3 for Ubuntu"
     if [[ $(hostname) == "joey-PC" ]]; then
-        ln -sf "$I3PATH/i3-desktop.conf" "$I3PATH/config"
-        ln -sf "$I3PATH/i3blocks-desktop.conf" "$I3PATH/i3blocks.conf"
+        ln -sf "$I3_PATH/i3-desktop.conf" "$I3_PATH/config"
     elif [[ $(hostname) == "joey-laptop" ]]; then
-        ln -sf "$I3PATH/i3-laptop.conf" "$I3PATH/config"
-        ln -sf "$I3PATH/i3blocks-laptop.conf" "$I3PATH/i3blocks.conf"
+        ln -sf "$I3_PATH/i3-laptop.conf" "$I3_PATH/config"
     else
-        ln -sf "$I3PATH/i3-default.conf" "$I3PATH/config"
+        ln -sf "$I3_PATH/i3-default.conf" "$I3_PATH/config"
     fi
 
     if [[ -n $(command -v conda) ]]; then
@@ -29,7 +27,7 @@ if [[ $os == "Linux" ]]; then
 # Mac
 elif [[ $os == "Darwin" ]]; then
     echo "Configuring Kitty for macOS"
-    ln -sf "$KITTYPATH/macos.conf" "$KITTYPATH/kitty.conf"
+    ln -sf "$KITTY_PATH/macos.conf" "$KITTY_PATH/kitty.conf"
 
     if [[ -n $(command -v /opt/anaconda3/bin/conda) ]]; then
         echo "Configuring Conda for macOS"

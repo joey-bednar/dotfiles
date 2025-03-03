@@ -5,7 +5,6 @@ packer_compiled.lua
 # symlink configs
 kitty.conf
 .config/i3/config
-i3blocks.conf
 .zsh_local
 
 # ignore wallpapers

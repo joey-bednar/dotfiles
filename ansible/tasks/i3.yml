@@ -3,7 +3,6 @@
   ansible.builtin.apt:
     name:
       - i3
-      - i3blocks
       - picom
       - feh
       - acpi
