@@ -2,7 +2,8 @@ MAKEFLAGS += --silent
 
 .PHONY: all
 all:
-	ansible/install personal
+	make -s stow
+	make -s setup
 
 .PHONY: personal
 personal:
@@ -23,12 +24,6 @@ container:
 .PHONY: format
 format:
 	stylua .config/nvim/
-
-.PHONY: update
-update:
-	git fetch origin
-	git reset --hard origin/main
-	make -s stow
 
 .PHONY: stow
 stow:
