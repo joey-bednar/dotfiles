@@ -3,6 +3,7 @@
 os=$(uname)
 KITTY_PATH="$HOME/dotfiles/.config/kitty"
 I3_PATH="$HOME/dotfiles/.config/i3"
+POLYBAR_PATH="$HOME/dotfiles/.config/polybar"
 
 # Linux
 if [[ $os == "Linux" ]]; then
@@ -12,27 +13,28 @@ if [[ $os == "Linux" ]]; then
 
     echo "Configuring i3 for Ubuntu"
     if [[ $(hostname) == "joey-PC" ]]; then
-        ln -sf "$I3_PATH/i3-desktop.conf" "$I3_PATH/config"
+        ln -sf "$I3_PATH/desktop.conf" "$I3_PATH/config"
+        ln -sf "$POLYBAR_PATH/desktop.ini" "$POLYBAR_PATH/config.ini"
     elif [[ $(hostname) == "joey-laptop" ]]; then
-        ln -sf "$I3_PATH/i3-laptop.conf" "$I3_PATH/config"
+        ln -sf "$I3_PATH/laptop.conf" "$I3_PATH/config"
     else
-        ln -sf "$I3_PATH/i3-default.conf" "$I3_PATH/config"
+        ln -sf "$I3_PATH/default.conf" "$I3_PATH/config"
     fi
 
-    if [[ -n $(command -v conda) ]]; then
-        echo "Configuring Conda for Ubuntu"
-        conda init zsh 1> /dev/null
-    fi
+    # if [[ -n $(command -v conda) ]]; then
+    #     echo "Configuring Conda for Ubuntu"
+    #     conda init zsh 1> /dev/null
+    # fi
 
 # Mac
 elif [[ $os == "Darwin" ]]; then
     echo "Configuring Kitty for macOS"
     ln -sf "$KITTY_PATH/macos.conf" "$KITTY_PATH/kitty.conf"
 
-    if [[ -n $(command -v /opt/anaconda3/bin/conda) ]]; then
-        echo "Configuring Conda for macOS"
-        /opt/anaconda3/bin/conda init zsh 1> /dev/null
-    fi
+    # if [[ -n $(command -v /opt/anaconda3/bin/conda) ]]; then
+    #     echo "Configuring Conda for macOS"
+    #     /opt/anaconda3/bin/conda init zsh 1> /dev/null
+    # fi
 
 else
     echo "Unsupported OS: ${os}"

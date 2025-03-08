@@ -9,6 +9,7 @@
       - brightnessctl
       - net-tools
       - lm-sensors
+      - polybar
     state: present
   tags:
     - i3
