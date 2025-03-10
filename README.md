@@ -15,12 +15,18 @@ These are the configs I use to setup my development environment.
 > [!NOTE]
 > Requires `Ubuntu 24.04.04 (Noble)` or `Ubuntu 22.04.04 (Jammy)`.
 
-Install one of the preset profiles:
+1. Clone into your home directory:
+```
+git clone https://github.com/joey-bednar/dotfiles.git ~/dotfiles
+cd ~/dotfiles
+```
+
+2. Install one of the preset profiles:
 ```
 make [personal|work|dev]
 ```
 
-and logout. During login choose the i3 interface.
+3. Logout or restart. During login select the `i3` interface.
 
 ## Docker
 
