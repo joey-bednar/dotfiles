@@ -13,11 +13,15 @@ if [[ $os == "Linux" ]]; then
 
     echo "Configuring i3 for Ubuntu"
     if [[ $(hostname) == "joey-PC" ]]; then
+        echo "Configuring i3 for Desktop"
         ln -sf "$I3_PATH/desktop.conf" "$I3_PATH/config"
         ln -sf "$POLYBAR_PATH/desktop.ini" "$POLYBAR_PATH/config.ini"
     elif [[ $(hostname) == "joey-laptop" ]]; then
+        echo "Configuring i3 for Laptop"
         ln -sf "$I3_PATH/laptop.conf" "$I3_PATH/config"
+        ln -sf "$POLYBAR_PATH/laptop.ini" "$POLYBAR_PATH/config.ini"
     else
+        echo "Configuring i3 for Default"
         ln -sf "$I3_PATH/default.conf" "$I3_PATH/config"
     fi
 
@@ -39,4 +43,3 @@ elif [[ $os == "Darwin" ]]; then
 else
     echo "Unsupported OS: ${os}"
 fi
-# TODO: split into conda-init, kitty-setup
