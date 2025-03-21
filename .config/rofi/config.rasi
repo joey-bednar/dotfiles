@@ -1,0 +1,19 @@
+configuration {
+    /* Add ctrl+c to quit */
+    kb-cancel: "Escape,Control+g,Control+bracketleft,Control+c";
+
+    /* Unmap ctrl+k, ctrl+j */
+    kb-remove-to-eol: "";
+    kb-accept-entry: "Control+m,Return,KP_Enter";
+
+    /* Use ctrl+k, ctrl+j for up and down */
+    kb-row-up: "Up,Control+p,Control+k";
+    kb-row-down: "Down,Control+n,Control+j";
+}
+
+/* hide "drun" string at beginning of search input */
+prompt {
+    enabled: false;
+}
+
+@import "gruvbox-dark-soft.rasi"

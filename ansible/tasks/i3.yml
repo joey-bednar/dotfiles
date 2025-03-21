@@ -5,11 +5,12 @@
       - i3
       - picom
       - feh
+      - rofi
+      - polybar
       - acpi
       - brightnessctl
       - net-tools
       - lm-sensors
-      - polybar
     state: present
   tags:
     - i3
