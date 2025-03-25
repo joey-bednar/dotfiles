@@ -4,7 +4,8 @@ if [[ -f "/opt/homebrew/bin/brew" ]] then
 fi
 
 # directory for storing zinit and plugins
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+XDG_CONFIG_HOME="${HOME}"
+ZINIT_HOME="${HOME}/.local/share/zinit/zinit.git"
 
 # download zinit
 if [ ! -d "$ZINIT_HOME" ]; then
@@ -112,12 +113,9 @@ alias n="nvim"
 alias nf="nvim -c ':Telescope find_files'"
 alias nd="nvim -c ':Oil'"
 
-alias joey="ssh -p 4567 joey@joeybednar.com"
-
 export TERM="screen-256color"
 export LANG="en_US.UTF-8"
 export EDITOR="nvim"
-export SHELL="/usr/bin/zsh"
 
 DISABLE_AUTO_TITLE="true"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#928374,bold"
@@ -134,6 +132,8 @@ os=$(uname)
 # Linux only
 if [[ $os == "Linux" ]]; then
 
+    export SHELL="/usr/bin/zsh"
+
     # disable <C-;> behavior
     command -v gsettings &> /dev/null && gsettings set org.freedesktop.ibus.panel.emoji hotkey "[]" &> /dev/null
 
@@ -142,6 +142,7 @@ if [[ $os == "Linux" ]]; then
 
 # Mac only
 elif [[ $os == "Darwin" ]]; then
+    export SHELL="/opt/homebrew/bin/zsh"
     clear
 fi
 
