@@ -18,3 +18,12 @@
     state: present
   tags:
     - always
+
+- name: Disable Unattended Upgrades
+  become: true
+  ansible.builtin.apt:
+    name:
+      - unattended-upgrades
+    state: absent
+  tags:
+    - always

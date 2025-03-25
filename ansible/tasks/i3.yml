@@ -22,3 +22,13 @@
   changed_when: true
   tags:
     - i3
+
+
+- name: Disable Notifications
+  become: true
+  ansible.builtin.apt:
+    name:
+      - dunst
+    state: absent
+  tags:
+    - i3
