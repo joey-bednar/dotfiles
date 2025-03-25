@@ -4,7 +4,6 @@ if [[ -f "/opt/homebrew/bin/brew" ]] then
 fi
 
 # directory for storing zinit and plugins
-XDG_CONFIG_HOME="${HOME}"
 ZINIT_HOME="${HOME}/.local/share/zinit/zinit.git"
 
 # download zinit
