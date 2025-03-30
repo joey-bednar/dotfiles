@@ -6,6 +6,7 @@
       - picom
       - feh
       - rofi
+      - dunst
       - polybar
       - acpi
       - brightnessctl
@@ -20,15 +21,5 @@
   ansible.builtin.shell: |
     chmod +s $(which brightnessctl)
   changed_when: true
-  tags:
-    - i3
-
-
-- name: Disable Notifications
-  become: true
-  ansible.builtin.apt:
-    name:
-      - dunst
-    state: absent
   tags:
     - i3
