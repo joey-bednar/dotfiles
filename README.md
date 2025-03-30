@@ -9,6 +9,7 @@ These are the configs I use to setup my development environment.
 - Window Manager: [i3](https://github.com/i3/i3)
 - Application Launcher: [Rofi](https://github.com/davatorium/rofi)
 - Status bar: [Polybar](https://github.com/polybar/polybar)
+- Notifications: [Dunst](https://github.com/dunst-project/dunst)
 - Font: [Custom patched](https://github.com/ryanoasis/nerd-fonts#font-patcher) with [DejaVu Sans Mono](https://dejavu-fonts.github.io/) base font. 
 - Custom bash scripts
 
