@@ -151,6 +151,7 @@ git config --global core.editor nvim
 
 # Install Kubernetes
 sudo apt install -y curl
+mkdir -p $HOME/.local/bin/
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" -o $HOME/.local/bin/kubectl
 sudo chmod +x $HOME/.local/bin/kubectl
 
