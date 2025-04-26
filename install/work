@@ -117,9 +117,9 @@ if [[ ! -f "opt/anaconda3/bin/conda" ]]; then
     pushd $HOME
     curl -o anaconda.sh https://repo.anaconda.com/archive/Anaconda3-2024.02-1-Linux-x86_64.sh
     chmod +x anaconda.sh
-    ./anaconda.sh -b -p /opt/anaconda3
-    ln -s /opt/anaconda3/bin/conda /usr/bin/conda
-    mv /opt/anaconda3/bin/clear /opt/anaconda3/bin/clear_old
+    sudo ./anaconda.sh -b -p /opt/anaconda3
+    sudo ln -s /opt/anaconda3/bin/conda /usr/bin/conda
+    sudo mv /opt/anaconda3/bin/clear /opt/anaconda3/bin/clear_old
     rm $HOME/anaconda.sh
     popd
 fi
