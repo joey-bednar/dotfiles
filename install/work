@@ -127,7 +127,8 @@ fi
 
 #################### APPLICATIONS ####################
 
-sudo apt install -y kitty spotify gimp
+sudo snap install spotify
+sudo apt install -y kitty gimp
 
 #################### I3WM ####################
 
