@@ -45,7 +45,7 @@ git -C "$dest" pull || git clone "$repo" "$dest"
 
 # Install fzf
 # pushd $HOME/.fzf
-yes | $HOME/.fzf/install && true
+yes | $HOME/.fzf/install || if [[ $? -eq 141 ]]; then true; else false; fi
 # popd
 
 #################### TMUX ####################
@@ -81,95 +81,95 @@ fi
 sudo npm install -g n
 sudo n lts
 
-# #################### DOCKER ####################
-#
-# # Install Docker dependencies
-# sudo apt install -y curl ca-certificates
-#
-# # Download Docker GPG Key
-# if [[ ! -f "/etc/apt/keyrings/docker.asc" ]]; then
-#     install -m 0755 -d /etc/apt/keyrings
-#     sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-#     sudo chmod a+r /etc/apt/keyrings/docker.asc
-# fi
-#
-# # Add the repository to apt sources and update
-# if [[ ! -f "/etc/apt/sources.list.d/docker.list" ]]; then
-#     echo \
-#       "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
-#       $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-#       sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-#     sudo apt update -y
-# fi
-#
-# # Install Docker Engine
-# sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-#
-# # Add user to docker group
-#
-# if ! getent group "docker" > /dev/null 2>&1; then
-#     sudo groupadd docker
-#     sudo usermod -aG docker $USERNAME
-#     newgrp docker
-# fi
-#
-# #################### PYTHON ####################
-#
-# # Install python packages
-# sudo apt install -y python3 python3-pip
-#
-# # Install Anaconda
-# if [[ ! -f "/opt/anaconda3/bin/conda" ]]; then
-#     pushd $HOME
-#     curl -o anaconda.sh https://repo.anaconda.com/archive/Anaconda3-2024.02-1-Linux-x86_64.sh
-#     chmod +x anaconda.sh
-#     sudo ./anaconda.sh -b -p /opt/anaconda3
-#     sudo ln -s /opt/anaconda3/bin/conda /usr/bin/conda
-#     sudo mv /opt/anaconda3/bin/clear /opt/anaconda3/bin/clear_old
-#     rm $HOME/anaconda.sh
-#     popd
-# fi
-#
-#
-# #################### APPLICATIONS ####################
-#
-# sudo snap install spotify
-# sudo apt install -y kitty gimp
-#
-# #################### I3WM ####################
-#
-# # Install i3 and dependencies
-# sudo apt install -y i3 picom feh rofi dunst polybar acpi brightnessctl net-tools lm-sensors
-#
-# # Configure brightnessctl
-# sudo chmod +s $(which brightnessctl)
-#
-# #################### GIT ####################
-#
-# git config --global user.name "Joseph Bednar"
-# git config --global push.autoSetupRemote true
-# git config --global credential.helper store
-# git config --global fetch.prune true
-# git config --global core.editor nvim
-#
-# #################### KUBERNETES/HELM ####################
-#
-#
-# # Install Kubernetes
-# sudo apt install -y curl
-#
-# mkdir -p "$HOME/.local/bin"
-# pushd "$HOME/.local/bin"
-# curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-# chmod +x ./kubectl
-# popd
-#
-# # Install Helm
-# pushd /tmp/
-# curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
-# chmod +x get_helm.sh
-# ./get_helm.sh
-# popd
+#################### DOCKER ####################
+
+# Install Docker dependencies
+sudo apt install -y curl ca-certificates
+
+# Download Docker GPG Key
+if [[ ! -f "/etc/apt/keyrings/docker.asc" ]]; then
+    install -m 0755 -d /etc/apt/keyrings
+    sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+    sudo chmod a+r /etc/apt/keyrings/docker.asc
+fi
+
+# Add the repository to apt sources and update
+if [[ ! -f "/etc/apt/sources.list.d/docker.list" ]]; then
+    echo \
+      "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+      $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+      sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo apt update -y
+fi
+
+# Install Docker Engine
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+# Add user to docker group
+
+if ! getent group "docker" > /dev/null 2>&1; then
+    sudo groupadd docker
+    sudo usermod -aG docker $USERNAME
+    newgrp docker
+fi
+
+#################### PYTHON ####################
+
+# Install python packages
+sudo apt install -y python3 python3-pip
+
+# Install Anaconda
+if [[ ! -f "/opt/anaconda3/bin/conda" ]]; then
+    pushd $HOME
+    curl -o anaconda.sh https://repo.anaconda.com/archive/Anaconda3-2024.02-1-Linux-x86_64.sh
+    chmod +x anaconda.sh
+    sudo ./anaconda.sh -b -p /opt/anaconda3
+    sudo ln -s /opt/anaconda3/bin/conda /usr/bin/conda
+    sudo mv /opt/anaconda3/bin/clear /opt/anaconda3/bin/clear_old
+    rm $HOME/anaconda.sh
+    popd
+fi
+
+
+#################### APPLICATIONS ####################
+
+sudo snap install spotify
+sudo apt install -y kitty gimp
+
+#################### I3WM ####################
+
+# Install i3 and dependencies
+sudo apt install -y i3 picom feh rofi dunst polybar acpi brightnessctl net-tools lm-sensors
+
+# Configure brightnessctl
+sudo chmod +s $(which brightnessctl)
+
+#################### GIT ####################
+
+git config --global user.name "Joseph Bednar"
+git config --global push.autoSetupRemote true
+git config --global credential.helper store
+git config --global fetch.prune true
+git config --global core.editor nvim
+
+#################### KUBERNETES/HELM ####################
+
+
+# Install Kubernetes
+sudo apt install -y curl
+
+mkdir -p "$HOME/.local/bin"
+pushd "$HOME/.local/bin"
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+chmod +x ./kubectl
+popd
+
+# Install Helm
+pushd /tmp/
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod +x get_helm.sh
+./get_helm.sh
+popd
 
 #################### DOTFILES ####################
 
