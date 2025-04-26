@@ -39,7 +39,7 @@ git -C "$dest" pull || git clone "$repo" "$dest"
 
 # Install fzf
 # pushd $HOME/.fzf
-yes | $HOME/.fzf/install --all
+yes | $HOME/.fzf/install --all || [ $1 -eq 141 ] && return 0
 # popd
 
 #################### TMUX ####################
