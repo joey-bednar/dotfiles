@@ -187,7 +187,7 @@ fc-cache -f -v
 mkdir -p $HOME/personal $HOME/work
 
 # Source .zshrc
-command -v $HOME/.local/bin/zsh &> /dev/null && yes | $HOME/.local/bin/zsh $HOME/.zshrc && true
+command -v zsh &> /dev/null && yes | zsh $HOME/.zshrc && true
 
 # Install Neovim plugins
 command -v $HOME/.local/bin/nvim &> /dev/null && $HOME/.local/bin/nvim --headless "+Lazy! sync" +qa
