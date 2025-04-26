@@ -38,9 +38,9 @@ dest="$HOME/.fzf"
 git -C "$dest" pull || git clone "$repo" "$dest"
 
 # Install fzf
-pushd $HOME/.fzf
-yes | ./install
-popd
+# pushd $HOME/.fzf
+yes | $HOME/.fzf/install --all
+# popd
 
 #################### TMUX ####################
 
