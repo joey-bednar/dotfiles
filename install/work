@@ -136,7 +136,7 @@ sudo apt install -y kitty gimp
 sudo apt install -y i3 picom feh rofi dunst polybar acpi brightnessctl net-tools lm-sensors
 
 # Configure brightnessctl
-chmod +s $(which brightnessctl)
+sudo chmod +s $(which brightnessctl)
 
 #################### GIT ####################
 
