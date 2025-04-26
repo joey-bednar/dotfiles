@@ -1,0 +1,26 @@
+#!/bin/bash
+
+set -euo pipefail
+IFS=$'\n\t'
+
+# Install dotfiles dependencies
+sudo apt install -y stow fontconfig make yarn
+
+# Make dotfiles
+rm $HOME/.zshrc
+pushd $HOME/dotfiles
+make stow
+make setup
+popd
+
+# Reload fonts
+fc-cache -f -v
+
+# Create directories
+mkdir -p $HOME/personal $HOME/work
+
+# Source .zshrc
+command -v zsh &> /dev/null && yes | zsh $HOME/.zshrc || if [[ $? -eq 141 ]]; then true; else false; fi
+
+# Install Neovim plugins
+command -v $HOME/.local/bin/nvim &> /dev/null && $HOME/.local/bin/nvim --headless "+Lazy! sync" +qa

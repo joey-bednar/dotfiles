@@ -7,5 +7,6 @@
 
 Makefile
 ansible
+install
 \.dockerignore
 \Dockerfile

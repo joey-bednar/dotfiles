@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -euo pipefail
+IFS=$'\n\t'
+
+# Clone fzf
+repo="https://github.com/junegunn/fzf.git"
+dest="$HOME/.fzf"
+git -C "$dest" pull || git clone "$repo" "$dest"
+
+# Install fzf
+yes | $HOME/.fzf/install || if [[ $? -eq 141 ]]; then true; else false; fi

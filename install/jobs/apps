@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -euo pipefail
+IFS=$'\n\t'
+
+sudo snap install spotify
+sudo apt install -y kitty gimp

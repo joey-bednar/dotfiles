@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -euo pipefail
+IFS=$'\n\t'
+
+# Install tmux
+sudo apt install -y tmux
+
+# Install tpm
+repo="https://github.com/tmux-plugins/tpm"
+dest="$HOME/.tmux/plugins/tpm"
+git -C "$dest" pull || git clone "$repo" "$dest"
