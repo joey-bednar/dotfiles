@@ -3,16 +3,16 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-bash ./jobs/update
-bash ./jobs/bash
-bash ./jobs/fzf
-bash ./jobs/tmux
-bash ./jobs/nvim
-bash ./jobs/node
-bash ./jobs/docker
-bash ./jobs/python
-bash ./jobs/apps
-bash ./jobs/i3
-bash ./jobs/git
-bash ./jobs/k8s
-bash ./jobs/dotfiles
+bash $HOME/dotfiles/install/jobs/update
+bash $HOME/dotfiles/install/jobs/bash
+bash $HOME/dotfiles/install/jobs/fzf
+bash $HOME/dotfiles/install/jobs/tmux
+bash $HOME/dotfiles/install/jobs/nvim
+bash $HOME/dotfiles/install/jobs/node
+bash $HOME/dotfiles/install/jobs/docker
+bash $HOME/dotfiles/install/jobs/python
+bash $HOME/dotfiles/install/jobs/apps
+bash $HOME/dotfiles/install/jobs/i3
+bash $HOME/dotfiles/install/jobs/git
+bash $HOME/dotfiles/install/jobs/k8s
+bash $HOME/dotfiles/install/jobs/dotfiles
