@@ -20,7 +20,6 @@ WORKDIR /home/joey
 COPY --chown=joey:joey . /home/joey/dotfiles/
 
 ENV TERM=screen-256color
-# RUN ./dotfiles/ansible/install dev
 RUN ./dotfiles/install/dev
 
 # start container in zsh
