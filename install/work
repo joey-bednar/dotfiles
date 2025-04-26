@@ -187,7 +187,7 @@ USERNAME=$(whoami)
 # mkdir -p $HOME/personal $HOME/work
 
 # Source .zshrc
-command -v zsh &> /dev/null && yes | zsh $HOME/.zshrc && true
+command -v zsh &> /dev/null && yes | zsh $HOME/.zshrc || if [[ $? -eq 141 ]]; then true; else false; fi
 
 # # Install Neovim plugins
 # command -v $HOME/.local/bin/nvim &> /dev/null && $HOME/.local/bin/nvim --headless "+Lazy! sync" +qa
