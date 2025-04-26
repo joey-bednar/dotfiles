@@ -5,147 +5,150 @@ IFS=$'\n\t'
 
 USERNAME=$(whoami)
 
-# # Update packages
-# sudo apt update -y
-# sudo apt upgrade -y
-#
-# #################### ZSH ####################
-#
-# # Install zsh
-# sudo apt install -y zsh
-#
-# # Install ohmyzsh
-# [ -d "$HOME/.oh-my-zsh" ] || sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-#
-# # Make zsh default
-# sudo chsh -s $(which zsh) $USERNAME
-#
-# # Install zsh-autosuggestions
-# repo="https://github.com/zsh-users/zsh-autosuggestions.git"
-# dest="$HOME/.oh-my-zsh/plugins/zsh-autosuggestions"
-# git -C "$dest" pull || git clone "$repo" "$dest"
-#
-# # Install zsh-syntax-highlighting
-# repo="https://github.com/zsh-users/zsh-syntax-highlighting.git"
-# dest="$HOME/.oh-my-zsh/plugins/zsh-syntax-highlighting"
-# git -C "$dest" pull || git clone "$repo" "$dest"
-#
-# #################### FZF ####################
-#
-# # Clone fzf
-# repo="https://github.com/junegunn/fzf.git"
-# dest="$HOME/.fzf"
-# git -C "$dest" pull || git clone "$repo" "$dest"
-#
-# # Install fzf
-# # pushd $HOME/.fzf
-# yes | $HOME/.fzf/install && true
-# # popd
-#
-# #################### TMUX ####################
-#
-# # Install tmux
-# sudo apt install -y tmux
-#
-# # Install tpm
-# repo="https://github.com/tmux-plugins/tpm"
-# dest="$HOME/.tmux/plugins/tpm"
-# git -C "$dest" pull || git clone "$repo" "$dest"
-#
-# #################### NEOVIM ####################
-#
-# # Install Neovim dependencies
-# sudo apt install -y ripgrep npm curl cargo python3-venv
-#
-# # Install Neovim AppImage
-# if [[ ! -f $HOME/.local/bin/nvim ]]; then
-#     curl -L "https://github.com/neovim/neovim/releases/download/v0.10.4/nvim-linux-x86_64.appimage" -o "$HOME/nvim.appimage"
-#     chmod +x $HOME/nvim.appimage
-#     pushd $HOME
-#     ./nvim.appimage --appimage-extract
-#     popd
-#     sudo mv $HOME/squashfs-root $HOME/.nvim
-#     mkdir -p $HOME/.local/bin/
-#     ln -s $HOME/.nvim/AppRun $HOME/.local/bin/nvim
-#     rm $HOME/nvim.appimage
-# fi
-#
-# #################### NPM ####################
-#
-# sudo npm install -g n
-# sudo n lts
-#
-# #################### DOCKER ####################
-#
-# # Install Docker dependencies
-# sudo apt install -y curl ca-certificates
-#
-# # Download Docker GPG Key
-# if [[ ! -f "/etc/apt/keyrings/docker.asc" ]]; then
-#     install -m 0755 -d /etc/apt/keyrings
-#     sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-#     sudo chmod a+r /etc/apt/keyrings/docker.asc
-# fi
-#
-# # Add the repository to apt sources and update
-# if [[ ! -f "/etc/apt/sources.list.d/docker.list" ]]; then
-#     echo \
-#       "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
-#       $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-#       sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-#     sudo apt update -y
-# fi
-#
-# # Install Docker Engine
-# sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-#
-# # Add user to docker group
-#
-# if ! getent group "docker" > /dev/null 2>&1; then
-#     sudo groupadd docker
-#     sudo usermod -aG docker $USERNAME
-#     newgrp docker
-# fi
-#
-# #################### PYTHON ####################
-#
-# # Install python packages
-# sudo apt install -y python3 python3-pip
-#
-# # Install Anaconda
-# if [[ ! -f "/opt/anaconda3/bin/conda" ]]; then
-#     pushd $HOME
-#     curl -o anaconda.sh https://repo.anaconda.com/archive/Anaconda3-2024.02-1-Linux-x86_64.sh
-#     chmod +x anaconda.sh
-#     sudo ./anaconda.sh -b -p /opt/anaconda3
-#     sudo ln -s /opt/anaconda3/bin/conda /usr/bin/conda
-#     sudo mv /opt/anaconda3/bin/clear /opt/anaconda3/bin/clear_old
-#     rm $HOME/anaconda.sh
-#     popd
-# fi
-#
-#
-# #################### APPLICATIONS ####################
-#
-# sudo snap install spotify
-# sudo apt install -y kitty gimp
-#
-# #################### I3WM ####################
-#
-# # Install i3 and dependencies
-# sudo apt install -y i3 picom feh rofi dunst polybar acpi brightnessctl net-tools lm-sensors
-#
-# # Configure brightnessctl
-# sudo chmod +s $(which brightnessctl)
-#
-# #################### GIT ####################
-#
-# git config --global user.name "Joseph Bednar"
-# git config --global push.autoSetupRemote true
-# git config --global credential.helper store
-# git config --global fetch.prune true
-# git config --global core.editor nvim
-#
+# Disable auto upgrade
+sudo apt remove -y unattended-upgrade
+
+# Update packages
+sudo apt update -y
+sudo apt upgrade -y
+
+#################### ZSH ####################
+
+# Install zsh
+sudo apt install -y zsh
+
+# Install ohmyzsh
+[ -d "$HOME/.oh-my-zsh" ] || sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# Make zsh default
+sudo chsh -s $(which zsh) $USERNAME
+
+# Install zsh-autosuggestions
+repo="https://github.com/zsh-users/zsh-autosuggestions.git"
+dest="$HOME/.oh-my-zsh/plugins/zsh-autosuggestions"
+git -C "$dest" pull || git clone "$repo" "$dest"
+
+# Install zsh-syntax-highlighting
+repo="https://github.com/zsh-users/zsh-syntax-highlighting.git"
+dest="$HOME/.oh-my-zsh/plugins/zsh-syntax-highlighting"
+git -C "$dest" pull || git clone "$repo" "$dest"
+
+#################### FZF ####################
+
+# Clone fzf
+repo="https://github.com/junegunn/fzf.git"
+dest="$HOME/.fzf"
+git -C "$dest" pull || git clone "$repo" "$dest"
+
+# Install fzf
+# pushd $HOME/.fzf
+yes | $HOME/.fzf/install && true
+# popd
+
+#################### TMUX ####################
+
+# Install tmux
+sudo apt install -y tmux
+
+# Install tpm
+repo="https://github.com/tmux-plugins/tpm"
+dest="$HOME/.tmux/plugins/tpm"
+git -C "$dest" pull || git clone "$repo" "$dest"
+
+#################### NEOVIM ####################
+
+# Install Neovim dependencies
+sudo apt install -y ripgrep npm curl cargo python3-venv
+
+# Install Neovim AppImage
+if [[ ! -f $HOME/.local/bin/nvim ]]; then
+    curl -L "https://github.com/neovim/neovim/releases/download/v0.10.4/nvim-linux-x86_64.appimage" -o "$HOME/nvim.appimage"
+    chmod +x $HOME/nvim.appimage
+    pushd $HOME
+    ./nvim.appimage --appimage-extract
+    popd
+    sudo mv $HOME/squashfs-root $HOME/.nvim
+    mkdir -p $HOME/.local/bin/
+    ln -s $HOME/.nvim/AppRun $HOME/.local/bin/nvim
+    rm $HOME/nvim.appimage
+fi
+
+#################### NPM ####################
+
+sudo npm install -g n
+sudo n lts
+
+#################### DOCKER ####################
+
+# Install Docker dependencies
+sudo apt install -y curl ca-certificates
+
+# Download Docker GPG Key
+if [[ ! -f "/etc/apt/keyrings/docker.asc" ]]; then
+    install -m 0755 -d /etc/apt/keyrings
+    sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+    sudo chmod a+r /etc/apt/keyrings/docker.asc
+fi
+
+# Add the repository to apt sources and update
+if [[ ! -f "/etc/apt/sources.list.d/docker.list" ]]; then
+    echo \
+      "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+      $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+      sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo apt update -y
+fi
+
+# Install Docker Engine
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+# Add user to docker group
+
+if ! getent group "docker" > /dev/null 2>&1; then
+    sudo groupadd docker
+    sudo usermod -aG docker $USERNAME
+    newgrp docker
+fi
+
+#################### PYTHON ####################
+
+# Install python packages
+sudo apt install -y python3 python3-pip
+
+# Install Anaconda
+if [[ ! -f "/opt/anaconda3/bin/conda" ]]; then
+    pushd $HOME
+    curl -o anaconda.sh https://repo.anaconda.com/archive/Anaconda3-2024.02-1-Linux-x86_64.sh
+    chmod +x anaconda.sh
+    sudo ./anaconda.sh -b -p /opt/anaconda3
+    sudo ln -s /opt/anaconda3/bin/conda /usr/bin/conda
+    sudo mv /opt/anaconda3/bin/clear /opt/anaconda3/bin/clear_old
+    rm $HOME/anaconda.sh
+    popd
+fi
+
+
+#################### APPLICATIONS ####################
+
+sudo snap install spotify
+sudo apt install -y kitty gimp
+
+#################### I3WM ####################
+
+# Install i3 and dependencies
+sudo apt install -y i3 picom feh rofi dunst polybar acpi brightnessctl net-tools lm-sensors
+
+# Configure brightnessctl
+sudo chmod +s $(which brightnessctl)
+
+#################### GIT ####################
+
+git config --global user.name "Joseph Bednar"
+git config --global push.autoSetupRemote true
+git config --global credential.helper store
+git config --global fetch.prune true
+git config --global core.editor nvim
+
 #################### KUBERNETES/HELM ####################
 
 
@@ -187,4 +190,4 @@ mkdir -p $HOME/personal $HOME/work
 command -v nvim &> /dev/null && nvim --headless "+Lazy! sync" +qa
 
 # Source .zshrc
-command -v zsh &> /dev/null && yes | zsh $HOME/.zshrc
+command -v zsh &> /dev/null && yes | zsh $HOME/.zshrc && true
