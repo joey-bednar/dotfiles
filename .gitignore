@@ -9,8 +9,8 @@ kitty.conf
 .zsh_local
 
 # ignore wallpapers
-ansible/wallpapers/*
-!ansible/wallpapers/gruvbox_ubuntu.png
+install/wallpapers/*
+!install/wallpapers/gruvbox_ubuntu.png
 
 # ignore local binaries
 .local/bin/*

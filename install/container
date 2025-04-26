@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -euo pipefail
+IFS=$'\n\t'
+
+pushd "$HOME/dotfiles"
+docker build -t "dev-env" .
+echo ""
+echo "Dev container built. Run using:"
+echo "docker run --rm -it dev-env"
+popd
+

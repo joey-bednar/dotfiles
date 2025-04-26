@@ -6,6 +6,6 @@
 ^/LICENSE.*
 
 Makefile
-ansible
+install
 \.dockerignore
 \Dockerfile

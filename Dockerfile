@@ -3,7 +3,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get -y update && \
     apt-get -y upgrade && \
-    apt-get install -y locales build-essential git curl sudo ansible
+    apt-get install -y locales build-essential git curl sudo
 
 # set locale
 RUN locale-gen en_US en_US.UTF-8 && \
@@ -16,11 +16,11 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 USER joey
 WORKDIR /home/joey
 
-# run ansible install script
+# run install script
 COPY --chown=joey:joey . /home/joey/dotfiles/
 
 ENV TERM=screen-256color
-RUN ./dotfiles/ansible/install dev
+RUN ./dotfiles/install/dev
 
 # start container in zsh
 ENTRYPOINT ["/bin/zsh"]

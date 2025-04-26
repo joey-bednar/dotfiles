@@ -7,19 +7,19 @@ all:
 
 .PHONY: personal
 personal:
-	ansible/install personal
+	./install/personal
 
 .PHONY: work
 work:
-	ansible/install work
+	./install/work
 
 .PHONY: dev
 dev:
-	ansible/install dev
+	./install/dev
 
 .PHONY: container
 container:
-	ansible/install container
+	./install/container
 
 .PHONY: format
 format:

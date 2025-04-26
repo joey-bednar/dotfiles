@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -euo pipefail
+IFS=$'\n\t'
+
+pushd "$HOME/dotfiles/install/jobs"
+bash ./update
+bash ./zsh
+bash ./fzf
+bash ./tmux
+bash ./nvim
+bash ./node
+bash ./git
+bash ./dotfiles
+popd
