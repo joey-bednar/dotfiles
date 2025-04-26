@@ -171,7 +171,7 @@ popd
 #################### DOTFILES ####################
 
 # Install dotfiles dependencies
-sudo apt install -y stow fontconfig make
+sudo apt install -y stow fontconfig make yarn
 
 # Make dotfiles
 rm $HOME/.zshrc
