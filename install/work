@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# set -euo pipefail
-# IFS=$'\n\t'
+set -euo pipefail
+IFS=$'\n\t'
 
 USERNAME=$(whoami)
 
@@ -39,7 +39,7 @@ git -C "$dest" pull || git clone "$repo" "$dest"
 
 # Install fzf
 # pushd $HOME/.fzf
-yes | $HOME/.fzf/install
+yes | $HOME/.fzf/install && true
 # popd
 
 #################### TMUX ####################
@@ -65,6 +65,7 @@ if [[ ! -f $HOME/.local/bin/nvim ]]; then
     ./nvim.appimage --appimage-extract
     popd
     sudo mv $HOME/squashfs-root $HOME/.nvim
+    mkdir -p $HOME/.local/bin/
     ln -s $HOME/.nvim/AppRun $HOME/.local/bin/nvim
     rm $HOME/nvim.appimage
 fi
