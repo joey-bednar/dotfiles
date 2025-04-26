@@ -6,7 +6,7 @@ IFS=$'\n\t'
 USERNAME=$(whoami)
 
 # Disable auto upgrade
-sudo apt remove -y unattended-upgrade
+sudo apt remove -y unattended-upgrade || true
 
 # Update packages
 sudo apt update -y
