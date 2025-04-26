@@ -1,7 +1,7 @@
 #!/bin/bash
 
-set -euo pipefail
-IFS=$'\n\t'
+# set -euo pipefail
+# IFS=$'\n\t'
 
 USERNAME=$(whoami)
 
@@ -39,7 +39,7 @@ git -C "$dest" pull || git clone "$repo" "$dest"
 
 # Install fzf
 # pushd $HOME/.fzf
-yes | $HOME/.fzf/install --all || [ $1 -eq 141 ] && return 0
+yes | $HOME/.fzf/install
 # popd
 
 #################### TMUX ####################
