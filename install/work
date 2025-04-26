@@ -4,7 +4,7 @@ set -euo pipefail
 IFS=$'\n\t'
 
 bash $HOME/dotfiles/install/jobs/update
-bash $HOME/dotfiles/install/jobs/bash
+bash $HOME/dotfiles/install/jobs/zsh
 bash $HOME/dotfiles/install/jobs/fzf
 bash $HOME/dotfiles/install/jobs/tmux
 bash $HOME/dotfiles/install/jobs/nvim
