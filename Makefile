@@ -11,7 +11,7 @@ personal:
 
 .PHONY: work
 work:
-	ansible/install work
+	./install/work
 
 .PHONY: dev
 dev:

@@ -1,0 +1,43 @@
+#!/bin/bash
+
+set -euo pipefail
+IFS=$'\n\t'
+
+# Set allowed preset names to all other file names in current directory
+presets=($(ls -I $(basename $0) -p | grep -v /))
+
+for f in "${presets[@]}"; do
+    echo $f
+done
+
+if [[ $# -eq 0 ]]; then
+
+    PS3="Enter a number: "
+
+    # Use menu to select preset
+    select preset in "${presets[@]}"; do
+        if [[ ! $REPLY =~ ^[0-9]+$ ]]; then
+            echo "Input must be a number 1-${#presets[@]}"
+            exit 1
+        elif [[ -f ./$preset ]]; then
+            ./$preset
+            exit 0
+        else
+            echo "Invalid selection: $REPLY"
+            exit 1
+        fi
+    done
+
+elif [[ $# -eq 1 ]]; then
+
+    # Run input preset if valid
+    for preset in "${presets[@]}"; do
+        [[ $1 == $preset ]] && ./$preset && exit 0
+    done
+    echo "Invalid preset: $1"
+    exit 1
+
+else
+    echo "Invalid arguments."
+    exit 1
+fi
