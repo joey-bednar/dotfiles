@@ -187,4 +187,4 @@ mkdir -p $HOME/personal $HOME/work
 command -v nvim &> /dev/null && nvim --headless "+Lazy! sync" +qa
 
 # Source .zshrc
-command -v zsh &> /dev/null && zsh $HOME/.zshrc
+command -v zsh &> /dev/null && yes | zsh $HOME/.zshrc
