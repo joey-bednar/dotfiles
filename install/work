@@ -151,10 +151,11 @@ USERNAME=$(whoami)
 
 # Install Kubernetes
 sudo apt install -y curl
+
 mkdir -p "$HOME/.local/bin"
 pushd "$HOME/.local/bin"
-curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" -o "$HOME/.local/bin/kubectl"
-chmod +x kubectl
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+chmod +x ./kubectl
 popd
 
 # Install Helm
