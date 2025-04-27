@@ -16,5 +16,6 @@ bash ./apps
 bash ./i3
 bash ./git
 bash ./k8s
+bash ./keyboard
 bash ./dotfiles
 popd
