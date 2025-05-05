@@ -4,4 +4,4 @@ set -euo pipefail
 IFS=$'\n\t'
 
 # Swap ctrl and caps lock
-setxkbmap -option ctrl:nocaps
+setxkbmap -option "ctrl:swapcaps"
