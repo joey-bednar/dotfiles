@@ -70,6 +70,8 @@ return {
 			mapping = cmp.mapping.preset.insert({
 				["<C-k>"] = cmp.mapping.select_prev_item(),
 				["<C-j>"] = cmp.mapping.select_next_item(),
+				["<C-p>"] = cmp.config.disable,
+				["<C-n>"] = cmp.config.disable,
 
 				["<C-b>"] = cmp.mapping.scroll_docs(-4),
 				["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -98,7 +100,10 @@ return {
 
 		-- `/` cmdline setup.
 		cmp.setup.cmdline("/", {
-			mapping = cmp.mapping.preset.cmdline(),
+			mapping = cmp.mapping.preset.cmdline({
+				["<C-p>"] = cmp.config.disable,
+				["<C-n>"] = cmp.config.disable,
+			}),
 			sources = {
 				{ name = "buffer" },
 			},
@@ -106,7 +111,10 @@ return {
 
 		-- `:` cmdline setup.
 		cmp.setup.cmdline(":", {
-			mapping = cmp.mapping.preset.cmdline(),
+			mapping = cmp.mapping.preset.cmdline({
+				["<C-p>"] = cmp.config.disable,
+				["<C-n>"] = cmp.config.disable,
+			}),
 			sources = cmp.config.sources({
 				{ name = "path" },
 			}, {

@@ -7,6 +7,7 @@ USERNAME=$(whoami)
 
 git config --global user.name "Joseph Bednar"
 git config --global push.autoSetupRemote true
+git config --global push.default current
 git config --global credential.helper store
 git config --global fetch.prune true
 git config --global core.editor nvim

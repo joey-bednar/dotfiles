@@ -102,6 +102,14 @@ return {
 			},
 		})
 
+		-- Fix goto definition in C
+		lspconfig.clangd.setup({
+			cmd = {
+				"clangd",
+				"--offset-encoding=utf-16",
+			},
+		})
+
 		-- Is Helm file if Chart.yaml in current or parent dirs
 		local function is_helm_file(path)
 			local check = vim.fs.find("Chart.yaml", { path = vim.fs.dirname(path), upward = true })

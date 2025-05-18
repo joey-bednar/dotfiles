@@ -1,25 +1,74 @@
 #!/bin/bash
 
-# check if in git repo
+issue=""
+
+# Set data storage location
+data_dir="/tmp/.rcommit"
+
+# Check if in git repo
 if ! git rev-parse --git-dir > /dev/null 2>&1; then
     echo "Not a git repository."
     exit 1
 fi
 
-# get branch name
+# Get repo and branch
 branch=$(git branch --show-current)
+reponame=$(basename $(git rev-parse --show-toplevel))
 
-# regex pattern for "issue-label-char/issue-num/optional description"
-branch_pattern="^[a-z]/[0-9]+(/[a-zA-Z0-9]+$|$)"
+repo_dir="${data_dir}/${reponame}"
+data_file="${data_dir}/${reponame}/${branch:2}"
 
-# check branch name format matches regex
-if [[ ! "$branch" =~ $branch_pattern ]]; then
-    echo "Not an issue linked branch."
+if [[ "${1}" == "help" ]]; then
+    echo "Usage: rcommit [COMMAND|COMMIT MSG]"
+    echo "  Creates a git commit that automatically references the branch issue number."
+    echo ""
+    echo "Commands:"
+    echo "  help    Display this help menu."
+    echo "  delete  Delete saved issue associated with the current repository and branch."
+    echo "  prune   Delete all saved issues associated with the current git repository."
+    echo "  clean   Delete all saved issues for all branches in all repositories."
+    echo ""
+    echo "Example commit:"
+    echo '  rcommit "added TLS support"'
     exit 0
+# Delete branch data
+elif [[ "${1}" == "delete" ]]; then
+    [ -f ${data_file} ] && rm ${data_file}
+# Delete repo data
+elif [[ "${1}" == "prune" ]]; then
+    [ -d ${repo_dir} ] && rm -rf ${repo_dir}
+# Delete everything
+elif [[ "${1}" == "clean" ]]; then
+    [ -f ${data_dir} ] && rm -rf ${data_dir}
 fi
 
-# extract issue number from branch name
-issue=$(echo "$branch" | sed 's/^[a-z]\/\([0-9]*\).*/\1/')
+# Release branch pattern example: r/12.5.1
+# Issue branch pattern examples: f/37 or c/72/implement-linting
+release_pattern="^r/[0-9]+\.[0-9]+\.[0.9]+$"
+branch_pattern="^[a-z]/[0-9]+(/[a-zA-Z0-9]+$|$)"
+
+if [[ "$branch" =~ $release_pattern ]]; then
+    # Storage file and directory
+    if [[ -f ${data_file} ]]; then
+        # Get issue number from storage
+        issue=$(cat ${data_file})
+    else
+        # Get issue number from user input
+        read -p "Enter the issue number: " issue
+
+        # Save issue number
+        mkdir -p "${repo_dir}"
+        echo $issue > "$data_file"
+    fi
+
+elif [[ "$branch" =~ $branch_pattern ]]; then
+    # Get issue from branch name
+    issue=$(echo "$branch" | sed 's/^[a-z]\/\([0-9]*\).*/\1/')
+
+else
+    echo "Unknown branch format."
+    exit 1
+fi
 
 if [[ -z $1 ]]; then
     echo "Empty commit message."
