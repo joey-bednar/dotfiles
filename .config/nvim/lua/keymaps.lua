@@ -22,6 +22,9 @@ vim.api.nvim_create_user_command(
 	{ desc = "Sum all rows in buffer." }
 )
 
+-- Correct typo :w' to :w
+vim.cmd("cabbrev w' w")
+
 -- File explorer
 vim.keymap.set("n", "<leader>pv", "<cmd>NvimTreeToggle<CR>", { desc = "NvimTree toggle." })
 

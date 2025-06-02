@@ -18,7 +18,7 @@ return {
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-path",
 
-		-- TODO: switch to luasnip and add ctrl-k keybind
+		-- TODO: switch to luasnip
 
 		-- Adds a number of user-friendly snippets
 		-- 'rafamadriz/friendly-snippets',
