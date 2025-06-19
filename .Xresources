@@ -1,30 +1,30 @@
 ! Xterm Configuration
 
 ! Set background and foreground colors
-XTerm*background: #282828
-XTerm*foreground: #ebdbb2
+xterm*background: #282828
+xterm*foreground: #ebdbb2
 
 ! Optional: set cursor color
-XTerm*cursorColor: #928374
+xterm*cursorColor: #928374
 
 ! Optional: font settings
-! XTerm*faceName: Monospace
-XTerm*faceName: DejaVuSansM Nerd Font Mono
-XTerm*faceSize: 11
+! xterm*faceName: Monospace
+xterm*faceName: DejaVuSansM Nerd Font Mono
+xterm*faceSize: 11
 
-XTerm*color0: #282828
-XTerm*color1: #fb4934
-XTerm*color2: #b8bb26
-XTerm*color3: #fabd2d
-XTerm*color4: #83a598
-XTerm*color5: #d3869b
-XTerm*color6: #8ec07c
-XTerm*color7: #a89984
-XTerm*color8: #928374
-XTerm*color9: #fb4934
-XTerm*color10: #b8bb26
-XTerm*color11: #fabd2d
-XTerm*color12: #83a598
-XTerm*color13: #d3869b
-XTerm*color14: #8ec07c
-XTerm*color15: #a89984
+xterm*color0: #282828
+xterm*color1: #fb4934
+xterm*color2: #b8bb26
+xterm*color3: #fabd2d
+xterm*color4: #83a598
+xterm*color5: #d3869b
+xterm*color6: #8ec07c
+xterm*color7: #a89984
+xterm*color8: #928374
+xterm*color9: #fb4934
+xterm*color10: #b8bb26
+xterm*color11: #fabd2d
+xterm*color12: #83a598
+xterm*color13: #d3869b
+xterm*color14: #8ec07c
+xterm*color15: #a89984
