@@ -52,13 +52,13 @@ return {
 			require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 		lsp_capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-		require("mason-lspconfig").setup_handlers({
-			function(server_name)
-				lspconfig[server_name].setup({
-					capabilities = lsp_capabilities,
-				})
-			end,
-		})
+		-- require("mason-lspconfig").setup_handlers({
+		-- 	function(server_name)
+		-- 		lspconfig[server_name].setup({
+		-- 			capabilities = lsp_capabilities,
+		-- 		})
+		-- 	end,
+		-- })
 
 		-- Lua/nvim config LSP
 		require("neodev").setup({

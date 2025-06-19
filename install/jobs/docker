@@ -31,6 +31,6 @@ sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin d
 
 if ! getent group "docker" > /dev/null 2>&1; then
     sudo groupadd docker
-    sudo usermod -aG docker $USERNAME
+    sudo usermod -aG docker "$USERNAME"
     newgrp docker
 fi

@@ -7,8 +7,8 @@ IFS=$'\n\t'
 sudo apt install -y stow fontconfig make yarn
 
 # Make dotfiles
-rm $HOME/.zshrc
-pushd $HOME/dotfiles
+rm "$HOME/.zshrc"
+pushd "$HOME/dotfiles"
 make stow
 make setup
 popd
@@ -17,10 +17,12 @@ popd
 fc-cache -f -v
 
 # Create directories
-mkdir -p $HOME/personal $HOME/work
+mkdir -p "$HOME/personal" "$HOME/work"
 
 # Source .zshrc
-command -v zsh &> /dev/null && yes | zsh $HOME/.zshrc || if [[ $? -eq 141 ]]; then true; else false; fi
+if command -v zsh &> /dev/null; then
+    yes | zsh "$HOME/.zshrc" || if [[ $? -eq 141 ]]; then true; else false; fi
+fi
 
 # Install Neovim plugins
-command -v $HOME/.local/bin/nvim &> /dev/null && $HOME/.local/bin/nvim --headless "+Lazy! sync" +qa
+command -v "$HOME/.local/bin/nvim" &> /dev/null && "$HOME/.local/bin/nvim" --headless "+Lazy! sync" +qa

@@ -3,10 +3,8 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-USERNAME=$(whoami)
-
 # Install i3 and dependencies
 sudo apt install -y i3 picom feh rofi dunst polybar acpi brightnessctl net-tools lm-sensors
 
 # Configure brightnessctl
-sudo chmod +s $(which brightnessctl)
+sudo chmod +s "$(which brightnessctl)"

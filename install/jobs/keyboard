@@ -3,5 +3,7 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-# Swap ctrl and caps lock
-setxkbmap -option "ctrl:swapcaps"
+# Swap ctrl and caps lock if not already done by keyboard firmware
+if ! lsusb | grep -q "Keychron Q11"; then
+    setxkbmap -option "ctrl:swapcaps"
+fi

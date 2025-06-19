@@ -3,18 +3,22 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+NEOVIM_VERSION="0.11.2"
+NEOVIM_RELEASE_URL="https://github.com/neovim/neovim/releases/download/v${NEOVIM_VERSION}/nvim-linux-x86_64.appimage"
+
 # Install Neovim dependencies
 sudo apt install -y ripgrep npm curl cargo python3-venv
 
 # Install Neovim AppImage
 if [[ ! -f $HOME/.local/bin/nvim ]]; then
-    curl -L "https://github.com/neovim/neovim/releases/download/v0.10.4/nvim-linux-x86_64.appimage" -o "$HOME/nvim.appimage"
-    chmod +x $HOME/nvim.appimage
-    pushd $HOME
+    curl -L "$NEOVIM_RELEASE_URL" -o "$HOME/nvim.appimage"
+    chmod +x "$HOME/nvim.appimage"
+    pushd "$HOME"
     ./nvim.appimage --appimage-extract
     popd
-    sudo mv $HOME/squashfs-root $HOME/.nvim
-    mkdir -p $HOME/.local/bin/
-    ln -s $HOME/.nvim/AppRun $HOME/.local/bin/nvim
-    rm $HOME/nvim.appimage
+    rm -rf "$HOME/.nvim" || true
+    sudo mv "$HOME/squashfs-root" "$HOME/.nvim"
+    mkdir -p "$HOME/.local/bin/"
+    ln -s "$HOME/.nvim/AppRun" "$HOME/.local/bin/nvim"
+    rm "$HOME/nvim.appimage"
 fi

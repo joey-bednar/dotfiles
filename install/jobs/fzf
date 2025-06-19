@@ -9,4 +9,4 @@ dest="$HOME/.fzf"
 git -C "$dest" pull || git clone "$repo" "$dest"
 
 # Install fzf
-yes | $HOME/.fzf/install || if [[ $? -eq 141 ]]; then true; else false; fi
+yes | "$HOME/.fzf/install" || if [[ $? -eq 141 ]]; then true; else false; fi
