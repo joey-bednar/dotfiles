@@ -1,0 +1,27 @@
+#!/bin/bash
+
+set -euo pipefail
+IFS=$'\n\t'
+
+if ! cat /etc/os-release | grep "ID=arch"; then
+	echo "Not running on Arch Linux"
+	exit 1
+fi
+
+sudo pacman -Syu --noconfirm
+
+# sudo pacman -Syu git --noconfirm
+# sudo pacman -Syu linux-firmware --noconfirm
+# sudo pacman -Syu vim --noconfirm
+# sudo pacman -Syu less --noconfirm
+# sudo pacman -Syu unzip --noconfirm
+# sudo pacman -Syu xorg-xrandr --noconfirm
+# sudo pacman -Syu xorg-xinput --noconfirm
+
+# Install yay
+sudo pacman -S --needed base-devel git --noconfirm
+git clone https://aur.archlinux.org/yay.git
+pushd yay
+makepkg -si --noconfirm
+popd
+rm -rf yay

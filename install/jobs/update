@@ -3,12 +3,19 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-# Finish pending upgrades
-sudo dpkg --configure -a
+if cat /etc/os-release | grep -q "ID=ubuntu"; then
 
-# Disable auto upgrade
-sudo apt remove -y unattended-upgrade || true
+	# Finish pending upgrades
+	sudo dpkg --configure -a
 
-# Update packages
-sudo apt update -y
-sudo apt upgrade -y
+	# Disable auto upgrade
+	sudo apt remove -y unattended-upgrade || true
+
+	# Update packages
+	sudo apt update -y
+	sudo apt upgrade -y
+
+
+elif cat /etc/os-release | grep -q "ID=arch"; then
+	sudo pacman -Syu --noconfirm
+fi

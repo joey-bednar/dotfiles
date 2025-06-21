@@ -1,28 +1,32 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 os=$(uname)
-KITTY_PATH="$HOME/dotfiles/.config/kitty"
-I3_PATH="$HOME/dotfiles/.config/i3"
-POLYBAR_PATH="$HOME/dotfiles/.config/polybar"
+KITTY_PATH=".config/kitty"
+I3_PATH=".config/i3"
+POLYBAR_PATH=".config/polybar"
+
+__create_link() {
+    ln -sf "$HOME/dotfiles/$1" "$HOME/$2"
+}
 
 # Linux
 if [[ $os == "Linux" ]]; then
     echo "Configuring Kitty for Ubuntu"
-    ln -sf "$KITTY_PATH/ubuntu.conf" "$KITTY_PATH/kitty.conf"
+    __create_link "$KITTY_PATH/ubuntu.conf" "$KITTY_PATH/kitty.conf"
 
 
     echo "Configuring i3 for Ubuntu"
-    if [[ $(hostname) == "joey-PC" ]]; then
+    if [[ $(cat /etc/hostname) == "joey-PC" ]]; then
         echo "Configuring i3 for Desktop"
-        ln -sf "$I3_PATH/desktop.conf" "$I3_PATH/config"
-        ln -sf "$POLYBAR_PATH/desktop.ini" "$POLYBAR_PATH/config.ini"
-    elif [[ $(hostname) == "joey-laptop" ]]; then
+        __create_link "$I3_PATH/desktop.conf" "$I3_PATH/config"
+        __create_link "$POLYBAR_PATH/desktop.ini" "$POLYBAR_PATH/config.ini"
+    elif [[ $(cat /etc/hostname) == "joey-laptop" ]]; then
         echo "Configuring i3 for Laptop"
-        ln -sf "$I3_PATH/laptop.conf" "$I3_PATH/config"
-        ln -sf "$POLYBAR_PATH/laptop.ini" "$POLYBAR_PATH/config.ini"
+        __create_link "$I3_PATH/laptop.conf" "$I3_PATH/config"
+        __create_link "$POLYBAR_PATH/laptop.ini" "$POLYBAR_PATH/config.ini"
     else
         echo "Configuring i3 for Default"
-        ln -sf "$I3_PATH/default.conf" "$I3_PATH/config"
+        __create_link "$I3_PATH/default.conf" "$I3_PATH/config"
     fi
 
     # if [[ -n $(command -v conda) ]]; then
@@ -33,7 +37,7 @@ if [[ $os == "Linux" ]]; then
 # Mac
 elif [[ $os == "Darwin" ]]; then
     echo "Configuring Kitty for macOS"
-    ln -sf "$KITTY_PATH/macos.conf" "$KITTY_PATH/kitty.conf"
+    __create_link "$KITTY_PATH/macos.conf" "$KITTY_PATH/kitty.conf"
 
     # if [[ -n $(command -v /opt/anaconda3/bin/conda) ]]; then
     #     echo "Configuring Conda for macOS"

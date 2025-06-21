@@ -1,4 +1,7 @@
 configuration {
+    /* Unmap ctrl-c */
+    kb-secondary-copy: "";
+
     /* Add ctrl+c to quit */
     kb-cancel: "Escape,Control+g,Control+bracketleft,Control+c";
 

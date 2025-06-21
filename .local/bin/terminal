@@ -1,3 +1,9 @@
 #!/bin/bash
 
-kitty $@ || gnome-terminal $@
+if command -v kitty >/dev/null 2>&1; then
+    exec kitty &
+elif command -v xterm >/dev/null 2>&1; then
+    exec xterm &
+else
+    exec i3-sensible-terminal &
+fi

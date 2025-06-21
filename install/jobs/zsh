@@ -6,13 +6,17 @@ IFS=$'\n\t'
 USERNAME=$(whoami)
 
 # Install zsh
-sudo apt install -y zsh
+if cat /etc/os-release | grep -q "ID=ubuntu"; then
+	sudo apt install -y zsh
+elif cat /etc/os-release | grep -q "ID=arch"; then
+	sudo pacman -Syu zsh --noconfirm
+fi
 
 # Install ohmyzsh
 [ -d "$HOME/.oh-my-zsh" ] || sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Make zsh default
-sudo chsh -s $(which zsh) $USERNAME
+yes | sudo chsh -s $(which zsh) $USERNAME || if [[ $? -eq 141 ]]; then true; else false; fi
 
 # Install zsh-autosuggestions
 repo="https://github.com/zsh-users/zsh-autosuggestions.git"

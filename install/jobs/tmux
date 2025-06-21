@@ -4,7 +4,11 @@ set -euo pipefail
 IFS=$'\n\t'
 
 # Install tmux
-sudo apt install -y tmux
+if cat /etc/os-release | grep -q "ID=ubuntu"; then
+	sudo apt install -y tmux
+elif cat /etc/os-release | grep -q "ID=arch"; then
+	sudo pacman -Syu tmux --noconfirm
+fi
 
 # Install tpm
 repo="https://github.com/tmux-plugins/tpm"

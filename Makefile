@@ -27,11 +27,11 @@ format:
 
 .PHONY: stow
 stow:
-	stow . --restow
 	find ${HOME} -maxdepth 1 -xtype l -delete
 	find ${HOME}/.config/ -xtype l -delete
 	find ${HOME}/.fonts/ -xtype l -delete
 	find ${HOME}/.local/ -xtype l -delete
+	stow . --restow
 
 .PHONY: setup
 setup:

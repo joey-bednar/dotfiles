@@ -6,8 +6,13 @@ IFS=$'\n\t'
 NEOVIM_VERSION="0.11.2"
 NEOVIM_RELEASE_URL="https://github.com/neovim/neovim/releases/download/v${NEOVIM_VERSION}/nvim-linux-x86_64.appimage"
 
+
 # Install Neovim dependencies
+if cat /etc/os-release | grep -q "ID=ubuntu"; then
 sudo apt install -y ripgrep npm curl cargo python3-venv
+elif cat /etc/os-release | grep -q "ID=arch"; then
+sudo pacman -Syu ripgrep npm curl cargo python-virtualenv --noconfirm
+fi
 
 # Install Neovim AppImage
 if [[ ! -f $HOME/.local/bin/nvim ]]; then
