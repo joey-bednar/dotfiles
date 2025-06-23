@@ -25,3 +25,6 @@ pushd yay
 makepkg -si --noconfirm
 popd
 rm -rf yay
+
+# === Firefox ===
+# Themes -> Extensions -> Dark

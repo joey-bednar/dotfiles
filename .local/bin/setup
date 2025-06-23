@@ -15,6 +15,13 @@ if [[ $os == "Linux" ]]; then
     __create_link "$KITTY_PATH/ubuntu.conf" "$KITTY_PATH/kitty.conf"
 
 
+    if cat /etc/os-release | grep "ID=arch"; then
+        __create_link "wallpapers/gruvbox_arch.png" "wallpapers/desktop_background.png"
+    elif cat /etc/os-release | grep "ID=ubuntu"; then
+        __create_link "wallpapers/gruvbox_ubuntu.png" "wallpapers/desktop_background.png"
+    fi
+
+
     echo "Configuring i3 for Ubuntu"
     if [[ $(cat /etc/hostname) == "joey-PC" ]]; then
         echo "Configuring i3 for Desktop"
