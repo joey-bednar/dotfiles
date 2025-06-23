@@ -1,14 +1,12 @@
 #!/bin/bash
 
 # Terminate already running bar instances
-# If all your bars have ipc enabled, you can use 
-# polybar-msg cmd quit
-# Otherwise you can use the nuclear option:
 killall -q polybar
 
+# Wait for all polybars to stop
+while pgrep -u $UID -x polybar > /dev/null; do sleep 1; done
 
 # Get network interfaces for WiFi/Ethernet polybar module
-
 # network interface used to reach Google public DNS (8.8.8.8)
 interface=$(ip route get 8.8.8.8 2>/dev/null | awk '{for(i=1;i<=NF;i++) if ($i=="dev") print $(i+1); exit}')
 
