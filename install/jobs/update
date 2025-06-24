@@ -14,8 +14,6 @@ if cat /etc/os-release | grep -q "ID=ubuntu"; then
 	# Update packages
 	sudo apt update -y
 	sudo apt upgrade -y
-
-
-elif cat /etc/os-release | grep -q "ID=arch"; then
-	sudo pacman -Syu --noconfirm
 fi
+
+# Skip updating Arch automatically to avoid breaking

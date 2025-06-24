@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# Install packages using pacman if not already installed
+__pacman_install() {
+    packages="$1"
+    for package in $packages; do
+        if ! sudo pacman -Q "$package"; then
+            sudo pacman -Syu "$package"
+        fi
+    done
+}
+
+# Return true if using Arch
+__is_arch() {
+    if cat /etc/os-release | grep -q "ID=arch"; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+# Return true if using Ubuntu
+__is_ubuntu() {
+    if cat /etc/os-release | grep -q "ID=ubuntu"; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+# Clone repo to location if doesn't exist
+__git_clone() {
+    repo="$1"
+    dest="$2"
+    git -C "$dest" pull || git clone "$repo" "$dest"
+}
+
+__git_clone "https://github.com/joey-bednar/dotfiles.git" "/tmp/dotfiles"
+
+
+__pacman_install "linux-firmware tmux"
