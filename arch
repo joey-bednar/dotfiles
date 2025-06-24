@@ -8,15 +8,25 @@ if ! cat /etc/os-release | grep "ID=arch"; then
 	exit 1
 fi
 
+# best guess partition
+# networkmanager
+# grub
+# i3wm, nvidia proprietary
+# add linux-firmware
+# los angeles time
+#
+# sudo pacman -Syu linux-firmware --noconfirm
+
 sudo pacman -Syu --noconfirm
 
 # sudo pacman -Syu git --noconfirm
-# sudo pacman -Syu linux-firmware --noconfirm
 # sudo pacman -Syu vim --noconfirm
 # sudo pacman -Syu less --noconfirm
 # sudo pacman -Syu unzip --noconfirm
 # sudo pacman -Syu xorg-xrandr --noconfirm
 # sudo pacman -Syu xorg-xinput --noconfirm
+# sudo pacman -Syu usbutils --noconfirm
+# sudo pacman -Syu xclip --noconfirm
 
 # Install yay
 sudo pacman -S --needed base-devel git --noconfirm
