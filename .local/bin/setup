@@ -23,7 +23,7 @@ if [[ $os == "Linux" ]]; then
 
 
     echo "Configuring i3 for Ubuntu"
-    if [[ $(cat /etc/hostname) == "joey-PC" ]]; then
+    if [[ $(cat /etc/hostname) == "joey-desktop" ]]; then
         echo "Configuring i3 for Desktop"
         __create_link "$I3_PATH/desktop.conf" "$I3_PATH/config"
         __create_link "$POLYBAR_PATH/desktop.ini" "$POLYBAR_PATH/config.ini"
