@@ -1,13 +1,3 @@
-#!/bin/bash
-
-set -euo pipefail
-IFS=$'\n\t'
-
-if ! cat /etc/os-release | grep "ID=arch"; then
-	echo "Not running on Arch Linux"
-	exit 1
-fi
-
 # best guess partition
 # networkmanager
 # grub
@@ -17,55 +7,8 @@ fi
 #
 # sudo pacman -Syu linux-firmware --noconfirm
 
-sudo pacman -Syu --noconfirm
-
-# sudo pacman -Syu git --noconfirm
-# sudo pacman -Syu vim --noconfirm
-# sudo pacman -Syu less --noconfirm
-# sudo pacman -Syu unzip --noconfirm
-# sudo pacman -Syu xorg-xrandr --noconfirm
-# sudo pacman -Syu xorg-xinput --noconfirm
-# sudo pacman -Syu usbutils --noconfirm
-# sudo pacman -Syu xclip --noconfirm
-
-# Install yay
-sudo pacman -S --needed base-devel git --noconfirm
-git clone https://aur.archlinux.org/yay.git
-pushd yay
-makepkg -si --noconfirm
-popd
-rm -rf yay
-
 # === Firefox ===
 # Themes -> Extensions -> Dark
 # Enable DRM for Youtube TV
 # Install Dark reader, proton pass, vimium
 # Disable password saving
-#
-# === Bluetooth ===
-#
-# https://wiki.archlinux.org/title/Bluetooth
-#
-# Install/Start bluetooth:
-# sudo pacman -Syu bluez bluez-utils
-# lsmod | grep btusb
-# systemctl start bluetooth.service
-# systemctl enable bluetooth.service
-# systemctl status bluetooth.service
-#
-# Install/start pulseaudio bluetooth:
-# sudo pacman -Syu pulseaudio pulseaudio-bluetooth
-# pulseaudio -k
-# systemctl --user restart pulseaudio
-# systemctl --user status pulseaudio
-#
-# Pair device:
-# bluetoothctl
-# power on
-# agent on
-# default-agent
-# scan on
-# pair XX:XX
-# trust XX:XX
-# connect XX:XX
-# exit

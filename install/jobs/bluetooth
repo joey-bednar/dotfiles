@@ -1,0 +1,36 @@
+#!/bin/bash
+
+set -euo pipefail
+IFS=$'\n\t'
+
+# https://wiki.archlinux.org/title/Bluetooth
+# 
+# Pair a device with bluetoothctl:
+# > bluetoothctl
+# > power on
+# > agent on
+# > default-agent
+# > scan on
+# > pair XX:XX
+# > trust XX:XX
+# > connect XX:XX
+# > exit
+
+if cat /etc/os-release | grep -q "ID=arch"; then
+
+    # Setup bluetooth service
+    if ! systemctl is-active -q bluetooth.service; then
+	sudo pacman -Syu bluez bluez-utils
+	systemctl start bluetooth.service
+	systemctl enable bluetooth.service
+    fi
+
+    # Setup audio
+    if ! systemctl is-active --user pulseaudio.service; then
+	sudo pacman -Syu pulseaudio pulseaudio-bluetooth
+	pulseaudio -k
+	systemctl --user restart pulseaudio
+    fi
+
+fi
+

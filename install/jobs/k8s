@@ -3,18 +3,28 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-# Install Kubernetes
-sudo apt install -y curl
 
-mkdir -p "$HOME/.local/bin"
-pushd "$HOME/.local/bin"
-curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-chmod +x ./kubectl
-popd
+if cat /etc/os-release | grep -q "ID=ubuntu"; then
 
-# Install Helm
-pushd /tmp/
-curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
-chmod +x get_helm.sh
-./get_helm.sh
-popd
+    # Install Kubernetes
+    sudo apt install -y curl
+
+    mkdir -p "$HOME/.local/bin"
+    pushd "$HOME/.local/bin"
+    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+    chmod +x ./kubectl
+    popd
+
+    # Install Helm
+    pushd /tmp/
+    curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+    chmod +x get_helm.sh
+    ./get_helm.sh
+    popd
+
+elif cat /etc/os-release | grep -q "ID=arch"; then
+
+    sudo pacman -Syu helm kubectl --noconfirm
+
+fi
+

@@ -3,4 +3,13 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-sudo snap install spotify
+if cat /etc/os-release | grep -q "ID=ubuntu"; then
+
+    sudo snap install spotify
+
+elif cat /etc/os-release | grep -q "ID=arch"; then
+
+	sudo pacman -Syu spotify-launcher --noconfirm
+
+fi
+

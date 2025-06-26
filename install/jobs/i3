@@ -9,7 +9,7 @@ IFS=$'\n\t'
 if cat /etc/os-release | grep -q "ID=ubuntu"; then
     sudo apt install -y i3 picom feh rofi dunst polybar acpi brightnessctl net-tools lm-sensors
 elif cat /etc/os-release | grep -q "ID=arch"; then
-    sudo pacman -Syu i3 picom feh rofi dunst polybar acpi brightnessctl net-tools --noconfirm
+    sudo pacman -Syu i3 picom feh rofi dunst polybar acpi brightnessctl net-tools xorg-xrandr xorg-xinput --noconfirm
 fi
 
 # Install i3 and dependencies

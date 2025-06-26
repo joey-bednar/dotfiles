@@ -3,4 +3,13 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-sudo apt install -y kitty
+if cat /etc/os-release | grep -q "ID=ubuntu"; then
+
+    sudo apt install -y kitty
+
+elif cat /etc/os-release | grep -q "ID=arch"; then
+
+    sudo pacman -Syu kitty --noconfirm
+
+fi
+

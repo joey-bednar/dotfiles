@@ -9,9 +9,9 @@ NEOVIM_RELEASE_URL="https://github.com/neovim/neovim/releases/download/v${NEOVIM
 
 # Install Neovim dependencies
 if cat /etc/os-release | grep -q "ID=ubuntu"; then
-sudo apt install -y ripgrep npm curl cargo python3-venv
+    sudo apt install -y ripgrep npm curl cargo python3-venv
 elif cat /etc/os-release | grep -q "ID=arch"; then
-sudo pacman -Syu ripgrep npm curl cargo python-virtualenv --noconfirm
+    sudo pacman -Syu ripgrep npm curl cargo python-virtualenv --noconfirm
 fi
 
 # Install Neovim AppImage
