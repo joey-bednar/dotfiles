@@ -4,18 +4,20 @@ set -euo pipefail
 IFS=$'\n\t'
 
 pushd "$HOME/dotfiles/install/jobs"
-bash ./update
-bash ./zsh
-bash ./fzf
-bash ./tmux
-bash ./nvim
-bash ./node
-bash ./docker
-bash ./python
-bash ./apps
-bash ./i3
-bash ./git
-bash ./k8s
-bash ./keyboard
-bash ./dotfiles
+source ./update
+source ./zsh
+source ./fzf
+source ./tmux
+source ./nvim
+source ./node
+source ./docker
+source ./python
+source ./gimp
+source ./kitty
+source ./spotify
+source ./i3
+source ./git
+source ./k8s
+source ./keyboard
+source ./dotfiles
 popd

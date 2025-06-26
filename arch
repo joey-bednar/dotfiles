@@ -41,3 +41,31 @@ rm -rf yay
 # Enable DRM for Youtube TV
 # Install Dark reader, proton pass, vimium
 # Disable password saving
+#
+# === Bluetooth ===
+#
+# https://wiki.archlinux.org/title/Bluetooth
+#
+# Install/Start bluetooth:
+# sudo pacman -Syu bluez bluez-utils
+# lsmod | grep btusb
+# systemctl start bluetooth.service
+# systemctl enable bluetooth.service
+# systemctl status bluetooth.service
+#
+# Install/start pulseaudio bluetooth:
+# sudo pacman -Syu pulseaudio pulseaudio-bluetooth
+# pulseaudio -k
+# systemctl --user restart pulseaudio
+# systemctl --user status pulseaudio
+#
+# Pair device:
+# bluetoothctl
+# power on
+# agent on
+# default-agent
+# scan on
+# pair XX:XX
+# trust XX:XX
+# connect XX:XX
+# exit

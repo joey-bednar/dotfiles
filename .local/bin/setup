@@ -16,9 +16,9 @@ if [[ $os == "Linux" ]]; then
 
 
     if cat /etc/os-release | grep "ID=arch"; then
-        __create_link "wallpapers/gruvbox_arch.png" "wallpapers/desktop_background.png"
+        __create_link ".wallpapers/gruvbox_arch.png" ".wallpapers/desktop_background.png"
     elif cat /etc/os-release | grep "ID=ubuntu"; then
-        __create_link "wallpapers/gruvbox_ubuntu.png" "wallpapers/desktop_background.png"
+        __create_link ".wallpapers/gruvbox_ubuntu.png" ".wallpapers/desktop_background.png"
     fi
 
 

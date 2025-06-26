@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Install packages using pacman if not already installed
+# Usage: __pacman_install package1 package2 ...
 __pacman_install() {
     packages="$1"
     for package in $packages; do
@@ -29,13 +30,9 @@ __is_ubuntu() {
 }
 
 # Clone repo to location if doesn't exist
+# Usage: __git_clone repo path
 __git_clone() {
     repo="$1"
     dest="$2"
     git -C "$dest" pull || git clone "$repo" "$dest"
 }
-
-__git_clone "https://github.com/joey-bednar/dotfiles.git" "/tmp/dotfiles"
-
-
-__pacman_install "linux-firmware tmux"

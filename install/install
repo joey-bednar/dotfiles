@@ -6,10 +6,6 @@ IFS=$'\n\t'
 # Set allowed preset names to all other file names in current directory
 presets=($(ls -I $(basename $0) -p | grep -v /))
 
-for f in "${presets[@]}"; do
-    echo $f
-done
-
 if [[ $# -eq 0 ]]; then
 
     PS3="Enter a number: "
