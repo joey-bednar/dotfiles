@@ -19,6 +19,7 @@ source ./spotify
 source ./i3
 source ./git
 source ./k8s
+source ./firefox
 source ./keyboard
 source ./dotfiles
 popd

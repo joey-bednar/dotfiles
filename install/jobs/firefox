@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -euo pipefail
+IFS=$'\n\t'
+
+if cat /etc/os-release | grep -q "ID=ubuntu"; then
+
+    sudo apt install -y firefox
+
+elif cat /etc/os-release | grep -q "ID=arch"; then
+
+    sudo pacman -Syu firefox --noconfirm
+
+fi
+
