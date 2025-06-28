@@ -9,7 +9,7 @@ if __is_ubuntu; then
 
 elif __is_arch; then
     # https://wiki.archlinux.org/title/VirtualBox
-    __pacman_install virtualbox virtualbox-host-modules-arch
+    __pacman_install virtualbox-host-modules-arch virtualbox 
 
     echo "Reboot and run \"sudo modprobe vboxdrv\" for Virtualbox to finish installing."
 
