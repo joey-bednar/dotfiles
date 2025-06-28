@@ -13,6 +13,10 @@ personal:
 work:
 	./install/work
 
+.PHONY: test
+test:
+	./install/test
+
 .PHONY: dev
 dev:
 	./install/dev

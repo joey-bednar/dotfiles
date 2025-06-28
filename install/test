@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -euo pipefail
+IFS=$'\n\t'
+
+pushd "$HOME/dotfiles/install/jobs"
+source ./core
+popd

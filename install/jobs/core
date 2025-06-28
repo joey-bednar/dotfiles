@@ -9,8 +9,7 @@ IFS=$'\n\t'
 # Install packages using pacman if not already installed
 # Usage: __pacman_install package1 package2 ...
 __pacman_install() {
-    packages="$1"
-    for package in $packages; do
+    for package in "$@"; do
         if ! sudo pacman -Q "$package"; then
             sudo pacman -Syu "$package" --noconfirm
         fi
@@ -19,7 +18,7 @@ __pacman_install() {
 
 # Return true if using Arch
 __is_arch() {
-    if cat /etc/os-release | grep -q "ID=arch"; then
+    if grep -q "ID=arch" /etc/os-release; then
         return 0
     else
         return 1
@@ -28,7 +27,7 @@ __is_arch() {
 
 # Return true if using Ubuntu
 __is_ubuntu() {
-    if cat /etc/os-release | grep -q "ID=ubuntu"; then
+    if grep -q "ID=ubuntu" /etc/os-release; then
         return 0
     else
         return 1
