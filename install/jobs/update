@@ -3,7 +3,7 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-if cat /etc/os-release | grep -q "ID=ubuntu"; then
+if __is_ubuntu; then
 
 	# Finish pending upgrades
 	sudo dpkg --configure -a

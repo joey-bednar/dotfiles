@@ -4,7 +4,7 @@ set -euo pipefail
 IFS=$'\n\t'
 
 
-if cat /etc/os-release | grep -q "ID=ubuntu"; then
+if __is_ubuntu; then
 
     # Install Kubernetes
     sudo apt install -y curl
@@ -22,9 +22,9 @@ if cat /etc/os-release | grep -q "ID=ubuntu"; then
     ./get_helm.sh
     popd
 
-elif cat /etc/os-release | grep -q "ID=arch"; then
+elif __is_arch; then
 
-    sudo pacman -Syu helm kubectl --noconfirm
+    __pacman_install helm kubectl
 
 fi
 

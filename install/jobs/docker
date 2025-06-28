@@ -5,7 +5,7 @@ IFS=$'\n\t'
 
 USERNAME=$(whoami)
 
-if cat /etc/os-release | grep -q "ID=ubuntu"; then
+if __is_ubuntu; then
 
     # Install Docker dependencies
     sudo apt install -y curl ca-certificates
@@ -30,10 +30,10 @@ if cat /etc/os-release | grep -q "ID=ubuntu"; then
     sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 
-elif cat /etc/os-release | grep -q "ID=arch"; then
+elif __is_arch; then
 
     # Install docker engine
-	sudo pacman -Syu docker --noconfirm
+    __pacman_install docker
 
 fi
 

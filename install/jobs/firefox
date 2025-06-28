@@ -3,13 +3,13 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-if cat /etc/os-release | grep -q "ID=ubuntu"; then
+if __is_ubuntu; then
 
     sudo apt install -y firefox
 
-elif cat /etc/os-release | grep -q "ID=arch"; then
+elif __is_arch; then
 
-    sudo pacman -Syu firefox --noconfirm
+    __pacman_install firefox
 
 fi
 

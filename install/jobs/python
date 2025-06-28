@@ -4,7 +4,7 @@ set -euo pipefail
 IFS=$'\n\t'
 
 
-if cat /etc/os-release | grep -q "ID=ubuntu"; then
+if __is_ubuntu; then
 
     # Install python packages
     sudo apt install -y python3 python3-pip

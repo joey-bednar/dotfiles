@@ -16,18 +16,18 @@ IFS=$'\n\t'
 # > connect XX:XX
 # > exit
 
-if cat /etc/os-release | grep -q "ID=arch"; then
+if __is_arch; then
 
     # Setup bluetooth service
     if ! systemctl is-active -q bluetooth.service; then
-	sudo pacman -Syu bluez bluez-utils
+	__pacman_install bluez bluez-utils
 	systemctl start bluetooth.service
 	systemctl enable bluetooth.service
     fi
 
     # Setup audio
     if ! systemctl is-active --user pulseaudio.service; then
-	sudo pacman -Syu pulseaudio pulseaudio-bluetooth
+	__pacman_install pulseaudio pulseaudio-bluetooth
 	pulseaudio -k
 	systemctl --user restart pulseaudio
     fi

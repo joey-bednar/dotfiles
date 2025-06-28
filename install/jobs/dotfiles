@@ -5,10 +5,10 @@ IFS=$'\n\t'
 
 
 # Install dotfiles dependencies
-if cat /etc/os-release | grep -q "ID=ubuntu"; then
+if __is_ubuntu; then
 	sudo apt install -y stow fontconfig make yarn
-elif cat /etc/os-release | grep -q "ID=arch"; then
-	sudo pacman -Syu stow fontconfig make yarn --noconfirm
+elif __is_arch; then
+	__pacman_install stow fontconfig make yarn
 fi
 
 # Make dotfiles
