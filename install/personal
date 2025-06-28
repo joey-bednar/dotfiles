@@ -16,6 +16,7 @@ source ./python
 source ./gimp
 source ./kitty
 source ./spotify
+source ./virtualbox
 source ./i3
 source ./git
 source ./k8s
