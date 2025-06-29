@@ -58,7 +58,11 @@ elif __is_arch; then
 
     if ! command -v yay &> /dev/null; then
 
-        [ -f "/tmp/makepkg.conf" ] && cp /etc/makepkg.conf "/tmp/makepkg.conf"
+        # Generate /etc/makepkg.conf
+        sudo pacman -Syu pacman --noconfirm
+
+        # Use sudo password to avoid being re-prompted
+        cp /etc/makepkg.conf "/tmp/makepkg.conf"
         echo "PACMAN_AUTH=(sudo)" >> "/tmp/makepkg.conf"
 
         # Install yay
