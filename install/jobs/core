@@ -44,6 +44,8 @@ __git_clone() {
 
 ############################## CORE ##############################
 
+sudo -v
+
 if __is_ubuntu; then
 
     # Core packages
@@ -54,15 +56,19 @@ elif __is_arch; then
     # Core packages
     __pacman_install linux-firmware git vim less unzip usbutils xclip
 
-
     if ! command -v yay &> /dev/null; then
+
+        [ -f "/tmp/makepkg.conf" ] && cp /etc/makepkg.conf "/tmp/makepkg.conf"
+        echo "PACMAN_AUTH=(sudo)" >> "/tmp/makepkg.conf"
+
         # Install yay
         sudo pacman -S --needed base-devel git --noconfirm
         git clone https://aur.archlinux.org/yay.git
         pushd yay
-        makepkg -si --noconfirm
+        makepkg --config "/tmp/makepkg.conf" -si --noconfirm
         popd
         rm -rf yay
+
     else
         echo "yay is already installed."
     fi

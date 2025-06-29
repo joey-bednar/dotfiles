@@ -19,7 +19,7 @@ fi
 if __is_ubuntu; then
 	yes | sudo chsh -s $(which zsh) $USERNAME || if [[ $? -eq 141 ]]; then true; else false; fi
 elif __is_arch; then
-	chsh -s $(which zsh) $USERNAME
+	sudo chsh -s $(which zsh) $USERNAME
 fi
 
 # Install zsh-autosuggestions
