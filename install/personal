@@ -6,6 +6,7 @@ IFS=$'\n\t'
 pushd "$HOME/dotfiles/install/jobs"
 source ./core
 source ./update
+source ./bluetooth
 source ./zsh
 source ./fzf
 source ./tmux
@@ -23,3 +24,5 @@ source ./k8s
 source ./firefox
 source ./dotfiles
 popd
+
+
