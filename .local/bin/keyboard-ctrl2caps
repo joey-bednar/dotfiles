@@ -1,9 +1,8 @@
 #!/bin/bash
 
-set -euo pipefail
-IFS=$'\n\t'
-
 # Swap ctrl and caps lock if not already done by keyboard firmware
 if ! lsusb | grep -q "Keychron Q11"; then
     setxkbmap -option "ctrl:swapcaps"
+else
+    setxkbmap -option ""
 fi

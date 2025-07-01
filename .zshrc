@@ -131,12 +131,6 @@ os=$(uname)
 # Linux only
 if [[ $os == "Linux" ]]; then
 
-    # Swap ctrl and caps lock if not already done by keyboard firmware
-    # TODO: add check for vm
-    if ! lsusb | grep -q "Keychron Q11"; then
-        setxkbmap -option "ctrl:swapcaps"
-    fi
-
     export SHELL="/usr/bin/zsh"
 
     # disable <C-;> behavior
