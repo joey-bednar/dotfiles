@@ -6,7 +6,9 @@ IFS=$'\n\t'
 if __is_arch; then
 
     # TODO: remove prompts
-    yay gruvbox-gtk-theme-git
+    if ! yay -Q gruvbox-gtk-theme-git; then
+        yay gruvbox-gtk-theme-git
+    fi
 
 fi
 

@@ -21,6 +21,7 @@ if __is_arch; then
     # Setup bluetooth service
     if ! systemctl is-active -q bluetooth.service; then
 	__pacman_install bluez bluez-utils
+	# TODO: remove prompt
 	systemctl start bluetooth.service
 	systemctl enable bluetooth.service
     fi
