@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -euo pipefail
+IFS=$'\n\t'
+
+if __is_arch; then
+
+    # https://wiki.archlinux.org/title/ProtonVPN
+    __pacman_install wireguard-tools systemd-resolvconf 
+    __pacman_install keepassxc proton-vpn-gtk-app
+
+    sudo systemctl start systemd-resolved.service
+    sudo systemctl enable systemd-resolved.service
+
+fi
+
+# Running without ProtonVPN app:
+# Download wireguard profile to /etc/wireguard/protonvpn.conf
+# sudo wg-quick up protonvpn
+
