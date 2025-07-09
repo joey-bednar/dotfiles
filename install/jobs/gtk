@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -euo pipefail
+IFS=$'\n\t'
+
+if __is_arch; then
+
+    # TODO: remove prompts
+    yay gruvbox-gtk-theme-git
+
+fi
+
