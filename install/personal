@@ -25,6 +25,7 @@ source ./firefox
 source ./redshift
 source ./vpn
 source ./gtk
+source ./dolphin
 source ./dotfiles
 popd
 

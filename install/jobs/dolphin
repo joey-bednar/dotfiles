@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -euo pipefail
+IFS=$'\n\t'
+
+if __is_arch; then
+
+	__pacman_install dolphin-emu
+
+fi
+

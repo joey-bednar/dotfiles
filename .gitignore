@@ -13,6 +13,10 @@ kitty.conf
 !.wallpapers/gruvbox_ubuntu.png
 !.wallpapers/gruvbox_arch.png
 
+# ignore other gtk files
+.config/gtk-3.0/*
+!.config/gtk-3.0/settings.ini
+
 # ignore local binaries
 .local/bin/*
 !.local/bin/i3-suspend
