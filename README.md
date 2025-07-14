@@ -16,7 +16,7 @@ These are the configs I use to setup my development environment.
 ## Local Install
 
 > [!NOTE]
-> Requires `Ubuntu 24.04.04 (Noble)` or `Ubuntu 22.04.04 (Jammy)`.
+> Requires `Arch Linux` or `Ubuntu 24.04.04 (Noble)`. Other versions of Ubuntu may work but are not maintained.
 
 1. Clone into your home directory:
 ```
@@ -29,7 +29,7 @@ cd ~/dotfiles
 make [personal|work|dev]
 ```
 
-3. Logout or restart. During login select the `i3` interface.
+3. Logout or restart. During login select the `i3` desktop environment.
 
 ## Docker
 
