@@ -1,4 +1,4 @@
-FROM ubuntu:noble as base
+FROM ubuntu:noble AS base
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get -y update && \
@@ -20,6 +20,7 @@ WORKDIR /home/joey
 COPY --chown=joey:joey . /home/joey/dotfiles/
 
 ENV TERM=screen-256color
+ENV DOCKER_CONTAINER=true
 RUN ./dotfiles/install/dev
 
 # start container in zsh

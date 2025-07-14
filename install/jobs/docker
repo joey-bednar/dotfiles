@@ -35,6 +35,9 @@ elif __is_arch; then
     # Install docker engine
     __pacman_install docker
 
+    sudo systemctl start docker.service
+    sudo systemctl enable docker.service
+
 fi
 
 # Add user to docker group to run without sudo

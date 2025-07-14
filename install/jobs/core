@@ -44,7 +44,12 @@ __git_clone() {
 
 ############################## CORE ##############################
 
-sudo -v
+# Prompt sudo password if not running in docker container
+set +u
+if [[ -z "$DOCKER_CONTAINER" ]]; then
+    sudo -v
+fi
+set -u
 
 if __is_ubuntu; then
 

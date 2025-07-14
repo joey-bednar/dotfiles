@@ -32,6 +32,7 @@ format:
 .PHONY: stow
 stow:
 	find ${HOME} -maxdepth 1 -xtype l -delete
+	mkdir -p ${HOME}/.config
 	find ${HOME}/.config/ -xtype l -delete
 	mkdir -p ${HOME}/.fonts
 	find ${HOME}/.fonts/ -xtype l -delete
