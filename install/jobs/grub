@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -euo pipefail
+IFS=$'\n\t'
+
+if __is_arch; then
+
+	if ! grep "GRUB_TIMEOUT_STYLE=hidden" /etc/default/grub; then
+
+		sudo sed -i -e 's/^GRUB_TIMEOUT=.*/GRUB_TIMEOUT=1/' -e 's/^GRUB_TIMEOUT_STYLE=.*/GRUB_TIMEOUT_STYLE=hidden/' /etc/default/grub
+		sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+	fi
+
+fi

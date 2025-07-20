@@ -27,6 +27,7 @@ source ./vpn
 source ./gtk
 source ./dolphin
 source ./steam
+source ./grub
 source ./dotfiles
 popd
 
