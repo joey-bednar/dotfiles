@@ -9,3 +9,4 @@ if __is_arch; then
 
 fi
 
+mkdir -p $HOME/dolphin-roms

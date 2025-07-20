@@ -7,7 +7,7 @@ if __is_arch; then
 
     # https://wiki.archlinux.org/title/ProtonVPN
     __pacman_install wireguard-tools systemd-resolvconf 
-    __pacman_install keepassxc proton-vpn-gtk-app
+    __pacman_install gnome-keyring proton-vpn-gtk-app
 
     sudo systemctl start systemd-resolved.service
     sudo systemctl enable systemd-resolved.service
