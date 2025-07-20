@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -euo pipefail
+IFS=$'\n\t'
+
+if __is_arch; then
+
+	# add multilib
+	sudo sed -i '/^\s*#\[multilib\]/,/^\s*#Include/ s/^#//' /etc/pacman.conf
+
+	__pacman_install steam
+
+fi
