@@ -15,6 +15,13 @@ IFS=$'\n\t'
 # > trust XX:XX
 # > connect XX:XX
 # > exit
+#
+# Fix poor quality:
+# 
+# - pactl list cards short
+# - pactl set-card-profile <bluetooth_card> ad2p_sink
+# - pulseaudio -k
+# - sudo systemctl restart bluetooth.service
 
 if __is_arch; then
 
@@ -29,7 +36,6 @@ if __is_arch; then
     # Setup audio
     if ! systemctl is-active --user pulseaudio.service; then
 	__pacman_install pulseaudio pulseaudio-bluetooth
-	pulseaudio -k
 	systemctl --user restart pulseaudio
     fi
 
