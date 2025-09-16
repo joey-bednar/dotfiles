@@ -22,22 +22,12 @@ IFS=$'\n\t'
 # - pactl set-card-profile <bluetooth_card> ad2p_sink
 # - pulseaudio -k
 # - sudo systemctl restart bluetooth.service
+#
+# add file "/etc/NetworkManager/conf.d/wifi-powersave-off.conf"
+# [connection]
+# wifi.powersave = 2
+#
+# sudo systemctl restart NetworkManager
+# reboot
 
-if __is_arch; then
-
-    # Setup bluetooth service
-    if ! systemctl is-active -q bluetooth.service; then
-	__pacman_install bluez bluez-utils
-	# TODO: remove prompt
-	systemctl start bluetooth.service
-	systemctl enable bluetooth.service
-    fi
-
-    # Setup audio
-    if ! systemctl is-active --user pulseaudio.service; then
-	__pacman_install pulseaudio pulseaudio-bluetooth
-	systemctl --user restart pulseaudio
-    fi
-
-fi
-
+echo "skip"

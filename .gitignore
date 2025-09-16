@@ -20,6 +20,7 @@ kitty.conf
 # ignore local binaries
 .local/bin/*
 !.local/bin/i3-suspend
+!.local/bin/keyboard-ctrl2caps
 !.local/bin/rcommit
 !.local/bin/redate
 !.local/bin/setup
@@ -27,4 +28,4 @@ kitty.conf
 !.local/bin/terminal
 !.local/bin/tmux-fzf
 !.local/bin/todo
-!.local/bin/keyboard-ctrl2caps
+!.local/bin/wallpapers
