@@ -28,4 +28,4 @@ kitty.conf
 !.local/bin/terminal
 !.local/bin/tmux-fzf
 !.local/bin/todo
-!.local/bin/wallpapers
+!.local/bin/wallpaper

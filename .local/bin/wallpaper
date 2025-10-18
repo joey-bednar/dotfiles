@@ -1,0 +1,38 @@
+#!/bin/bash
+
+ULTRAWIDE_BG="$HOME/.wallpapers/rocket.jpg"
+ULTRAWIDE_INPUT="HDMI-0"
+ARCH_BG="$HOME/.wallpapers/gruvbox_arch.png"
+UBUNTU_BG="$HOME/.wallpapers/gruvbox_ubuntu.png"
+
+if ! command -v xrandr > /dev/null; then
+    echo "Error: xrandr not installed."
+    exit 1
+fi
+
+if ! command -v feh > /dev/null; then
+    echo "Error: feh not installed."
+    exit 1
+fi
+
+if xrandr | grep -q "5120x1440"; then
+
+    echo "Ultrawide detected."
+    xrandr --output "$ULTRAWIDE_INPUT" --mode 5120x1440 --rate 240
+
+    if [ -f "$ULTRAWIDE_BG" ]; then
+        feh --bg-scale "$ULTRAWIDE_BG"
+    else
+        echo "Ultrawide background not found, using Arch Linux background."
+        feh --bg-scale "$ARCH_BG"
+    fi
+
+elif cat /etc/os-release | grep "ID=arch"; then
+    echo "Arch Linux, no ultrawide."
+    feh --bg-scale "$ARCH_BG"
+elif cat /etc/os-release | grep "ID=ubuntu"; then
+    echo "Ubuntu, no ultrawide."
+    feh --bg-scale "$UBUNTU_BG"
+else
+    echo "Error: no valid option."
+fi
