@@ -13,14 +13,60 @@ return {
 	},
 
 	config = function()
-		--require('java').setup()
+		vim.lsp.config("*", {})
 
-		-- Error Settings
-		local signs = { Error = "✗", Warn = "✗", Hint = "✗", Info = "✗" }
-		for type, icon in pairs(signs) do
-			local hl = "DiagnosticSign" .. type
-			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-		end
+		-- Hide missing vim global
+		vim.lsp.config("lua_ls", {
+
+			settings = {
+				Lua = {
+					completion = {
+						callSnippet = "Replace",
+					},
+					diagnostics = {
+						globals = { "vim" },
+						disable = { "missing-parameters", "missing-fields" },
+					},
+					workspace = {
+						-- Make the server aware of Neovim runtime files
+						library = vim.api.nvim_get_runtime_file("", true),
+					},
+				},
+			},
+		})
+
+		-- Disable Python type checking errors
+		vim.lsp.config("pyright", {
+			settings = {
+				python = {
+					analysis = {
+						typeCheckingMode = "off",
+					},
+				},
+			},
+		})
+
+		-- Fix keyordering error in YAML
+		vim.lsp.config("yamlls", {
+			settings = {
+				yaml = {
+					keyOrdering = false,
+				},
+			},
+		})
+
+		-- Start Ansible LSP only in ansible dir
+		vim.lsp.config("ansiblels", {
+			filetypes = { "ansible.yaml" },
+		})
+
+		-- Fix goto definition in C
+		vim.lsp.config("clangd", {
+			cmd = {
+				"clangd",
+				"--offset-encoding=utf-16",
+			},
+		})
 
 		vim.diagnostic.config({
 			virtual_text = true,
@@ -44,69 +90,6 @@ return {
 				"lua_ls",
 				"pyright",
 				"yamlls",
-			},
-		})
-
-		local lspconfig = require("lspconfig")
-		local lsp_capabilities =
-			require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-		lsp_capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-		-- require("mason-lspconfig").setup_handlers({
-		-- 	function(server_name)
-		-- 		lspconfig[server_name].setup({
-		-- 			capabilities = lsp_capabilities,
-		-- 		})
-		-- 	end,
-		-- })
-
-		-- Lua/nvim config LSP
-		require("neodev").setup({
-			override = function(_, library)
-				library.enabled = true
-				library.plugins = true
-			end,
-			pathStrict = true,
-		})
-
-		lspconfig.lua_ls.setup({
-			settings = {
-				Lua = {
-					completion = {
-						callSnippet = "Replace",
-					},
-					diagnostics = {
-						disable = { "missing-parameters", "missing-fields" },
-					},
-				},
-			},
-		})
-
-		-- Disable Python3 type checking
-		lspconfig.pyright.setup({
-			settings = {
-				python = {
-					analysis = {
-						typeCheckingMode = "off",
-					},
-				},
-			},
-		})
-
-		-- Fix keyordering error in YAML
-		lspconfig.yamlls.setup({
-			settings = {
-				yaml = {
-					keyOrdering = false,
-				},
-			},
-		})
-
-		-- Fix goto definition in C
-		lspconfig.clangd.setup({
-			cmd = {
-				"clangd",
-				"--offset-encoding=utf-16",
 			},
 		})
 
@@ -149,28 +132,6 @@ return {
 				["Chart.lock"] = "yaml",
 			},
 		})
-
-		-- Start Ansible LSP only in ansible dir
-		lspconfig.ansiblels.setup({
-			filetypes = { "ansible.yaml" },
-		})
-
-		-- Java setup
-		--lspconfig.jdtls.setup({
-		--settings = {
-		--java = {
-		--configuration = {
-		--runtimes = {
-		--{
-		--name = "JavaSE-21",
-		--path = "/opt/jdk-21",
-		--default = true,
-		--},
-		--},
-		--},
-		--},
-		--},
-		--})
 
 		-- Use LspAttach autocommand to only map the following keys
 		-- after the language server attaches to the current buffer
