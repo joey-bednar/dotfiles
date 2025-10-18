@@ -42,7 +42,7 @@ fi
 
 # Add user to docker group to run without sudo
 if ! getent group "docker" > /dev/null 2>&1; then
-    sudo groupadd docker
+    sudo groupadd -f docker
     sudo usermod -aG docker "$USERNAME"
     newgrp docker
 fi

@@ -3,6 +3,14 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+os=$(uname)
+KITTY_PATH=".config/kitty"
+I3_PATH=".config/i3"
+POLYBAR_PATH=".config/polybar"
+
+__create_link() {
+    ln -sf "$HOME/dotfiles/$1" "$HOME/$2"
+}
 
 # Install dotfiles dependencies
 if __is_ubuntu; then
@@ -15,7 +23,40 @@ fi
 rm "$HOME/.zshrc" || true
 pushd "$HOME/dotfiles"
 make stow
-make setup
+
+# Create Symlinks
+if [[ $os == "Linux" ]]; then
+    echo "Configuring Kitty for Linux"
+    __create_link "$KITTY_PATH/ubuntu.conf" "$KITTY_PATH/kitty.conf"
+
+
+    if cat /etc/os-release | grep "ID=arch"; then
+        __create_link ".wallpapers/gruvbox_arch.png" ".wallpapers/desktop_background.png"
+    elif cat /etc/os-release | grep "ID=ubuntu"; then
+        __create_link ".wallpapers/gruvbox_ubuntu.png" ".wallpapers/desktop_background.png"
+    fi
+
+
+    echo "Configuring i3 for Linux"
+    if [[ $(cat /etc/hostname) == "joey-desktop" ]]; then
+        echo "Configuring i3 for Desktop"
+        __create_link "$I3_PATH/desktop.conf" "$I3_PATH/config"
+        __create_link "$POLYBAR_PATH/desktop.ini" "$POLYBAR_PATH/config.ini"
+    elif [[ $(cat /etc/hostname) == "joey-laptop" ]]; then
+        echo "Configuring i3 for Laptop"
+        __create_link "$I3_PATH/laptop.conf" "$I3_PATH/config"
+        __create_link "$POLYBAR_PATH/laptop.ini" "$POLYBAR_PATH/config.ini"
+    else
+        echo "Configuring i3 for Default"
+        __create_link "$I3_PATH/default.conf" "$I3_PATH/config"
+    fi
+elif [[ $os == "Darwin" ]]; then
+    echo "Configuring Kitty for macOS"
+    __create_link "$KITTY_PATH/macos.conf" "$KITTY_PATH/kitty.conf"
+else
+    echo "Unsupported OS: ${os}"
+fi
+
 popd
 
 # Reload fonts
@@ -31,3 +72,6 @@ fi
 
 # Install Neovim plugins
 command -v "$HOME/.local/bin/nvim" &> /dev/null && "$HOME/.local/bin/nvim" --headless "+Lazy! sync" +qa
+
+# Restart i3
+command -v "i3-msg" &> /dev/null && i3-msg restart || true

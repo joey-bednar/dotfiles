@@ -38,7 +38,3 @@ stow:
 	find ${HOME}/.fonts/ -xtype l -delete
 	find ${HOME}/.local/ -xtype l -delete
 	stow . --restow
-
-.PHONY: setup
-setup:
-	bash .local/bin/setup

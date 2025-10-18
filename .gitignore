@@ -23,7 +23,6 @@ kitty.conf
 !.local/bin/keyboard-ctrl2caps
 !.local/bin/rcommit
 !.local/bin/redate
-!.local/bin/setup
 !.local/bin/t
 !.local/bin/terminal
 !.local/bin/tmux-fzf
