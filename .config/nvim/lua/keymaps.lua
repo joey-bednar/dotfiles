@@ -28,8 +28,8 @@ vim.cmd("cabbrev w' w")
 -- File explorer
 vim.keymap.set("n", "<leader>pv", "<cmd>NvimTreeToggle<CR>", { desc = "NvimTree toggle." })
 
--- Execute file with F5
-vim.api.nvim_buf_set_keymap(0, "n", "<F5>", ":!chmod +x % && ./%<CR>", { desc = "Execute file." })
+-- Execute file with F7
+vim.api.nvim_buf_set_keymap(0, "n", "<F7>", ":!chmod +x % && ./%<CR>", { desc = "Execute file." })
 
 -- TODO: look into system/nvim yank/paste on VM
 -- TODO: resize splits keymap

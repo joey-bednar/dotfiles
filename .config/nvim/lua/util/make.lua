@@ -54,7 +54,7 @@ local function setMakeKeymap(git_dir, run_executable)
 		vim.api.nvim_buf_set_keymap(
 			0,
 			modes[i],
-			"<F5>",
+			"<F7>",
 			"<Esc>:w<CR>:!(cd " .. git_dir .. " && make && " .. run_executable .. ")<CR>",
 			{ desc = "Run make and execute in git directory." }
 		)
@@ -73,14 +73,14 @@ local function setLocalRunKeymap()
 		vim.api.nvim_buf_set_keymap(
 			0,
 			modes[i],
-			"<F5>",
+			"<F7>",
 			"<Esc>:w<CR>:!" .. compiler .. " -o %< % && ./%< <CR>",
 			{ desc = "Compile and execute." }
 		)
 	end
 end
 
--- Compile and run C files/projects with F5
+-- Compile and run C files/projects with F7
 --
 -- if in git directory with Makefile, make and run executable
 -- otherwise, compile current file and run with gcc
