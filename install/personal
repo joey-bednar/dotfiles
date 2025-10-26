@@ -3,7 +3,7 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-pushd "$HOME/dotfiles/install/jobs"
+pushd "$HOME/dotfiles/install/jobs" > /dev/null
 source ./core
 source ./update
 source ./bluetooth
@@ -28,7 +28,8 @@ source ./gtk
 source ./dolphin
 source ./steam
 source ./grub
+source ./screenshot
 source ./dotfiles
-popd
+popd > /dev/null
 
 

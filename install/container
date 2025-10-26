@@ -3,10 +3,10 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-pushd "$HOME/dotfiles"
+pushd "$HOME/dotfiles" > /dev/null
 docker build -t "dev-env" .
 echo ""
 echo "Dev container built. Run using:"
 echo "docker run --rm -it dev-env"
-popd
+popd > /dev/null
 

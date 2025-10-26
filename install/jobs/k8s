@@ -10,17 +10,17 @@ if __is_ubuntu; then
     sudo apt install -y curl
 
     mkdir -p "$HOME/.local/bin"
-    pushd "$HOME/.local/bin"
+    pushd "$HOME/.local/bin" > /dev/null
     curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
     chmod +x ./kubectl
-    popd
+    popd > /dev/null
 
     # Install Helm
-    pushd /tmp/
+    pushd /tmp/ > /dev/null
     curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
     chmod +x get_helm.sh
     ./get_helm.sh
-    popd
+    popd > /dev/null
 
 elif __is_arch; then
 

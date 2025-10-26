@@ -19,9 +19,11 @@ elif __is_arch; then
 	__pacman_install stow fontconfig make yarn
 fi
 
-# Make dotfiles
+# Remove existing .zshrc
 rm "$HOME/.zshrc" || true
-pushd "$HOME/dotfiles"
+
+# Stow dotfiles
+pushd "$HOME/dotfiles" > /dev/null
 make stow
 
 # Create Symlinks
@@ -57,7 +59,7 @@ else
     echo "Unsupported OS: ${os}"
 fi
 
-popd
+popd > /dev/null
 
 # Reload fonts
 fc-cache -f -v

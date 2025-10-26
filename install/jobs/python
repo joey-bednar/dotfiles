@@ -11,14 +11,14 @@ if __is_ubuntu; then
 
     # Install Anaconda
     if [[ ! -f "/opt/anaconda3/bin/conda" ]]; then
-        pushd "$HOME"
+        pushd "$HOME" > /dev/null
         curl -o anaconda.sh https://repo.anaconda.com/archive/Anaconda3-2024.02-1-Linux-x86_64.sh
         chmod +x anaconda.sh
         sudo ./anaconda.sh -b -p /opt/anaconda3
         sudo ln -s /opt/anaconda3/bin/conda /usr/bin/conda
         sudo mv /opt/anaconda3/bin/clear /opt/anaconda3/bin/clear_old
         rm "$HOME/anaconda.sh"
-        popd
+        popd > /dev/null
     fi
 
 fi

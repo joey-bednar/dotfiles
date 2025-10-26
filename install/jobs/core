@@ -73,9 +73,9 @@ elif __is_arch; then
         # Install yay
         sudo pacman -S --needed base-devel git --noconfirm
         git clone https://aur.archlinux.org/yay.git
-        pushd yay
+        pushd yay > /dev/null
         makepkg --config "/tmp/makepkg.conf" -si --noconfirm
-        popd
+        popd > /dev/null
         rm -rf yay
 
     else

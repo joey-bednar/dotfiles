@@ -3,7 +3,7 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-pushd "$HOME/dotfiles/install/jobs"
+pushd "$HOME/dotfiles/install/jobs" > /dev/null
 source ./core
 source ./update
 source ./zsh
@@ -19,4 +19,4 @@ source ./git
 source ./k8s
 source ./firefox
 source ./dotfiles
-popd
+popd > /dev/null

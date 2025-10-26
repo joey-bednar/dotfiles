@@ -2,8 +2,7 @@ MAKEFLAGS += --silent
 
 .PHONY: all
 all:
-	make -s stow
-	make -s setup
+	./install/personal
 
 .PHONY: personal
 personal:
@@ -13,9 +12,9 @@ personal:
 work:
 	./install/work
 
-.PHONY: test
-test:
-	./install/test
+.PHONY: job
+job:
+	./install/job
 
 .PHONY: dev
 dev:

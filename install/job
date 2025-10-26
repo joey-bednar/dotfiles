@@ -1,0 +1,50 @@
+#!/bin/bash
+
+set -euo pipefail
+IFS=$'\n\t'
+
+# get path of script location
+scriptpath="$(dirname "$(realpath "$0")")"
+
+# Set allowed job names to all other file names in jobs directory
+jobs=($(ls -I $(basename $0) -p "$scriptpath/jobs" | grep -v /))
+
+if [[ $# -eq 0 ]]; then
+
+    PS3="Enter a number: "
+
+    # Use menu to select job
+    select job in "${jobs[@]}"; do
+        if [[ ! $REPLY =~ ^[0-9]+$ ]]; then
+            echo "Input must be a number 1-${#jobs[@]}"
+            exit 1
+        elif [[ -f "$scriptpath/jobs/$job" ]]; then
+            echo "Running $job installation job."
+            $scriptpath/jobs/core
+            $scriptpath/jobs/$job
+            exit 0
+        else
+            echo "Invalid selection: $REPLY"
+            exit 1
+        fi
+    done
+
+elif [[ $# -eq 1 ]]; then
+
+    # Run job if valid
+    for job in "${jobs[@]}"; do
+        if [[ $1 == $job ]]; then
+            echo "Running $job installation job." 
+            $scriptpath/jobs/core
+            $scriptpath/jobs/$job
+            exit 0
+        fi
+    done
+
+    echo "Invalid installation job: $1"
+    exit 1
+
+else
+    echo "Invalid arguments."
+    exit 1
+fi

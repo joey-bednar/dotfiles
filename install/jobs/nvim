@@ -18,9 +18,9 @@ fi
 if [[ ! -f $HOME/.local/bin/nvim ]]; then
     curl -L "$NEOVIM_RELEASE_URL" -o "$HOME/nvim.appimage"
     chmod +x "$HOME/nvim.appimage"
-    pushd "$HOME"
+    pushd "$HOME" > /dev/null
     ./nvim.appimage --appimage-extract
-    popd
+    popd > /dev/null
     rm -rf "$HOME/.nvim" || true
     sudo mv "$HOME/squashfs-root" "$HOME/.nvim"
     mkdir -p "$HOME/.local/bin/"
