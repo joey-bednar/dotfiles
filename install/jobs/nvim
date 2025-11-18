@@ -3,6 +3,9 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+# get latest release link
+# curl -Ls -o /dev/null -w %{url_effective} github.com/neovim/neovim/releases/latest
+
 NEOVIM_VERSION="0.11.2"
 NEOVIM_RELEASE_URL="https://github.com/neovim/neovim/releases/download/v${NEOVIM_VERSION}/nvim-linux-x86_64.appimage"
 
