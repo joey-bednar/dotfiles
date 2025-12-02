@@ -1,6 +1,6 @@
 -- return top level if within a git directory
 -- otherwise return nil
-local function gitBase(dir)
+local function git_base_dir(dir)
 	local handle = io.popen("cd " .. dir .. " && git rev-parse --show-toplevel 2>/dev/null")
 	local result = handle:read("*a")
 	handle:close()
@@ -19,7 +19,7 @@ local function is_cpp_file()
 end
 
 -- return true if file exists
-local function fileExists(filename)
+local function file_exists(filename)
 	local file = io.open(filename, "r")
 	if file then
 		file:close()
@@ -30,8 +30,8 @@ local function fileExists(filename)
 end
 
 -- return true if makefile is in git repo base
-local function hasMakefile(dir)
-	return fileExists(dir .. "/makefile") or fileExists(dir .. "/Makefile")
+local function repo_has_makefile(dir)
+	return file_exists(dir .. "/makefile") or file_exists(dir .. "/Makefile")
 end
 
 -- select best guess for compiled C executable location
@@ -39,7 +39,7 @@ local function selectExecutable(dir)
 	local paths = { "/build/main", "/build/amelia" }
 
 	for i = 1, 2 do
-		if fileExists(dir .. paths[i]) then
+		if file_exists(dir .. paths[i]) then
 			return "." .. paths[i]
 		end
 	end
@@ -48,7 +48,7 @@ local function selectExecutable(dir)
 end
 
 -- Create keymap for running make
-local function setMakeKeymap(git_dir, run_executable)
+local function set_make_keymap(git_dir, run_executable)
 	local modes = { "n", "i" }
 	for i = 1, 2 do
 		vim.api.nvim_buf_set_keymap(
@@ -62,7 +62,7 @@ local function setMakeKeymap(git_dir, run_executable)
 end
 
 -- Create keymap for compiling a single file for C/C++
-local function setLocalRunKeymap()
+local function set_local_run_keymap()
 	local compiler = "gcc"
 	if is_cpp_file() then
 		compiler = "g++"
@@ -84,24 +84,12 @@ end
 --
 -- if in git directory with Makefile, make and run executable
 -- otherwise, compile current file and run with gcc
-function MakeShortcut()
-	local git_dir = gitBase(vim.fn.getcwd())
-	if git_dir ~= nil then
-		if hasMakefile(git_dir) then
-			local run_executable = selectExecutable(git_dir)
-			setMakeKeymap(git_dir, run_executable)
-		end
+function Create_keymap()
+	local git_dir = git_base_dir(vim.fn.getcwd())
+	if git_dir ~= nil and repo_has_makefile(git_dir) then
+		local run_executable = selectExecutable(git_dir)
+		set_make_keymap(git_dir, run_executable)
 	else
-		setLocalRunKeymap()
+		set_local_run_keymap()
 	end
 end
-
--- print("===== TESTS =====")
--- print("F",gitBase("~"))
--- print("T",gitBase("~/dotfiles"))
--- print("T",gitBase("~/dotfiles/.config"))
--- print("T",gitBase("~/personal/chess_old"))
--- print("=================")
--- print(hasMakefile(gitBase("~/dotfiles")))
--- print(hasMakefile(gitBase("~/personal/amelia")))
--- print("=================")
