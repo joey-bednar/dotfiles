@@ -6,9 +6,8 @@ IFS=$'\n\t'
 # get latest release link
 # curl -Ls -o /dev/null -w %{url_effective} github.com/neovim/neovim/releases/latest
 
-NEOVIM_VERSION="0.11.2"
+NEOVIM_VERSION="0.11.6"
 NEOVIM_RELEASE_URL="https://github.com/neovim/neovim/releases/download/v${NEOVIM_VERSION}/nvim-linux-x86_64.appimage"
-
 
 # Install Neovim dependencies
 if __is_ubuntu; then
@@ -17,8 +16,7 @@ elif __is_arch; then
     __pacman_install ripgrep npm curl cargo python-virtualenv
 fi
 
-# Install Neovim AppImage
-if [[ ! -f $HOME/.local/bin/nvim ]]; then
+__install_nvim() {
     curl -L "$NEOVIM_RELEASE_URL" -o "$HOME/nvim.appimage"
     chmod +x "$HOME/nvim.appimage"
     pushd "$HOME" > /dev/null
@@ -29,4 +27,16 @@ if [[ ! -f $HOME/.local/bin/nvim ]]; then
     mkdir -p "$HOME/.local/bin/"
     ln -s "$HOME/.nvim/AppRun" "$HOME/.local/bin/nvim"
     rm "$HOME/nvim.appimage"
+}
+
+# Install Neovim AppImage
+if [[ ! -f $HOME/.local/bin/nvim ]]; then
+    echo "Installing Neovim."
+    __install_nvim
+elif ! nvim --version | grep -q "v${NEOVIM_VERSION}"; then
+    echo "Upgrading Neovim."
+    rm "$HOME/.nvim/AppRun" "$HOME/.local/bin/nvim"
+    __install_nvim
+else
+    echo "Neovim ${NEOVIM_VERSION} detected. Skipping."
 fi
