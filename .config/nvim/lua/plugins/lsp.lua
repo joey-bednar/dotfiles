@@ -126,10 +126,16 @@ return {
 			extension = {
 				yaml = yaml_filetype,
 				yml = yaml_filetype,
+				env = "dotenv",
 			},
 			filename = {
 				["Chart.yaml"] = "yaml",
 				["Chart.lock"] = "yaml",
+				[".env"] = "dotenv", -- avoid running bash linter on .env files
+			},
+			pattern = {
+				["%.env%.[%w_.-]+"] = "dotenv",
+				[".*%.env"] = { "dotenv", { priority = 10 } },
 			},
 		})
 
