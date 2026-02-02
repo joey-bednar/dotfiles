@@ -15,10 +15,21 @@ fi
 # load zinit
 source "${ZINIT_HOME}/zinit.zsh"
 
-# use pure theme
+# use pure theme with modified colors
 zinit ice depth=1
 zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
 zinit light sindresorhus/pure
+zstyle ':prompt:pure:prompt:success' color 7
+zstyle ':prompt:pure:prompt:error' color 1
+zstyle ':prompt:pure:path' color 3
+zstyle ':prompt:pure:git:branch' color 7
+zstyle ':prompt:pure:git:dirty' color 7
+
+# modify zsh-syntax-highlighting colors
+# https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters/main.md
+typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=red'
+ZSH_HIGHLIGHT_STYLES[path]='fg=yellow'
 
 # add zsh plugins
 zinit light zsh-users/zsh-syntax-highlighting
