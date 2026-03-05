@@ -110,6 +110,12 @@ return {
 			return check
 		end
 
+		-- Is Gitlab CI file if filename contains "gitlab"
+		local function is_gitlab_ci_file(path)
+			local check = string.find(vim.fn.expand("%"), "gitlab")
+			return check
+		end
+
 		-- Is YAML otherwise
 		local function yaml_filetype(path, bufname)
 			if is_compose_file(path) then
@@ -118,6 +124,8 @@ return {
 				return "helm.yaml"
 			elseif is_ansible_file(path) then
 				return "ansible.yaml"
+			elseif is_gitlab_ci_file(path) then
+				return "yaml.gitlab"
 			end
 			return "yaml"
 		end
