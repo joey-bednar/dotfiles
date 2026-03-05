@@ -73,8 +73,39 @@ fi
 if [[ -z $1 ]]; then
     echo "Empty commit message."
     exit 1
-elif [[ -z $2 ]]; then
-    git commit -m "$1" -m "refs #$issue"
-else
-    git commit -m "$1" -m "$2" -m "refs #$issue"
 fi
+
+POSITIONAL_ARGS=()
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -s|--skip|--skip-ci|--ci-skip)
+            SKIP_CI=YES
+            shift
+            ;;
+        -*)
+            echo "Unknown option $1"
+            exit 1
+            ;;
+        *)
+            POSITIONAL_ARGS+=("$1")
+            shift
+            ;;
+    esac
+done
+
+set -- "${POSITIONAL_ARGS[@]}"
+
+cmd="git commit"
+
+for arg in "$@"; do
+    cmd="${cmd} -m \"$arg\""
+done
+
+if [[ "$SKIP_CI" == "YES" ]]; then
+    cmd="${cmd} -m \"[skip-ci]\""
+fi
+
+cmd="${cmd} -m \"refs #$issue\""
+
+eval $cmd
