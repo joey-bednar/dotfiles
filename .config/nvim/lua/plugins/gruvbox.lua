@@ -68,12 +68,10 @@ return {
 					faded_orange = "#c35e0a",
 
 					gray = "#928374",
-
-				}
-
+				},
 			})
 
-		vim.cmd("colorscheme gruvbox")
+			vim.cmd("colorscheme gruvbox")
 		end,
-	}
+	},
 }
