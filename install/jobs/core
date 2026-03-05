@@ -59,7 +59,10 @@ if __is_ubuntu; then
 elif __is_arch; then
 
     # Core packages
-    __pacman_install linux-firmware git vim less unzip usbutils xclip
+    __pacman_install linux-firmware git vim less zip unzip usbutils xclip reflector
+
+    # Update mirrors using reflector:
+    # sudo reflector --protocol https --sort score --save /etc/pacman.d/mirrorlist
 
     if ! command -v yay &> /dev/null; then
 
