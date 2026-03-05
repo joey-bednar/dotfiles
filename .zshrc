@@ -123,6 +123,8 @@ alias n="nvim"
 alias nf="nvim -c ':Telescope find_files'"
 alias nd="nvim -c ':Oil'"
 
+alias farmer="cd ~/.local/share/Steam/steamapps/compatdata/2060160/pfx/drive_c/users/steamuser/AppData/LocalLow/TheFarmerWasReplaced/TheFarmerWasReplaced/Saves/Save0"
+
 export TERM="screen-256color"
 export LANG="en_US.UTF-8"
 export EDITOR="nvim"
