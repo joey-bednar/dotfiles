@@ -1,45 +1,79 @@
 return {
-	"sainnhe/gruvbox-material",
-	priority = 1000,
-	lazy = false,
-	transparent_mode = true,
-	config = function()
-		vim.g.gruvbox_material_background = "hard" -- hard, soft, medium
-		vim.g.gruvbox_material_foreground = "material" -- original, mix, material
-		vim.g.gruvbox_material_enable_italic = 1
-		vim.g.gruvbox_material_sign_column_background = "none"
-		vim.g.gruvbox_material_transparent_background = 1
+	{
+		"ellisonleao/gruvbox.nvim",
+		priority = 1000,
+		config = function()
+			require("gruvbox").setup({
+				terminal_colors = true,
+				undercurl = true,
+				underline = true,
+				bold = true,
+				italic = {
+					strings = true,
+					comments = true,
+					operators = false,
+					folds = true,
+				},
+				strikethrough = true,
+				invert_selection = false,
+				invert_signs = false,
+				invert_tabline = false,
+				invert_intend_guides = false,
+				inverse = false,
+				contrast = "soft",
+				dim_inactive = false,
+				transparent_mode = true,
 
-		local grpid = vim.api.nvim_create_augroup("custom_highlights_gruvboxmaterial", {})
-		vim.api.nvim_create_autocmd("ColorScheme", {
-			group = grpid,
-			pattern = "gruvbox-material",
-			command = "hi NvimTreeNormal                  guibg=NONE ctermbg=NONE |"
-				.. "hi NvimTreeEndOfBuffer                guibg=NONE |"
-				.. "hi NoiceCmdlinePopupBorderCmdline     guifg=#ebdbb2 guibg=#282828 |"
-				.. "hi TelescopePromptBorder              guifg=#ebdbb2 guibg=#282828 |"
-				.. "hi TelescopePromptNormal              guifg=#ebdbb2 guibg=#282828 |"
-				.. "hi TelescopePromptTitle               guifg=#ebdbb2 guibg=#282828 |"
-				.. "hi TelescopePromptPrefix              guifg=#ebdbb2 guibg=#282828 |"
-				.. "hi TelescopePromptCounter             guifg=#ebdbb2 guibg=#282828 |"
-				.. "hi TelescopePreviewTitle              guifg=#ebdbb2 guibg=#282828 |"
-				.. "hi TelescopePreviewBorder             guifg=#ebdbb2 guibg=#282828 |"
-				.. "hi TelescopeResultsTitle              guifg=#ebdbb2 guibg=#282828 |"
-				.. "hi TelescopeResultsBorder             guifg=#ebdbb2 guibg=#282828 |"
-				.. "hi TelescopeMatching                  guifg=#d79921 guibg=#282828 |"
-				.. "hi TelescopeSelection                 guifg=#ffffff guibg=#32302f |"
-				.. "hi FloatBorder                        guifg=#ebdbb2 guibg=#282828 |"
-				.. "hi BqfPreviewBorder                   guifg=#ebdbb2 guibg=#282828 |"
-				.. "hi NormalFloat                        guibg=#282828 |"
-				.. "hi IndentBlanklineContextChar         guifg=#d3869b |"
-				.. "hi StatusColumnBorder                 guifg=#282828 |"
-				.. "hi StatusColumnBuffer                 guibg=#282828 |"
-				.. "hi CursorLineNr                       guifg=#d79921 |"
-				.. "hi CodewindowBorder                   guifg=#ebdbb2 |"
-				.. "hi TabLine                            guibg=#282828 |"
-				.. "hi TreesitterContext				  guibg=#1d2021 |"
-				.. "hi LineNr							  guifg=#7c6f64",
-		})
-		vim.cmd("colorscheme gruvbox-material")
-	end,
+				palette_overrides = {
+					dark0_hard = "#282828",
+					dark0 = "#282828",
+					dark0_soft = "#282828",
+
+					dark1 = "#3c3836",
+					dark2 = "#504945",
+					dark3 = "#665c54",
+					dark4 = "#7c6f64",
+
+					light0_hard = "#f9f5d7",
+					light0 = "#fbf1c7",
+					light0_soft = "#f2e5bc",
+
+					light1 = "#ebdbb2",
+					light2 = "#d5c4a1",
+					light3 = "#bdae92",
+					light4 = "#a89984",
+
+					bright_red = "#ea6962",
+					bright_green = "#a9b665",
+					bright_yellow = "#d8a657",
+					bright_blue = "#7daea3",
+					bright_purple = "#d3869b",
+					bright_aqua = "#89b482",
+					bright_orange = "#e78a4e",
+
+					neutral_red = "#ea6962",
+					neutral_green = "#a9b665",
+					neutral_yellow = "#d8a657",
+					neutral_blue = "#7daea3",
+					neutral_purple = "#d3869b",
+					neutral_aqua = "#89b482",
+					neutral_orange = "#e78a4e",
+
+					faded_red = "#c14a4a",
+					faded_green = "#6c782e",
+					faded_yellow = "#b47109",
+					faded_blue = "#45707a",
+					faded_purple = "#945e80",
+					faded_aqua = "#4c7a5d",
+					faded_orange = "#c35e0a",
+
+					gray = "#928374",
+
+				}
+
+			})
+
+		vim.cmd("colorscheme gruvbox")
+		end,
+	}
 }
