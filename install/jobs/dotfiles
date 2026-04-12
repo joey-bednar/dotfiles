@@ -29,7 +29,7 @@ make stow
 # Create Symlinks
 if [[ $os == "Linux" ]]; then
     echo "Configuring Kitty for Linux"
-    __create_link "$KITTY_PATH/ubuntu.conf" "$KITTY_PATH/kitty.conf"
+    __create_link "$KITTY_PATH/linux.conf" "$KITTY_PATH/kitty.conf"
 
 
     if cat /etc/os-release | grep "ID=arch"; then

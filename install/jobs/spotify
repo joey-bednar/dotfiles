@@ -9,7 +9,7 @@ if __is_ubuntu; then
 
 elif __is_arch; then
 
-	__pacman_install spotify-launcher
+    __pacman_install spotify-launcher
 
 fi
 

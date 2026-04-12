@@ -3,9 +3,6 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-
-############################## FUNCTIONS ##############################
-
 # Install packages using pacman if not already installed
 # Usage: __pacman_install package1 package2 ...
 __pacman_install() {
@@ -41,8 +38,6 @@ __git_clone() {
     dest="$2"
     git -C "$dest" pull || git clone "$repo" "$dest"
 }
-
-############################## CORE ##############################
 
 # Prompt sudo password if not running in docker container
 set +u
