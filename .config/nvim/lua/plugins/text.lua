@@ -9,8 +9,9 @@ return {
 	{
 		-- pair quotes/brackets
 		"windwp/nvim-autopairs",
+		event = { "InsertEnter" },
 		lazy = true,
-		event = { "BufReadPre", "BufNewFile" },
+		config = true,
 	},
 	-- auto tab sizing
 	{ "tpope/vim-sleuth" },
