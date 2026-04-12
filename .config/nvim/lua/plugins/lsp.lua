@@ -15,6 +15,16 @@ return {
 	config = function()
 		vim.lsp.config("*", {})
 
+		-- Hide errors from not following file path
+		vim.lsp.config("bashls", {
+
+			settings = {
+				bashIde = {
+					shellcheckArguments = "--exclude=SC1091",
+				},
+			},
+		})
+
 		-- Hide missing vim global
 		vim.lsp.config("lua_ls", {
 
