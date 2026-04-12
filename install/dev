@@ -4,6 +4,7 @@ set -euo pipefail
 IFS=$'\n\t'
 
 pushd "$HOME/dotfiles/install/jobs" > /dev/null
+source ./helpers
 source ./core
 source ./update
 source ./zsh
