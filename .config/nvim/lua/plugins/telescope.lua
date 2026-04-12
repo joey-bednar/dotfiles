@@ -31,15 +31,26 @@ return {
 		-- Spelling suggestions
 		vim.keymap.set("n", "z=", builtin.spell_suggest, { desc = "Search spelling suggestions." })
 
-		-- Find files
+		-- Find files/strings in whole directory
 		vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files." })
+		vim.keymap.set("n", "<leader>fs", builtin.live_grep, { desc = "Telescope find string live grep." })
+
 		vim.keymap.set("n", "<leader>fg", builtin.git_files, { desc = "Telescope find git versioned files." })
 
-		-- Find strings
-		vim.keymap.set("n", "<leader>fs", builtin.live_grep, { desc = "Telescope find string live grep." })
+		-- Find files/strings in buffer directory
+		vim.keymap.set("n", "<leader>fF", function()
+			builtin.find_files({ cwd = vim.fn.expand("%:p:h") })
+		end, { desc = "Telescope find files in buffer's directory." })
+		vim.keymap.set("n", "<leader>fS", function()
+			builtin.live_grep({ cwd = vim.fn.expand("%:p:h") })
+		end, { desc = "Telescope live grep in buffer's directory." })
+
+		-- Find strings without live results
 		vim.keymap.set("n", "<leader>fS", function()
 			builtin.grep_string({ search = vim.fn.input("Grep > ") })
 		end, { desc = "Telescope find string without live grep." })
+
+		-- File strings in buffer
 		vim.keymap.set(
 			"n",
 			"<leader>/",
@@ -79,7 +90,7 @@ return {
 		vim.keymap.set("n", "gr", builtin.lsp_references, { desc = "LSP find all references under cursor." })
 
 		-- Show all keymaps
-		vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "Telescopeo find keymaps." })
+		vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "Telescope find keymaps." })
 
 		-- Clone the default Telescope configuration
 		local vimgrep_arguments = { unpack(config.values.vimgrep_arguments) }
