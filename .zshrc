@@ -107,7 +107,7 @@ command -v minikube &> /dev/null && source <(minikube completion zsh)
 
 # add paths
 export PATH="$HOME/.local/bin:$PATH"                  # add custom binaries
-export PATH="$HOME/.local/share/nvim/mason/bin:$PATH" # add mason binaries
+export PATH="$PATH:$HOME/.local/share/nvim/mason/bin" # add mason binaries
 
 # aliases
 alias ls='ls --color'
@@ -149,7 +149,6 @@ if [[ $os == "Linux" ]]; then
     # disable <C-;> behavior
     command -v gsettings &> /dev/null && gsettings set org.freedesktop.ibus.panel.emoji hotkey "[]" &> /dev/null
 
-    export PYTHONPATH="$HOME/personal/dsa"
     clear
 
 # Mac only

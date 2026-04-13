@@ -72,6 +72,8 @@ return {
 			})
 
 			vim.cmd("colorscheme gruvbox")
+			vim.api.nvim_set_hl(0, "Search", { bg = "#d8a657", fg = "#282828" })
+			vim.api.nvim_set_hl(0, "CurSearch", { bg = "#e78a4e", fg = "#282828", bold = true })
 		end,
 	},
 }
