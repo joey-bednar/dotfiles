@@ -135,11 +135,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- See `:help vim.lsp.*` for documentation on any of the below functions
 
 		-- Format file with :Format or <leader>lf
-		vim.api.nvim_create_user_command(
-			"Format",
-			":lua vim.lsp.buf.format({ timeout_ms = 5000 })",
-			{ desc = "LSP format buffer." }
-		)
+		vim.api.nvim_create_user_command("Format", function()
+			require("conform").format({
+				lsp_format = "fallback",
+				timeout_ms = 5000,
+			})
+		end, { desc = "Format buffer." })
 		vim.keymap.set("n", "<leader>lf", "<cmd>Format<CR>", { desc = "LSP format buffer." })
 
 		-- goto definition
