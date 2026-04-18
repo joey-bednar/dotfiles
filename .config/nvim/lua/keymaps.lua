@@ -25,9 +25,6 @@ vim.api.nvim_create_user_command(
 -- Correct typo :w' to :w
 vim.cmd("cabbrev w' w")
 
--- File explorer
-vim.keymap.set("n", "<leader>pv", "<cmd>NvimTreeToggle<CR>", { desc = "NvimTree toggle." })
-
 -- Execute file with F7
 vim.api.nvim_buf_set_keymap(0, "n", "<F7>", ":!chmod +x % && ./%<CR>", { desc = "Execute file." })
 
