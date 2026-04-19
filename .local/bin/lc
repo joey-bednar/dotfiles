@@ -1,0 +1,10 @@
+#!/bin/bash
+
+main_file=$HOME/personal/leetcode-study/main.py
+
+if [[ -f $main_file ]]; then
+    python3 "$main_file" "$@"
+else
+    echo "Error: Leetcode Study CLI not installed."
+fi
+
