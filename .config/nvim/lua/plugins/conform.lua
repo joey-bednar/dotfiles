@@ -10,7 +10,7 @@ return {
 				sh = { "shfmt" },
 				bash = { "shfmt" },
 				zsh = { "shfmt" },
-				python = { "ruff_format", { "isort", "black" } },
+				python = { "ruff_format", "black", "isort", stop_after_first = true },
 				javascript = { "prettier" },
 				javascriptreact = { "prettier" },
 				typescript = { "prettier" },
