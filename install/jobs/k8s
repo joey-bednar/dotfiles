@@ -6,21 +6,25 @@ IFS=$'\n\t'
 
 if __is_ubuntu; then
 
-    # Install Kubernetes
     sudo apt install -y curl
 
-    mkdir -p "$HOME/.local/bin"
-    pushd "$HOME/.local/bin" > /dev/null
-    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-    chmod +x ./kubectl
-    popd > /dev/null
+    # Install Kubernetes
+    if ! command -v kubectl &> /dev/null; then
+        mkdir -p "$HOME/.local/bin"
+        pushd "$HOME/.local/bin" > /dev/null
+        curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+        chmod +x ./kubectl
+        popd > /dev/null
+    fi
 
     # Install Helm
-    pushd /tmp/ > /dev/null
-    curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
-    chmod +x get_helm.sh
-    ./get_helm.sh
-    popd > /dev/null
+    if ! command -v helm &> /dev/null; then
+        pushd /tmp/ > /dev/null
+        curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+        chmod +x get_helm.sh
+        ./get_helm.sh
+        popd > /dev/null
+    fi
 
 elif __is_arch; then
 
