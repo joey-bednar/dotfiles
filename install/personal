@@ -28,6 +28,7 @@ source ./vpn
 source ./gtk
 source ./dolphin
 source ./steam
+source ./minecraft
 source ./grub
 source ./screenshot
 source ./dotfiles
