@@ -4,6 +4,7 @@
 
 ^/README.*
 ^/LICENSE.*
+^/CLAUDE.*
 
 Makefile
 install
