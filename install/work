@@ -19,5 +19,6 @@ source ./i3
 source ./git
 source ./k8s
 source ./firefox
+source ./file_explorer
 source ./dotfiles
 popd > /dev/null
