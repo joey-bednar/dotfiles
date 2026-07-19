@@ -3,21 +3,22 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-
 if __is_ubuntu; then
 
     # Install python packages
     sudo apt install -y python3 python3-pip
+
+    # Install uv
+    if ! command -v uv &> /dev/null; then
+        curl -LsSf https://astral.sh/uv/install.sh | sh
+    fi
 
 elif __is_arch; then
 
     # Install python packages
     __pacman_install python-pip python-yaml
 
-fi
+    # Install uv
+    __pacman_install uv
 
-# Install uv
-if ! command -v uv &> /dev/null; then
-    curl -LsSf https://astral.sh/uv/install.sh | sh
 fi
-
