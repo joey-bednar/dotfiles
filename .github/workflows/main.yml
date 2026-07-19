@@ -20,14 +20,22 @@ jobs:
               with:
                 path: |
                   ~/.cargo/bin
+                  ~/go/bin
                 key: ${{ runner.os }}-cargo-${{ hashFiles('weekly') }}
 
             - name: Install stylua
               if: steps.cache.outputs.cache-hit != 'true'
               run: cargo install stylua
 
+            - name: Install shfmt
+              if: steps.cache.outputs.cache-hit != 'true'
+              run: go install mvdan.cc/sh/v3/cmd/shfmt@latest
+
             - name: Check lua format
               run: stylua --check .config/nvim/lua/ #--config-path=.stylua.toml
+
+            - name: Check shell format
+              run: ~/go/bin/shfmt -i 4 -d .
 
     docker-build:
         name: Build Docker image
