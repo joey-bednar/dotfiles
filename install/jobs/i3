@@ -12,3 +12,6 @@ fi
 
 # Configure brightnessctl
 sudo chmod +s "$(which brightnessctl)"
+
+# Restart i3
+command -v "i3-msg" &> /dev/null && i3-msg restart || true

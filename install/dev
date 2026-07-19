@@ -13,5 +13,4 @@ source ./tmux
 source ./nvim
 source ./node
 source ./git
-source ./dotfiles
 popd > /dev/null

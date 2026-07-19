@@ -13,12 +13,12 @@ set -u
 if __is_ubuntu; then
 
     # Core packages
-    sudo apt install -y git vim less unzip usbutils xclip
+    sudo apt install -y git vim less unzip usbutils xclip stow fontconfig make yarn
 
 elif __is_arch; then
 
     # Core packages
-    __pacman_install linux-firmware git vim less zip unzip usbutils xclip reflector
+    __pacman_install linux-firmware git vim less zip unzip usbutils xclip reflector stow fontconfig make yarn
 
     # Update mirrors using reflector:
     sudo reflector --protocol https --sort score --save /etc/pacman.d/mirrorlist
@@ -47,3 +47,59 @@ elif __is_arch; then
 
 fi
 
+OS=$(uname)
+KITTY_PATH=".config/kitty"
+I3_PATH=".config/i3"
+POLYBAR_PATH=".config/polybar"
+
+__create_link() {
+    ln -sf "$HOME/dotfiles/$1" "$HOME/$2"
+}
+
+# Remove existing .zshrc
+rm "$HOME/.zshrc" || true
+
+# Stow dotfiles
+pushd "$HOME/dotfiles" > /dev/null
+make stow
+
+# Create Symlinks
+if [[ $OS == "Linux" ]]; then
+    echo "Configuring Kitty for Linux"
+    __create_link "$KITTY_PATH/linux.conf" "$KITTY_PATH/kitty.conf"
+
+
+    if cat /etc/os-release | grep "ID=arch"; then
+        __create_link ".wallpapers/gruvbox_arch.png" ".wallpapers/desktop_background.png"
+    elif cat /etc/os-release | grep "ID=ubuntu"; then
+        __create_link ".wallpapers/gruvbox_ubuntu.png" ".wallpapers/desktop_background.png"
+    fi
+
+
+    echo "Configuring i3 for Linux"
+    if [[ $(cat /etc/hostname) == "joey-desktop" ]]; then
+        echo "Configuring i3 for Desktop"
+        __create_link "$I3_PATH/desktop.conf" "$I3_PATH/config"
+        __create_link "$POLYBAR_PATH/desktop.ini" "$POLYBAR_PATH/config.ini"
+    elif [[ $(cat /etc/hostname) == "joey-laptop" ]]; then
+        echo "Configuring i3 for Laptop"
+        __create_link "$I3_PATH/laptop.conf" "$I3_PATH/config"
+        __create_link "$POLYBAR_PATH/laptop.ini" "$POLYBAR_PATH/config.ini"
+    else
+        echo "Configuring i3 for Default"
+        __create_link "$I3_PATH/default.conf" "$I3_PATH/config"
+    fi
+elif [[ $OS == "Darwin" ]]; then
+    echo "Configuring Kitty for macOS"
+    __create_link "$KITTY_PATH/macos.conf" "$KITTY_PATH/kitty.conf"
+else
+    echo "Unsupported OS: ${OS}"
+fi
+
+popd > /dev/null
+
+# Reload fonts
+fc-cache -f -v
+
+# Create directories
+mkdir -p "$HOME/personal" "$HOME/work"

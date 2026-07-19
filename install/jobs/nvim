@@ -40,3 +40,6 @@ elif ! nvim --version | grep -q "v${NEOVIM_VERSION}"; then
 else
     echo "Neovim ${NEOVIM_VERSION} detected. Skipping."
 fi
+
+# Install Neovim plugins
+command -v "$HOME/.local/bin/nvim" &> /dev/null && "$HOME/.local/bin/nvim" --headless "+Lazy! sync" +qa
