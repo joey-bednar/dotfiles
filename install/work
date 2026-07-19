@@ -20,4 +20,5 @@ source ./git
 source ./k8s
 source ./firefox
 source ./file_explorer
+source ./opencode
 popd >/dev/null

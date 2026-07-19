@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -euo pipefail
+IFS=$'\n\t'
+
+if __is_ubuntu; then
+
+    curl -fsSL https://opencode.ai/install | bash
+
+elif __is_arch; then
+
+    __pacman_install opencode
+
+fi

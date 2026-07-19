@@ -32,4 +32,5 @@ source ./minecraft
 source ./grub
 source ./screenshot
 source ./file_explorer
+source ./opencode
 popd >/dev/null
