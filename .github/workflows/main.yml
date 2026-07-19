@@ -11,12 +11,12 @@ jobs:
         name: Check formatting
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v7
             - run: date +%W > weekly
 
             - name: Restore cache
               id: cache
-              uses: actions/cache@v4
+              uses: actions/cache@v6
               with:
                 path: |
                   ~/.cargo/bin
@@ -44,7 +44,7 @@ jobs:
             - name: Log in to GitHub Container Registry
               run: echo "${{ secrets.CI }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v7
             - name: Build the Docker image
               run: docker build . --file Dockerfile --tag ${DOCKER_IMAGE_NAME}:${{ github.run_id }}
 
