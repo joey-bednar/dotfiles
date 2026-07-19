@@ -5,9 +5,9 @@ IFS=$'\n\t'
 
 # Install tmux
 if __is_ubuntu; then
-	sudo apt install -y tmux
+    sudo apt install -y tmux
 elif __is_arch; then
-	__pacman_install tmux
+    __pacman_install tmux
 fi
 
 # Install tpm

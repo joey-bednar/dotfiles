@@ -20,15 +20,14 @@ if __is_ubuntu; then
     # Add the repository to apt sources and update
     if [[ ! -f "/etc/apt/sources.list.d/docker.list" ]]; then
         echo \
-          "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
-          $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-          sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+            "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+          $(. /etc/os-release && echo "$VERSION_CODENAME") stable" |
+            sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
         sudo apt update -y
     fi
 
     # Install Docker Engine
     sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-
 
 elif __is_arch; then
 
@@ -41,7 +40,7 @@ elif __is_arch; then
 fi
 
 # Add user to docker group to run without sudo
-if ! getent group "docker" > /dev/null 2>&1; then
+if ! getent group "docker" >/dev/null 2>&1; then
     sudo groupadd -f docker
     sudo usermod -aG docker "$USERNAME"
     newgrp docker

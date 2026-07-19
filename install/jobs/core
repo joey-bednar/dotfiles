@@ -23,27 +23,26 @@ elif __is_arch; then
     # Update mirrors using reflector:
     sudo reflector --protocol https --sort score --save /etc/pacman.d/mirrorlist
 
-    if ! command -v yay &> /dev/null; then
+    if ! command -v yay &>/dev/null; then
 
         # Generate /etc/makepkg.conf
         sudo pacman -Syu pacman --noconfirm
 
         # Use sudo password to avoid being re-prompted
         cp /etc/makepkg.conf "/tmp/makepkg.conf"
-        echo "PACMAN_AUTH=(sudo)" >> "/tmp/makepkg.conf"
+        echo "PACMAN_AUTH=(sudo)" >>"/tmp/makepkg.conf"
 
         # Install yay
         sudo pacman -S --needed base-devel git --noconfirm
         git clone https://aur.archlinux.org/yay.git
-        pushd yay > /dev/null
+        pushd yay >/dev/null
         makepkg --config "/tmp/makepkg.conf" -si --noconfirm
-        popd > /dev/null
+        popd >/dev/null
         rm -rf yay
 
     else
         echo "yay is already installed."
     fi
-
 
 fi
 
@@ -60,7 +59,7 @@ __create_link() {
 rm "$HOME/.zshrc" || true
 
 # Stow dotfiles
-pushd "$HOME/dotfiles" > /dev/null
+pushd "$HOME/dotfiles" >/dev/null
 make stow
 
 # Create Symlinks
@@ -68,13 +67,11 @@ if [[ $OS == "Linux" ]]; then
     echo "Configuring Kitty for Linux"
     __create_link "$KITTY_PATH/linux.conf" "$KITTY_PATH/kitty.conf"
 
-
     if cat /etc/os-release | grep "ID=arch"; then
         __create_link ".wallpapers/gruvbox_arch.png" ".wallpapers/desktop_background.png"
     elif cat /etc/os-release | grep "ID=ubuntu"; then
         __create_link ".wallpapers/gruvbox_ubuntu.png" ".wallpapers/desktop_background.png"
     fi
-
 
     echo "Configuring i3 for Linux"
     if [[ $(cat /etc/hostname) == "joey-desktop" ]]; then
@@ -96,7 +93,7 @@ else
     echo "Unsupported OS: ${OS}"
 fi
 
-popd > /dev/null
+popd >/dev/null
 
 # Reload fonts
 fc-cache -f -v

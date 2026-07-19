@@ -7,7 +7,7 @@ if __is_arch; then
 
     # TODO: remove prompts
     if ! yay -Q minecraft-launcher; then
-	yay minecraft-launcher
+        yay minecraft-launcher
     fi
 
 fi

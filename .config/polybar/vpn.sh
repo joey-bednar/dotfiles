@@ -10,5 +10,5 @@ if [ -n "$vpn" ]; then
         echo "$vpn" | cut -d ' ' -f 2
     fi
 else
-	echo "DOWN"
+    echo "DOWN"
 fi

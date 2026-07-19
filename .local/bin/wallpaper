@@ -5,12 +5,12 @@ ULTRAWIDE_INPUT="HDMI-0"
 ARCH_BG="$HOME/.wallpapers/gruvbox_arch.png"
 UBUNTU_BG="$HOME/.wallpapers/gruvbox_ubuntu.png"
 
-if ! command -v xrandr > /dev/null; then
+if ! command -v xrandr >/dev/null; then
     echo "Error: xrandr not installed."
     exit 1
 fi
 
-if ! command -v feh > /dev/null; then
+if ! command -v feh >/dev/null; then
     echo "Error: feh not installed."
     exit 1
 fi

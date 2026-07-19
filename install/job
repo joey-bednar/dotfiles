@@ -34,7 +34,7 @@ elif [[ $# -eq 1 ]]; then
     # Run job if valid
     for job in "${jobs[@]}"; do
         if [[ $1 == "$job" ]]; then
-            echo "Running $job installation job." 
+            echo "Running $job installation job."
             source "$SCRIPT_PATH/jobs/helpers"
             source "$SCRIPT_PATH/jobs/$job"
             exit 0

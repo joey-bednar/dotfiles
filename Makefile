@@ -27,6 +27,7 @@ container:
 .PHONY: format
 format:
 	stylua .config/nvim/
+	shfmt -i 4 -w .
 
 .PHONY: stow
 stow:

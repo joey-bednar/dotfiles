@@ -4,7 +4,7 @@
 killall -q polybar
 
 # Wait for all polybars to stop
-while pgrep -u $UID -x polybar > /dev/null; do sleep 1; done
+while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Get network interfaces for WiFi/Ethernet polybar module
 # network interface used to reach Google public DNS (8.8.8.8)
@@ -26,12 +26,14 @@ NUM_MONITORS=$(xrandr | grep -c " connected ")
 
 # Launch bar on primary monitor
 echo "---" | tee -a /tmp/polybar1.log
-polybar primary -c "${HOME}/.config/polybar/config.ini" 2>&1 | tee -a /tmp/polybar1.log & disown
+polybar primary -c "${HOME}/.config/polybar/config.ini" 2>&1 | tee -a /tmp/polybar1.log &
+disown
 
 # Launch bar on secondary monitor
 if [[ "$NUM_MONITORS" -gt "1" ]]; then
     echo "---" | tee -a /tmp/polybar2.log
-    polybar secondary -c "${HOME}/.config/polybar/config.ini" 2>&1 | tee -a /tmp/polybar2.log & disown
+    polybar secondary -c "${HOME}/.config/polybar/config.ini" 2>&1 | tee -a /tmp/polybar2.log &
+    disown
 fi
 
 echo "Bars launched..."

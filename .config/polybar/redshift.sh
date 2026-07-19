@@ -35,4 +35,3 @@ if __gamma_set; then
 else
     echo "󰌵"
 fi
-

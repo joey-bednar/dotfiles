@@ -4,7 +4,7 @@ set -euo pipefail
 IFS=$'\n\t'
 
 # https://wiki.archlinux.org/title/Bluetooth
-# 
+#
 # Pair a device with bluetoothctl:
 # > bluetoothctl
 # > power on
@@ -17,7 +17,7 @@ IFS=$'\n\t'
 # > exit
 #
 # Fix poor quality:
-# 
+#
 # - pactl list cards short
 # - pactl set-card-profile <bluetooth_card> ad2p_sink
 # - pulseaudio -k

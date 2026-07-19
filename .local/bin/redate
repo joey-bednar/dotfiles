@@ -7,7 +7,7 @@ set -o pipefail
 REMOTE="origin"
 
 # check if git rev-parse works
-if ! git rev-parse --is-inside-work-tree &> /dev/null; then
+if ! git rev-parse --is-inside-work-tree &>/dev/null; then
     echo "Not in a git repository."
     exit 1
 fi
@@ -17,7 +17,7 @@ BRANCH=$(git rev-parse --symbolic-full-name --abbrev-ref HEAD)
 echo "Branch: ${BRANCH}"
 
 # check that remote branch with matching name exists
-if ! git ls-remote --exit-code --heads ${REMOTE} ${BRANCH} &> /dev/null; then
+if ! git ls-remote --exit-code --heads ${REMOTE} ${BRANCH} &>/dev/null; then
     echo "Remote branch does not exist."
     exit 1
 fi
@@ -33,7 +33,7 @@ else
 fi
 
 # push one commit only
-PUSH="$((${AHEAD}-1))"
+PUSH="$((${AHEAD} - 1))"
 
 # redate commits
 git rebase ${BRANCH}~${AHEAD} --exec "git commit --amend --no-edit --date 'now'"

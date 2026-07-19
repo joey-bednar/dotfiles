@@ -5,7 +5,7 @@ IFS=$'\n\t'
 
 if __is_arch; then
 
-	__pacman_install dolphin-emu
+    __pacman_install dolphin-emu
 
 fi
 

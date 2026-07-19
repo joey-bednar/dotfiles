@@ -9,7 +9,7 @@ if __is_ubuntu; then
     sudo apt install -y python3 python3-pip
 
     # Install uv
-    if ! command -v uv &> /dev/null; then
+    if ! command -v uv &>/dev/null; then
         curl -LsSf https://astral.sh/uv/install.sh | sh
     fi
 

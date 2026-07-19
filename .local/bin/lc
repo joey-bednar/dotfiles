@@ -7,4 +7,3 @@ if [[ -f $main_file ]]; then
 else
     echo "Error: Leetcode Study CLI not installed."
 fi
-

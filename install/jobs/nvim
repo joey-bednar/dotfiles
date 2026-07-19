@@ -19,9 +19,9 @@ fi
 __install_nvim() {
     curl -L "$NEOVIM_RELEASE_URL" -o "$HOME/nvim.appimage"
     chmod +x "$HOME/nvim.appimage"
-    pushd "$HOME" > /dev/null
+    pushd "$HOME" >/dev/null
     ./nvim.appimage --appimage-extract
-    popd > /dev/null
+    popd >/dev/null
     rm -rf "$HOME/.nvim" || true
     sudo mv "$HOME/squashfs-root" "$HOME/.nvim"
     mkdir -p "$HOME/.local/bin/"
@@ -42,4 +42,4 @@ else
 fi
 
 # Install Neovim plugins
-command -v "$HOME/.local/bin/nvim" &> /dev/null && "$HOME/.local/bin/nvim" --headless "+Lazy! sync" +qa
+command -v "$HOME/.local/bin/nvim" &>/dev/null && "$HOME/.local/bin/nvim" --headless "+Lazy! sync" +qa
