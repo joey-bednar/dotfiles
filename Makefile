@@ -36,5 +36,6 @@ stow:
 	find ${HOME}/.config/ -xtype l -delete
 	mkdir -p ${HOME}/.fonts
 	find ${HOME}/.fonts/ -xtype l -delete
+	mkdir -p ${HOME}/.local
 	find ${HOME}/.local/ -xtype l -delete
 	stow . --restow
