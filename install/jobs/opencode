@@ -5,7 +5,9 @@ IFS=$'\n\t'
 
 if __is_ubuntu; then
 
-    curl -fsSL https://opencode.ai/install | bash
+    if ! command -v zsh &>/dev/null; then
+        curl -fsSL https://opencode.ai/install | bash
+    fi
 
 elif __is_arch; then
 
