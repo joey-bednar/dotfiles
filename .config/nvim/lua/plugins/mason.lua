@@ -13,9 +13,6 @@ return {
 					"pyright",
 					"yamlls",
 				},
-				-- jdtls is started manually by nvim-jdtls (per-project workspace dir),
-				-- so don't let mason-lspconfig auto vim.lsp.enable() it too
-				automatic_enable = { exclude = { "jdtls" } },
 			})
 		end,
 	},
@@ -24,12 +21,12 @@ return {
 		dependencies = { "williamboman/mason.nvim" },
 		config = function()
 			require("mason-tool-installer").setup({
+				-- jdtls is installed/managed by nvim-java, not mason
 				ensure_installed = {
 					"prettier",
 					"shfmt",
 					"stylua",
 					"mypy",
-					"jdtls",
 				},
 			})
 		end,
