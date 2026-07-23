@@ -1,6 +1,3 @@
--- nvim-java wraps jdtls (+ lombok, java-test, java-debug-adapter, spring-boot
--- tools) with sane defaults and its own tool/JDK installer, so it replaces
--- both mfussenegger/nvim-jdtls and our manual after/ftplugin/java.lua setup.
 return {
 	"nvim-java/nvim-java",
 	ft = "java",
