@@ -13,6 +13,9 @@ return {
 					"pyright",
 					"yamlls",
 				},
+				-- jdtls is started manually by nvim-jdtls (per-project workspace dir),
+				-- so don't let mason-lspconfig auto vim.lsp.enable() it too
+				automatic_enable = { exclude = { "jdtls" } },
 			})
 		end,
 	},
@@ -26,6 +29,7 @@ return {
 					"shfmt",
 					"stylua",
 					"mypy",
+					"jdtls",
 				},
 			})
 		end,

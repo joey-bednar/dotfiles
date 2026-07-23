@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -euo pipefail
+IFS=$'\n\t'
+
+# Install JDKs for Java development.
+# 21 is the default JVM (nvim jdtls needs JRE 21+ to run).
+if __is_ubuntu; then
+    sudo apt install -y openjdk-21-jdk openjdk-25-jdk
+elif __is_arch; then
+    __pacman_install jdk21-openjdk jdk25-openjdk
+    sudo archlinux-java set java-21-openjdk
+fi

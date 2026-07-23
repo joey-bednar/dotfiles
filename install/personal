@@ -15,6 +15,7 @@ source ./nvim
 source ./node
 source ./docker
 source ./python
+source ./java
 source ./gimp
 source ./kitty
 source ./spotify
