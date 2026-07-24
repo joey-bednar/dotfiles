@@ -9,6 +9,7 @@ return {
 				ensure_installed = {
 					"bashls",
 					"dockerls",
+					"helm_ls",
 					"lua_ls",
 					"pyright",
 					"yamlls",

@@ -42,12 +42,17 @@ vim.lsp.config("pyright", {
 
 -- Fix keyordering error in YAML
 vim.lsp.config("yamlls", {
-	filetypes = { "yaml", "yaml.gitlab", "helm.yaml" },
+	filetypes = { "yaml", "yaml.gitlab", "yaml.helm-values" },
 	settings = {
 		yaml = {
 			keyOrdering = false,
 		},
 	},
+})
+
+-- Helm chart LSP (templates + values files)
+vim.lsp.config("helm_ls", {
+	filetypes = { "helm", "yaml.helm-values" },
 })
 
 vim.lsp.config("dockerls", {
@@ -78,6 +83,11 @@ local function is_helm_file(path)
 	return not vim.tbl_isempty(check)
 end
 
+-- Is a Helm values file (values.yaml, values-prod.yaml, ...)
+local function is_helm_values_file()
+	return string.find(vim.fn.expand("%:t"), "^values.*%.ya?ml$") ~= nil
+end
+
 -- Is Ansible file if path contains ansible
 local function is_ansible_file(path)
 	return string.find(vim.fs.dirname(path), "ansible")
@@ -100,7 +110,10 @@ local function yaml_filetype(path, bufname)
 	if is_compose_file(path) then
 		return "yaml"
 	elseif is_helm_file(path) then
-		return "helm.yaml"
+		if is_helm_values_file() then
+			return "yaml.helm-values"
+		end
+		return "helm"
 	elseif is_ansible_file(path) then
 		return "ansible.yaml"
 	elseif is_gitlab_ci_file(path) then
@@ -113,6 +126,12 @@ vim.filetype.add({
 	extension = {
 		yaml = yaml_filetype,
 		yml = yaml_filetype,
+		tpl = function(path)
+			if is_helm_file(path) then
+				return "helm"
+			end
+			return "gotmpl"
+		end,
 		env = "dotenv",
 	},
 	filename = {
