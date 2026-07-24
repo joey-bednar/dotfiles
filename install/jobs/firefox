@@ -3,6 +3,12 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+# Firefox Setup
+# - Theme: Gruvbox Dark Theme (calvinchd)
+# - Extensions: Dark Reader, Proton Pass, Vimium, Adblock Plus, uBlock Origin
+# - Enable DRM for Youtube TV
+# - Disable password saving
+
 if __is_ubuntu; then
 
     sudo apt install -y firefox

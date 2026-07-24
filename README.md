@@ -18,6 +18,16 @@ These are the configs I use to setup my development environment.
 > [!NOTE]
 > Requires `Arch Linux` or `Ubuntu 24.04.04 (Noble)`. Other versions of Ubuntu may work but are not maintained.
 
+<details>
+<summary>Archinstall Instructions (optional)</summary>
+- Partition: best guess
+- Network: NetworkManager
+- Bootloader: grub
+- Profiles: i3wm, nvidia proprietary drivers
+- Additional software: `linux-firmware`
+- Timezone: Los Angeles
+</details>
+
 1. Clone into your home directory:
 ```
 git clone https://github.com/joey-bednar/dotfiles.git ~/dotfiles

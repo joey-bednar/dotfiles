@@ -4,6 +4,7 @@
 
 ^/README.*
 ^/LICENSE.*
+^/AGENTS.*
 ^/CLAUDE.*
 
 Makefile
