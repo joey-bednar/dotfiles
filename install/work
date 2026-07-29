@@ -21,4 +21,5 @@ source ./k8s
 source ./firefox
 source ./file_explorer
 source ./opencode
+source ./asdf-vm
 popd >/dev/null

@@ -1,0 +1,33 @@
+#!/bin/bash
+
+set -euo pipefail
+IFS=$'\n\t'
+
+if __is_ubuntu; then
+
+    ASDF_VERSION="0.20.0"
+    ASDF_RELEASE_URL="https://github.com/asdf-vm/asdf/releases/download/v${ASDF_VERSION}/asdf-v${ASDF_VERSION}-linux-amd64.tar.gz"
+
+    if [[ ! -f $HOME/.local/bin/asdf ]]; then
+
+        curl -L "$ASDF_RELEASE_URL" -o "/tmp/asdf.tar.gz"
+        pushd /tmp >/dev/null
+        tar -xzf "asdf.tar.gz"
+        rm "asdf.tar.gz"
+        mkdir -p "$HOME/.local/bin"
+        mv asdf "$HOME/.local/bin/"
+        popd >/dev/null
+
+    else
+
+        echo "asdf-vm detected. Skipping."
+
+    fi
+
+elif __is_arch; then
+
+    if ! yay -Q asdf-vm; then
+        yay -S asdf-vm --noconfirm
+    fi
+
+fi

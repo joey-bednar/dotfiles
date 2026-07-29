@@ -34,4 +34,6 @@ source ./grub
 source ./screenshot
 source ./file_explorer
 source ./opencode
+source ./claude
+source ./asdf-vm
 popd >/dev/null

@@ -11,6 +11,4 @@ elif __is_arch; then
 fi
 
 # Install tpm
-repo="https://github.com/tmux-plugins/tpm"
-dest="$HOME/.tmux/plugins/tpm"
-git -C "$dest" pull || git clone "$repo" "$dest"
+__git_clone "https://github.com/tmux-plugins/tpm" "$HOME/.tmux/plugins/tpm"
