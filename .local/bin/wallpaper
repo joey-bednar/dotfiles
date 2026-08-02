@@ -1,6 +1,7 @@
 #!/bin/bash
 
-ULTRAWIDE_BG="$HOME/.wallpapers/rocket.jpg"
+# https://imgur.com/gallery/ultrawide-minecraft-backgrounds-32-9-5120x1440-bhmJFnJ
+ULTRAWIDE_BG="$HOME/.wallpapers/minecraft.png"
 ULTRAWIDE_INPUT="HDMI-0"
 ARCH_BG="$HOME/.wallpapers/gruvbox_arch.png"
 UBUNTU_BG="$HOME/.wallpapers/gruvbox_ubuntu.png"
