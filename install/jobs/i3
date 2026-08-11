@@ -7,7 +7,7 @@ IFS=$'\n\t'
 if __is_ubuntu; then
     sudo apt install -y i3 picom feh rofi dunst polybar acpi brightnessctl net-tools lm-sensors
 elif __is_arch; then
-    __pacman_install i3 picom feh rofi dunst polybar acpi brightnessctl net-tools xorg-xrandr xorg-xinput
+    __pacman_install i3-wm i3blocks i3lock i3status picom feh rofi dunst polybar acpi brightnessctl net-tools xorg-xrandr xorg-xinput
 fi
 
 # Configure brightnessctl

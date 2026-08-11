@@ -17,11 +17,13 @@ if __is_ubuntu; then
 
 elif __is_arch; then
 
+    # Update mirrors using reflector:
+    if command -v reflector &>/dev/null; then
+        sudo reflector --protocol https --sort score --save /etc/pacman.d/mirrorlist
+    fi
+
     # Core packages
     __pacman_install linux-firmware git vim less zip unzip usbutils xclip reflector stow fontconfig make yarn jq
-
-    # Update mirrors using reflector:
-    sudo reflector --protocol https --sort score --save /etc/pacman.d/mirrorlist
 
     if ! command -v yay &>/dev/null; then
 
