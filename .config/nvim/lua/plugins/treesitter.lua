@@ -26,6 +26,9 @@ return {
 					"yaml",
 					"gotmpl",
 					"helm",
+					"html",
+					"css",
+					"javascript",
 				},
 
 				-- Install parsers synchronously (only applied to `ensure_installed`)

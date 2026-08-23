@@ -8,10 +8,13 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"bashls",
+					"cssls",
 					"dockerls",
 					"helm_ls",
+					"html",
 					"lua_ls",
 					"pyright",
+					"ts_ls",
 					"yamlls",
 				},
 			})
