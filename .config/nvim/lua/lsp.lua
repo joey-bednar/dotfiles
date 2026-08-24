@@ -73,6 +73,11 @@ vim.lsp.config("clangd", {
 	filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
 })
 
+-- Native TypeScript-Go LSP; replaces ts_ls (excluded in mason.lua). ts_ls's
+-- tsserver.js protocol doesn't support TypeScript 7's native compiler, so
+-- projects on TS 7 fall back to ts_ls's bundled (stale) TypeScript otherwise.
+vim.lsp.enable("tsgo")
+
 vim.diagnostic.config({
 	virtual_text = true,
 })

@@ -14,9 +14,12 @@ return {
 					"html",
 					"lua_ls",
 					"pyright",
-					"ts_ls",
 					"yamlls",
 				},
+				-- Superseded by tsgo (github.com/microsoft/typescript-go), enabled in lsp.lua.
+				-- Excluded (not just dropped from ensure_installed) because mason-lspconfig
+				-- auto-enables every installed package, not just ones in this list.
+				automatic_enable = { exclude = { "ts_ls" } },
 			})
 		end,
 	},

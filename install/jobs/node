@@ -3,5 +3,8 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-sudo npm install -g n
-sudo n lts
+if __is_ubuntu; then
+    curl -fsSL https://fnm.vercel.app/install | bash
+elif __is_arch; then
+    __pacman_install fnm
+fi

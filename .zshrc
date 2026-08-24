@@ -102,7 +102,6 @@ alias gs="git status"
 alias gl="git log"
 alias gb="git switch \$(git branch | fzf)"
 
-alias nvm="/usr/local/bin/n"
 alias n="nvim"
 alias nf="nvim -c ':Telescope find_files'"
 alias nd="nvim -c ':Oil'"
