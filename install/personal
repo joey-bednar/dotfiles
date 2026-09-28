@@ -36,4 +36,5 @@ source ./file_explorer
 source ./opencode
 source ./claude
 source ./asdf-vm
+source ./go
 popd >/dev/null

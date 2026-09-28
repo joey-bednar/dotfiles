@@ -22,4 +22,5 @@ source ./firefox
 source ./file_explorer
 source ./opencode
 source ./asdf-vm
+source ./go
 popd >/dev/null

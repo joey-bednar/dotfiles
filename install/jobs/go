@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -euo pipefail
+IFS=$'\n\t'
+
+if __is_ubuntu; then
+
+    if ! command -v go &>/dev/null; then
+        sudo apt install -y golang-go
+    fi
+
+elif __is_arch; then
+
+    if ! command -v go &>/dev/null; then
+        __pacman_install go
+    fi
+
+fi
