@@ -5,7 +5,6 @@ IFS=$'\n\t'
 
 if __is_arch; then
 
-    # TODO: remove prompts
-    __pacman_install gruvbox-gtk-theme-git
+    __yay_install gruvbox-gtk-theme-git
 
 fi

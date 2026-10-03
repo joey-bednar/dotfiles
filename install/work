@@ -23,4 +23,5 @@ source ./file_explorer
 source ./opencode
 source ./asdf-vm
 source ./go
+source ./leetcode-study
 popd >/dev/null

@@ -21,7 +21,6 @@ kitty.conf
 .local/bin/*
 !.local/bin/i3-suspend
 !.local/bin/keyboard-ctrl2caps
-!.local/bin/lc
 !.local/bin/rcommit
 !.local/bin/redate
 !.local/bin/t

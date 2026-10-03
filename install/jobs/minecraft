@@ -5,9 +5,6 @@ IFS=$'\n\t'
 
 if __is_arch; then
 
-    # TODO: remove prompts
-    if ! yay -Q minecraft-launcher; then
-        yay minecraft-launcher
-    fi
+    __yay_install minecraft-launcher
 
 fi

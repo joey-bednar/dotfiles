@@ -37,4 +37,5 @@ source ./opencode
 source ./claude
 source ./asdf-vm
 source ./go
+source ./leetcode-study
 popd >/dev/null
