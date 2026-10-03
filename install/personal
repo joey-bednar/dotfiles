@@ -38,4 +38,5 @@ source ./claude
 source ./asdf-vm
 source ./go
 source ./leetcode-study
+source ./herdr
 popd >/dev/null

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -euo pipefail
+IFS=$'\n\t'
+
+if __is_ubuntu; then
+
+    if command -v herdr >/dev/null 2>&1; then
+        curl -fsSL https://herdr.dev/install.sh | sh
+    fi
+
+elif __is_arch; then
+
+    __yay_install herdr-bin
+
+fi
