@@ -8,7 +8,7 @@ IFS=$'\n\t'
 __pacman_install() {
     for package in "$@"; do
         if ! sudo pacman -Q "$package" &>/dev/null; then
-            sudo pacman -S --needed --noconfirm "$package"
+            sudo pacman -Syu "$package" --noconfirm
         fi
     done
 }
