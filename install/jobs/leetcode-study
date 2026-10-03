@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -euo pipefail
+IFS=$'\n\t'
+
+mkdir -p "$HOME/personal/leetcode-study"
+__git_clone "https://github.com/joey-bednar/leetcode-study.git" "$HOME/personal/leetcode-study"
+pushd "$HOME/personal/leetcode-study/" >/dev/null
+go build -o lc .
+mkdir -p "$HOME/.local/bin"
+ln -sf "$(pwd)/lc" "$HOME/.local/bin/lc"
+popd
