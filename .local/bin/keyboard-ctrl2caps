@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Swap ctrl and caps lock if not already done by keyboard firmware
+# Swap ctrl/caps lock and alt/super if not already done by keyboard firmware
 if ! lsusb | grep -q "Keychron Q11"; then
-    setxkbmap -option "ctrl:swapcaps"
+    setxkbmap -option && setxkbmap -option ctrl:swapcaps,altwin:swap_alt_win
 else
-    setxkbmap -option ""
+    setxkbmap -option
 fi
