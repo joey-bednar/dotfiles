@@ -6,12 +6,18 @@ name = "gruvbox"
 [keys]
 prefix = "ctrl+a"
 
-next_workspace = "prefix+j"
-previous_workspace = "prefix+k"
+# Allow accidental press of ctrl while switching tabs
+next_tab = ["prefix+n","prefix+ctrl+n"]
+previous_tab = ["prefix+p","prefix+ctrl+p"]
 
-# free up j/k by moving vertical pane focus elsewhere
+# Use j/k to switch workspace
+next_workspace = ["prefix+j","prefix+ctrl+j"]
+previous_workspace = ["prefix+k","prefix+ctrl+k"]
+
+# Remap pane movement to something else
 focus_pane_down = ["prefix+down", "ctrl+alt+j"]
 focus_pane_up = ["prefix+up", "ctrl+alt+k"]
 
 [ui]
+# Use numbers for tab names by default
 prompt_new_tab_name = false
