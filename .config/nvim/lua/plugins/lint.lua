@@ -26,8 +26,16 @@ return {
 			bash = { "shellcheck" },
 		}
 
+		-- Skip linting The Farmer Was Replaced game files
+		local function is_tfwr_file(path)
+			return string.find(path, "TheFarmerWasReplaced") ~= nil
+		end
+
 		vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {
 			callback = function()
+				if is_tfwr_file(vim.fn.expand("%:p")) then
+					return
+				end
 				lint.try_lint()
 			end,
 		})
