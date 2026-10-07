@@ -28,3 +28,7 @@ kitty.conf
 !.local/bin/tmux-fzf
 !.local/bin/todo
 !.local/bin/wallpaper
+
+# ignore herdr data files
+.config/herdr/*
+!.config/herdr/config.toml
